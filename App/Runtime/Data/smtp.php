@@ -1,0 +1,1 @@
+<?php	return array ( 'MAIL_ADDRESS' => '335926752@qq.com', 'MAIL_SMTP' => 'smtp.qq.com', 'MAIL_LOGINNAME' => '335926752', 'MAIL_PASSWORD' => 'mengxiang', 'MAIL_CHARSET' => 'UTF-8', 'MAIL_AUTH' => true, 'MAIL_HTML' => true, );?>

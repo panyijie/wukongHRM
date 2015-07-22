@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>系统发生错误</title>
+<style type="text/css">
+*{ padding: 0; margin: 0; }
+html{ overflow-y: scroll; }
+body{ background: #fff; font-family: '微软雅黑'; color: #333; font-size: 16px; }
+img{ border: 0; }
+.error{ padding: 24px 48px; }
+.face{ font-size: 100px; font-weight: normal; line-height: 120px; margin-bottom: 12px; }
+h1{ font-size: 28px; line-height: 48px; }
+.error .content{ padding-top: 10px}
+.error .info{ margin-bottom: 12px; }
+.error .info .title{ margin-bottom: 3px; }
+.error .info .title h3{ color: #000; font-weight: 700; font-size: 16px; }
+.error .info .text{ line-height: 24px; }
+.copyright{ padding: 12px 48px; color: #999; }
+.copyright a{ color: #000; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="error">
+<h1><?php echo strip_tags($e['message']);?></h1>
+<div class="content">
+<?php if(isset($e['file'])) {?>
+	<div class="info">
+		<div class="title">
+			<h3>错误位置</h3>
+		</div>
+		<div class="text">
+			<p>FILE: <?php echo $e['file'] ;?> &#12288;LINE: <?php echo $e['line'];?></p>
+		</div>
+	</div>
+<?php }?>
+</div>
+<div style="color: rgb(240, 118, 6); line-height: 30px;">
+	<p>很抱歉，让您看到了这个不友好的界面，您可以尝试通过以下方式解决</p>
+	<p>1,您可以清空缓存后，重新访问; &nbsp;  &nbsp; <a target="_blank" href="javascript:void(0);">查看清空缓存的具体方法</a></p>
+	<p>2.您可以开启调试模式，查看问题详情; &nbsp;  &nbsp; </p>
+	<p>3.您可以在论坛提问  &nbsp;  &nbsp; <a target="_blank" href="javascript:void(0);">去论坛</a>;  &nbsp;  &nbsp; &nbsp; 或者加入我们的官方QQ交流群 &nbsp;  &nbsp; <a target="_blank" href="javascript:void(0);"></a>
+		<br />热心的悟空用户和官方人员会在很短时间内帮您解决问题 </p>
+	<p>4.商业用户可以通过电话等多种联系方式联系售后人员; &nbsp;  &nbsp; <a target="_blank" href="javascript:void(0);">点击查看联系方式 </a></p>
+</div>
+</div>
+<div class="copyright">
+<p><a title="悟空HRMS" target="_blank" href="javascript:void(0);">悟空HRMS</a> &nbsp; 当前版本: <?php echo C("VERSION");?> &nbsp; 发布时间: <?php echo C("RELEASE");?> </p>
+</div>
+</body>
+</html>

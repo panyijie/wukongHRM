@@ -1,0 +1,192 @@
+[ 2014-01-23T20:28:43+08:00 ] 0.0.0.0 /hrmstest/index.php?g=core&m=message&a=tips
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.054003s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.037002s ]
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.036002s ]
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'defaultinfo' ) LIMIT 1   [ RunTime:0.037002s ]
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'contracttype' ) LIMIT 1   [ RunTime:0.033002s ]
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'contractstatus' ) LIMIT 1   [ RunTime:0.036002s ]
+INFO: App Behavior ::run [ RunTime:0.541031s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.544031s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.036002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 1 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.036002s ]
+
+[ 2014-01-23T20:28:48+08:00 ] 0.0.0.0 /hrmstest/index.php?g=core&m=message&a=tips
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003000s ]
+INFO: App Behavior ::run [ RunTime:0.010000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.013000s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.036002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 1 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.034002s ]
+
+[ 2014-01-23T20:28:53+08:00 ] 0.0.0.0 /hrmstest/index.php?g=core&m=message&a=tips
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.005000s ]
+
+[ 2014-01-23T20:28:53+08:00 ] 0.0.0.0 /hrmstest/index.php?g=core&m=install&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003000s ]
+INFO: App Behavior ::run [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006000s ]
+NOTIC: [8] Undefined index: submit D:\wamp\www\hrmstest\App\Lib\Action\Core\InstallAction.class.php 第 13 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: warnings D:\wamp\www\hrmstest\App\Runtime\Cache\Core\b4cc9be96948c588a5de486c17608f5a.php 第 65 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.036002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036002s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.004000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.004001s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.003000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2014-01-23T20:28:58+08:00 ] 0.0.0.0 /hrmstest/index.php?g=core&m=message&a=tips
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.004000s ]
+
+[ 2014-01-23T20:28:58+08:00 ] 0.0.0.0 /hrmstest/index.php?g=core&m=install&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.004000s ]
+INFO: App Behavior ::run [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+NOTIC: [8] Undefined index: submit D:\wamp\www\hrmstest\App\Lib\Action\Core\InstallAction.class.php 第 13 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: warnings D:\wamp\www\hrmstest\App\Runtime\Cache\Core\b4cc9be96948c588a5de486c17608f5a.php 第 65 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.033002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033002s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.003000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.003000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.005000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.014001s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.003000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2014-01-23T20:29:03+08:00 ] 0.0.0.0 /hrmstest/index.php?g=core&m=message&a=tips
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003001s ]
+
+[ 2014-01-23T20:29:03+08:00 ] 0.0.0.0 /hrmstest/index.php?g=core&m=install&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003000s ]
+INFO: App Behavior ::run [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007000s ]
+NOTIC: [8] Undefined index: submit D:\wamp\www\hrmstest\App\Lib\Action\Core\InstallAction.class.php 第 13 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: warnings D:\wamp\www\hrmstest\App\Runtime\Cache\Core\b4cc9be96948c588a5de486c17608f5a.php 第 65 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.035002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035002s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.003000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.005000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.003001s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.003000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2014-01-23T20:29:06+08:00 ] 0.0.0.0 /hrmstest/5khrm/index.php?g=core&m=message&a=tips
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003001s ]
+
+[ 2014-01-23T20:29:07+08:00 ] 0.0.0.0 /hrmstest/5khrm/index.php?g=core&m=install&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003000s ]
+INFO: App Behavior ::run [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006000s ]
+NOTIC: [8] Undefined index: submit D:\wamp\www\hrmstest\5khrm\App\Lib\Action\Core\InstallAction.class.php 第 13 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: warnings D:\wamp\www\hrmstest\5khrm\App\Runtime\Cache\Core\b4cc9be96948c588a5de486c17608f5a.php 第 65 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.039002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.039002s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002001s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002001s ]
+
+[ 2014-01-23T20:29:08+08:00 ] 0.0.0.0 /hrmstest/5khrm/index.php?g=core&m=message&a=tips
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003000s ]
+
+[ 2014-01-23T20:29:08+08:00 ] 0.0.0.0 /hrmstest/5khrm/index.php?g=core&m=install&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003000s ]
+INFO: App Behavior ::run [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006000s ]
+NOTIC: [8] Undefined index: submit D:\wamp\www\hrmstest\5khrm\App\Lib\Action\Core\InstallAction.class.php 第 13 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: warnings D:\wamp\www\hrmstest\5khrm\App\Runtime\Cache\Core\b4cc9be96948c588a5de486c17608f5a.php 第 65 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.036002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036002s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.003000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.004000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.003001s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.003000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2014-01-23T20:29:11+08:00 ] 0.0.0.0 /hrmstest/5khrm/index.php?g=core&m=message&a=tips
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002000s ]
+
+[ 2014-01-23T20:29:12+08:00 ] 0.0.0.0 /hrmstest/5khrm/index.php?g=core&m=install&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: App Behavior ::run [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006000s ]
+NOTIC: [8] Undefined index: submit D:\wamp\www\hrmstest\5khrm\App\Lib\Action\Core\InstallAction.class.php 第 13 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: warnings D:\wamp\www\hrmstest\5khrm\App\Runtime\Cache\Core\b4cc9be96948c588a5de486c17608f5a.php 第 65 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.031002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031002s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.004001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2014-01-23T20:29:13+08:00 ] 0.0.0.0 /hrmstest/5khrm/index.php?g=core&m=message&a=tips
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003001s ]
+
+[ 2014-01-23T20:29:13+08:00 ] 0.0.0.0 /hrmstest/5khrm/index.php?g=core&m=install&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.007000s ]
+INFO: App Behavior ::run [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.011000s ]
+NOTIC: [8] Undefined index: submit D:\wamp\www\hrmstest\5khrm\App\Lib\Action\Core\InstallAction.class.php 第 13 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: warnings D:\wamp\www\hrmstest\5khrm\App\Runtime\Cache\Core\b4cc9be96948c588a5de486c17608f5a.php 第 65 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.040002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.040002s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.003000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.004000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.003000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003000s ]
+
