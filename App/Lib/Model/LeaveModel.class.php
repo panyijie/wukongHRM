@@ -23,15 +23,19 @@ class LeaveModel extends Model{
 		$d_leave_category = D('LeaveCategory');
 		foreach($leavelist as $key=>$val){
 			$str_user_name = '';
+
 			//请假人
 			$userArr = array_filter(explode(',',$val['user_id']));
 			foreach($userArr as $v){
 				$user = $d_user->getUserInfo(array('user_id'=>$v));
 				$str_user_name .= $user['name'];
-				$str_user_name .= ',';
 			}
-			
-			$leavelist[$key]['user_name'] = $str_user_name;
+            $leavelist[$key]['user_name'] = $str_user_name;
+
+            //委托人（expand）
+            $user = $d_user->getUserInfo(array('user_id'=>$val['entrust_user_id']));
+            $leavelist[$key]['entrust_user_name'] = $user['name'];
+
 			//填写人
 			$user = $d_user->getUserInfo(array('user_id'=>$val['maker_user_id']));
 			$leavelist[$key]['maker_user_name'] = $user['name'];

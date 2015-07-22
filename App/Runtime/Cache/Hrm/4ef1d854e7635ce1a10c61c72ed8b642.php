@@ -50,11 +50,8 @@
 							<option value="">全部</option>
 							<option value="1">事假</option>
 							<option value="2">病假</option>
-							<option value="3">出差</option>
-							<option value="4">婚假</option>
-							<option value="5">产假</option>
-							<option value="6">年假</option>
-							<option value="7">丧假</option>
+							<option value="3">年假</option>
+							<option value="4">其他</option>
 						</select>
 					</div>&nbsp;&nbsp;
 					<div class="form-group">
@@ -72,7 +69,7 @@
 						<tr>
 							<th><input type="checkbox" name="leave_id[]" id="check_all"/></th>
 							<th>请假人</th>
-							<th>填写人</th>
+							<th>委托人</th>
 							<th>状态</th>
 							<th>请假类型</th>
 							<th>请假时间</th>
@@ -84,7 +81,7 @@
 						<?php if(is_array($leavelist)): $i = 0; $__LIST__ = $leavelist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
 							<td><input type="checkbox" name="id[]" class="check_list" value="<?php echo ($vo["leave_id"]); ?>" /></td>
 							<td><?php echo ($vo["user_name"]); ?></td>
-							<td><?php echo ($vo["maker_user_name"]); ?></td>
+							<td><?php echo ($vo["entrust_user_name"]); ?></td>
 							<td>
 								<?php if('0' == $vo['status']): ?><span style="color:#F8971C"><?php echo ($vo["status_name"]); ?></span>
 								<?php elseif('1' == $vo['status']): ?>
