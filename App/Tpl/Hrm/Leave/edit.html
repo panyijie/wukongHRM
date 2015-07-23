@@ -10,24 +10,31 @@
 				<p class="form-title">编辑请假条&nbsp;&nbsp;<a href="javascript:history.go(-1);">返回</a></p>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">请假人</label>
-					<div class="col-sm-3">
-						<input type="hidden" name="user_id" id="str_user_id" value="{$leave.user_id}" />
-						<input class="form-control" type="text" name="user_name" id="str_user_name" readonly="true" value="{$leave.user_name}"/>
-					</div>
+                    <div class="col-sm-3">
+                        {$leave.maker_user_name}
+                    </div>
 				</div>
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">交接人</label>
+                    <div class="col-sm-3">
+                        <input type="hidden" name="user_id" id="from_user_id" value="{$leave.entrust_user_id}" />
+                        <input class="form-control" type="text" name="user_name" id="from_name" readonly="true" value="{$leave.entrust_user_name}"/>
+                    </div>
+                </div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">类型</label>
 					<div class="col-sm-3">
 						<select class="form-control" name="leave_category_id">
 							<option value="1" <if condition="'1' eq $leave['leave_category_id']">selected="selected"</if>>事假</option>
 							<option value="2" <if condition="'2' eq $leave['leave_category_id']">selected="selected"</if>>病假</option>
-							<option value="3" <if condition="'3' eq $leave['leave_category_id']">selected="selected"</if>>出差</option>
-							<option value="4" <if condition="'4' eq $leave['leave_category_id']">selected="selected"</if>>婚假</option>
-							<option value="5" <if condition="'5' eq $leave['leave_category_id']">selected="selected"</if>>产假</option>
-							<option value="6" <if condition="'6' eq $leave['leave_category_id']">selected="selected"</if>>年假</option>
-							<option value="7" <if condition="'7' eq $leave['leave_category_id']">selected="selected"</if>>丧假</option>
+							<option value="3" <if condition="'3' eq $leave['leave_category_id']">selected="selected"</if>>年差</option>
+							<option value="4" <if condition="'4' eq $leave['leave_category_id']">selected="selected"</if>>其他</option>
 						</select>
 					</div>
+                    <label for="name" class="col-sm-2 control-label">剩余年假</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" value="{$annual_leave}&nbsp;天" type="text" name="annual_leave" id="input_annual_leave" readonly="true"/>
+                    </div>
 				</div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">开始时间</label>
@@ -73,12 +80,12 @@
 	/**
 	 * 选择员工
 	 **/
-	$('#str_user_name').click(function(){
-		$('#alert').modal({
-			show:true,
-			remote:'{:U("core/user/getSubUserCBDialog","self=1")}'
-		});
-	});
+    $('#from_name').click(function(){
+        $('#alert').modal({
+            show:true,
+            remote:'{:U("core/user/getfromuserrindex")}'
+        });
+    });
 </script>
 <include file="Core:Public:alert" />
 <include file="Core:Public:footer" />

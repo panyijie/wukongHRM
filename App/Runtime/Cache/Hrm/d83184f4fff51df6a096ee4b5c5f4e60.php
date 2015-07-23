@@ -37,6 +37,10 @@
 					<label for="name" class="col-sm-2 control-label">请假人</label>
 					<div class="col-sm-3"><?php echo ($leave["user_name"]); ?></div>
 				</div>
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">委托人</label>
+                    <div class="col-sm-3"><?php echo ($leave["entrust_user_name"]); ?></div>
+                </div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">类型</label>
 					<div class="col-sm-3"><?php echo ($leave["category_name"]); ?></div>
@@ -84,7 +88,7 @@
 	 **/
 	$('#leave_pass').click(function(){
 		if(confirm('确定要审核通过吗？')){
-			location.href="<?php echo U('hrm/leave/auditing','id='.$leave['leave_id'].'&status=1');?>";
+			location.href="<?php echo U('hrm/leave/auditing','id='.$leave['leave_id'].'&status=1&uid='.$leave['user_id'].'&euid='.$leave['entrust_user_id']);?>";
 		}
 	});
 	
@@ -93,7 +97,7 @@
 	 **/
 	$('#leave_fail').click(function(){
 		if(confirm('确定要未通审核过吗？')){
-			location.href="<?php echo U('hrm/leave/auditing','id='.$leave['leave_id'].'&status=2');?>";
+			location.href="<?php echo U('hrm/leave/auditing','id='.$leave['leave_id'].'&status=2&uid='.$leave['user_id'].'&euid='.$leave['entrust_user_id']);?>)}";
 		}
 	});
 </script>

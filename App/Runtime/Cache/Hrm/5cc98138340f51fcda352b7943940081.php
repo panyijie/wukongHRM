@@ -55,6 +55,10 @@
 							<option value="4">其他</option>
 						</select>
 					</div>
+                    <label for="name" class="col-sm-2 control-label">剩余年假</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" value="<?php echo ($annual_leave); ?>&nbsp;天" type="text" name="annual_leave" id="input_annual_leave" readonly="true"/>
+                    </div>
 				</div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">开始时间</label>
@@ -69,6 +73,7 @@
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">计算结果</label>
 					<div class="col-sm-3">
+                        <input type="hidden" name="leave_days" id="leave_days" value="" />
 						共<span id="time_day">0</span>天<span id="time_hours">0</span>小时
 					</div>
 				</div>
@@ -135,6 +140,7 @@
 			
 			$('#time_day').html(time_day);
 			$('#time_hours').html(time_hours);
+            $('#leave_days').val(time_day);
 		}
 	});
 </script>

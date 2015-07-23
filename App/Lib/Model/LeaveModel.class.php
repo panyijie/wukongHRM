@@ -11,7 +11,7 @@ class LeaveModel extends Model{
 	public function getLeave($p, $where){
 		if(!empty($where['user_name'])){
 			$user_id = M('user')->where(array('name'=>array('eq', $where['user_name'])))->getField('user_id');
-			$where['user_id'] = array('like', '%'.$user_id.',%');
+			$where['user_id'] = array('like', '%'.$user_id.'%');
 			unset($where['user_name']);
 		}
 		import('@.ORG.Page');
@@ -39,6 +39,9 @@ class LeaveModel extends Model{
 			//填写人
 			$user = $d_user->getUserInfo(array('user_id'=>$val['maker_user_id']));
 			$leavelist[$key]['maker_user_name'] = $user['name'];
+            $leavelist[$key]['annual_leave'] = $user['annual_leave'];
+
+
 			//请假类型
 			$leavelist[$key]['category_name'] = $d_leave_category->where(array('leave_category_id'=>$val['leave_category_id']))->getField('name');
 			//审核
@@ -86,10 +89,11 @@ class LeaveModel extends Model{
 		foreach($userArr as $v){
 			$user = $d_user->getUserInfo(array('user_id'=>$v));
 			$str_user_name .= $user['name'];
-			$str_user_name .= ',';
 		}
-		
 		$leave['user_name'] = $str_user_name;
+        //委托人
+        $entrustUser = $d_user->getUserInfo(array('user_id'=>$leave['entrust_user_id']));
+        $leave['entrust_user_name'] = $entrustUser['name'];
 		//填写人
 		$user = $d_user->getUserInfo(array('user_id'=>$leave['maker_user_id']));
 		$leave['maker_user_name'] = $user['name'];
@@ -117,7 +121,6 @@ class LeaveModel extends Model{
 	public function editLeave($data){
 		//返回数据
 		if($this->create($data) && $this->save()){
-			
 			return true;
 		}else{
 			return false;
