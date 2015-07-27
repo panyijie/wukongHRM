@@ -18,7 +18,7 @@ class LeaveModel extends Model{
 		$count = $this->where($where)->count();
 		$Page = new Page($count,15);
 		$show  = $Page->show();
-		$leavelist = $this->where($where)->order('create_time asc')->page($p.',15')->select();
+		$leavelist = $this->where($where)->order('create_time desc')->page($p.',15')->select();
 		$d_user = D('User');
 		$d_leave_category = D('LeaveCategory');
 		foreach($leavelist as $key=>$val){
@@ -30,6 +30,7 @@ class LeaveModel extends Model{
 				$user = $d_user->getUserInfo(array('user_id'=>$v));
 				$str_user_name .= $user['name'];
 			}
+            $leavelist[$key]['user_id'] = $val['user_id'];
             $leavelist[$key]['user_name'] = $str_user_name;
 
             //委托人（expand）
@@ -41,9 +42,9 @@ class LeaveModel extends Model{
 			$leavelist[$key]['maker_user_name'] = $user['name'];
             $leavelist[$key]['annual_leave'] = $user['annual_leave'];
 
-
 			//请假类型
 			$leavelist[$key]['category_name'] = $d_leave_category->where(array('leave_category_id'=>$val['leave_category_id']))->getField('name');
+			$leavelist[$key]['category_id'] = $val['leave_category_id'];
 			//审核
 			if(0 == $val['status']){
 				$leavelist[$key]['status_name'] = '处理中';
@@ -52,11 +53,14 @@ class LeaveModel extends Model{
 			}else{
 				$leavelist[$key]['status_name'] = '未通过';
 			}
-			$timediff = $val['end_time'] - $val['start_time'];
 			//天数
-			$leavelist[$key]['leave_days'] = intval($timediff/86400);
-			//小时
-			$leavelist[$key]['leave_hours'] = intval($timediff/3600);
+			$leavelist[$key]['leave_days'] = $val['leave_days'];
+            $leavelist[$key]['start_time'] = date('Y-m-d H:i:s',$val['start_time']);
+            $leavelist[$key]['end_time'] = date('Y-m-d H:i:s',$val['end_time']);
+            $leavelist[$key]['start_time'] = (substr($leavelist[$key]['start_time'],11,8) == '06:00:00')?substr($leavelist[$key]['start_time'],0,11).'09:00:00':$leavelist[$key]['start_time'];
+            $leavelist[$key]['end_time'] = (substr($leavelist[$key]['end_time'],11,8) == '06:00:00')?substr($leavelist[$key]['end_time'],0,11).'09:00:00':$leavelist[$key]['end_time'];
+
+//			$leavelist[$key]['leave_hours'] = intval($timediff/3600);
 			
 		}
 		return array('page'=>$show ,'leavelist'=>$leavelist);
@@ -107,11 +111,7 @@ class LeaveModel extends Model{
 		}else{
 			$leave['status_name'] = '未通过';
 		}
-		$timediff = $leave['end_time'] - $leave['start_time'];
-		//天数
-		$leave['leave_days'] = intval($timediff/86400);
-		//小时
-		$leave['leave_hours'] = intval($timediff/3600);
+//		$timediff = $leave['end_time'] - $leave['start_time'];
 		return $leave;
 	}
 	

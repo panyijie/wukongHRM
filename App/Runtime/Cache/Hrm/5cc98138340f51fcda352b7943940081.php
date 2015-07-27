@@ -48,33 +48,48 @@
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">类型</label>
 					<div class="col-sm-3">
-						<select class="form-control" name="leave_category_id">
-							<option value="1" selected="selected">事假</option>
-							<option value="2">病假</option>
-							<option value="3">年假</option>
-							<option value="4">其他</option>
+						<select id="leave_select" class="form-control" name="leave_category_id">
 						</select>
 					</div>
                     <label for="name" class="col-sm-2 control-label">剩余年假</label>
-                    <div class="col-sm-3">
-                        <input class="form-control" value="<?php echo ($annual_leave); ?>&nbsp;天" type="text" name="annual_leave" id="input_annual_leave" readonly="true"/>
+                    <div class="col-sm-2">
+                        <input class="form-control" value="<?php echo ($annual_leave); ?>" type="text" name="annual_leave" id="input_annual_leave_day" readonly="true"/>
                     </div>
+                    <label for="name" class="col-sm-1" style="margin-left: -30px">天</label>
 				</div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">开始时间</label>
-					<div class="col-sm-3">
-						<input class="form-control" type="text" name="start_time" id="d4311" onFocus="WdatePicker({maxDate:$('#d4312').val(),minDate:'%y-%M-%d %H:%m:%s', dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+					<div class="col-sm-2">
+                        <input type="hidden" name="start_time" id="start_time_post" value="" />
+						<input class="form-control"  type="text" id="d4311" onFocus="WdatePicker({maxDate:$('#d4312').val(),minDate:'%y-%M-%d', dateFmt:'yyyy-MM-dd'})" />
 					</div>
-					<label for="name" class="col-sm-2 control-label">结束时间</label>
-					<div class="col-sm-3">
-						<input class="form-control" type="text" name="end_time" id="d4312" onFocus="WdatePicker({minDate:$('#d4311').val(),maxDate:'2020-10-01',dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+                    <div class="col-sm-2">
+                        <select class="form-control" id="start_leave_time" style="margin-left: -30px" name="leave_date_time">
+                            <option value="0" selected="selected">选择时间</option>
+                            <option value="1">早上 9:00</option>
+                            <option value="2">中午 12:00</option>
+                            <option value="3">晚上 6:00</option>
+                        </select>
+                    </div>
+					<label for="name" class="col-sm-1 control-label">结束时间</label>
+					<div class="col-sm-2">
+                        <input type="hidden" name="end_time" id="end_time_post" value="" />
+						<input class="form-control" type="text" id="d4312" onFocus="WdatePicker({minDate:$('#d4311').val(),maxDate:'2020-10-01',dateFmt:'yyyy-MM-dd'})" />
 					</div>
+                    <div class="col-sm-2">
+                        <select class="form-control" id="end_leave_time" style="margin-left: -30px" name="leave_date_time">
+                            <option value="0" selected="selected">选择时间</option>
+                            <option value="1">早上 9:00</option>
+                            <option value="2">中午 12:00</option>
+                            <option value="3">晚上 6:00</option>
+                        </select>
+                    </div>
 				</div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">计算结果</label>
 					<div class="col-sm-3">
                         <input type="hidden" name="leave_days" id="leave_days" value="" />
-						共<span id="time_day">0</span>天<span id="time_hours">0</span>小时
+						<span id="time_day"></span>
 					</div>
 				</div>
 				<div class="form-group">
@@ -92,7 +107,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label"></label>
 					<div class="col-sm-3">
-						<input name="submit" class="btn btn-primary" type="submit" value="保存"/>&nbsp;&nbsp;&nbsp;&nbsp;
+						<input name="submit" id="leave_submit_input" class="btn btn-primary" disabled type="submit" value="保存"/>&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" class="btn" value="取消" onclick="javascript:history.go(-1);"/>
 					</div>
 				</div>
@@ -112,6 +127,16 @@
 //		});
 //	});
 
+    if($('#input_annual_leave_day').val() == 0){
+        var selectHtml = "<option value='1' selected='selected'>事假</option>";
+        selectHtml += "<option value='2'>病假</option><option value='4'>其他</option>";
+        $('#leave_select').append(selectHtml);
+    }else{
+        var selectHtml = "<option value='1' selected='selected'>事假</option>";
+        selectHtml += "<option value='2'>病假</option><option value='3'>年假</option><option value='4'>其他</option>";
+        $('#leave_select').append(selectHtml);
+    }
+
     $('#from_name').click(function(){
         $('#alert').modal({
             show:true,
@@ -122,27 +147,71 @@
 	/**
 	 * 根据输入的开始时间和结束时间计算时差
 	**/
-	$('#d4312').blur(function(){
-		var start_time = $('#d4311').val();
-		var end_time = $('#d4312').val();
-		if('' != start_time && '' != end_time){
-			temp_start_int = (new Date(start_time)).valueOf();
-			temp_start_str = temp_start_int.toString();
-			unix_start_time = temp_start_str.substring(0,10);
+    var getLeaveHour = function(){
+        var start_time = $('#d4311').val();
+        var end_time = $('#d4312').val();
+        var start_leave_time = $('#start_leave_time').val();
+        var end_leave_time = $('#end_leave_time').val();
+        if(start_leave_time == 1){
+            start_time += " 6:00:00";
+        }else if(start_leave_time == 2){
+            start_time += " 12:00:00";
+        }else if(start_leave_time == 3){
+            start_time += " 18:00:00";
+        }
 
-			temp_end_int = (new Date(end_time)).valueOf();
-			temp_end_str = temp_end_int.toString();
-			unix_end_time = temp_end_str.substring(0,10);
-			unix_time = unix_end_time - unix_start_time;
-			
-			time_day = parseInt(unix_time/86400);
-			time_hours = parseInt(unix_time/3600);
-			
-			$('#time_day').html(time_day);
-			$('#time_hours').html(time_hours);
-            $('#leave_days').val(time_day);
-		}
-	});
+        if(end_leave_time == 1){
+            end_time += " 6:00:00";
+        }else if(end_leave_time == 2){
+            end_time += " 12:00:00";
+        }else if(end_leave_time == 3){
+            end_time += " 18:00:00";
+        }
+
+        if('' != start_time && '' != end_time){
+            temp_start_int = (new Date(start_time)).valueOf();
+            temp_start_str = temp_start_int.toString();
+            unix_start_time = temp_start_str.substring(0,10);
+            temp_end_int = (new Date(end_time)).valueOf();
+            temp_end_str = temp_end_int.toString();
+            unix_end_time = temp_end_str.substring(0,10);
+            unix_time = unix_end_time - unix_start_time;
+
+            time_day = parseInt(unix_time/86400);
+            time_hours = parseInt(unix_time/3600);
+
+            if((time_hours <= 0 || '0' == start_leave_time || '0' == end_leave_time)){
+                $("#leave_submit_input").attr('disabled', true);
+                $('#time_day').css('color','red').html('请正确选择请假时间');
+            }else if((time_hours == 12 && '3' == start_leave_time && '1' == end_leave_time)){
+                $("#leave_submit_input").attr('disabled', true);
+                $('#time_day').css('color','red').html('这是正常下班时间,不用请假');
+            }else if(time_hours > 0 && start_leave_time != 0 && end_leave_time != 0){
+                $("#leave_submit_input").attr('disabled',false);
+                var leave_day = parseInt(time_hours/24);
+                if(time_hours%24 == 6){
+                    leave_day += 0.5;
+                }else if(time_hours%24 == 12){
+                    leave_day += 1;
+                }else if(time_hours == 18){
+                    leave_day += 0.5;
+                }
+                $('#time_day').css('color','black').html('共请假'+ leave_day + '天');
+            }
+            $('#start_time_post').val(unix_start_time);
+            $('#end_time_post').val(unix_end_time);
+            $('#leave_days').val(leave_day);
+        }
+    };
+
+	$('#d4312').bind('blur',getLeaveHour);
+
+    $('#start_leave_time').bind('blur',getLeaveHour);
+
+    $('#end_leave_time').bind('blur',getLeaveHour);
+
+    $('#d4311').bind('blur',getLeaveHour);
+
 </script>
 <div class="modal fade" id="alert" tabindex="-1" data-backdrop="static">
 	<div class="modal-dialog">

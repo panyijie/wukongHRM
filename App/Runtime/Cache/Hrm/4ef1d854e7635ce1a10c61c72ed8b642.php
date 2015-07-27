@@ -74,7 +74,6 @@
 							<th>请假类型</th>
 							<th>请假时间</th>
 							<th>天数</th>
-							<th>小时</th>
 							<th>创建时间</th>
 							<th>操作</th>
 						</tr>
@@ -90,14 +89,16 @@
 									<span style="color:#FF3908;"><?php echo ($vo["status_name"]); ?></span><?php endif; ?>
 							</td>
 							<td><?php echo ($vo["category_name"]); ?></td>
-							<td><?php echo (date('Y-m-d H:i',$vo["start_time"])); ?>&nbsp;至&nbsp;<?php echo (date('Y-m-d H:i',$vo["end_time"])); ?></td>
+							<td id="leaveTimeFT">
+                                <?php echo ($vo["start_time"]); ?>&nbsp;至&nbsp;<?php echo ($vo["end_time"]); ?>
+                            </td>
 							<td><?php echo ($vo["leave_days"]); ?></td>
-							<td><?php echo ($vo["leave_hours"]); ?></td>
 							<td><?php echo (date('Y-m-d H:i:s',$vo["create_time"])); ?></td>
 							<td>
-								<a href="<?php echo U('hrm/leave/view','id='.$vo['leave_id']);?>">查看</a>&nbsp;|&nbsp;
-								<a href="<?php echo U('hrm/leave/edit','id='.$vo['leave_id']);?>">编辑</a>&nbsp;|&nbsp;
-								<a href="<?php echo U('hrm/leave/delete','id='.$vo['leave_id']);?>">删除</a>
+								<a href="<?php echo U('hrm/leave/view','id='.$vo['leave_id'].'&leave_category_id='.$vo['category_id'].'&leave_category_id='.$vo['category_id'].'&leave_user_id='.$vo['user_id'].'&annual_leave='.$vo['annual_leave'].'&leave_days='.$vo['leave_days']);?>">查看</a>&nbsp;|&nbsp;
+								<!--<a href="<?php echo U('hrm/leave/edit','id='.$vo['leave_id']);?>">编辑</a>&nbsp;|&nbsp;-->
+                                <input type="hidden" id="deleteAction" value="<?php echo U('hrm/leave/delete','id='.$vo['leave_id'].'&leave_category_id='.$vo['category_id'].'&leave_user_id='.$vo['user_id'].'&annual_leave='.$vo['annual_leave'].'&leave_days='.$vo['leave_days']);?>" />
+								<a id="delete_a" href="javascript:del()">删除</a>
 							</td>
 						</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 					</tbody>
@@ -173,6 +174,15 @@
 			window.location.href="<?php echo U('hrm/leave/index');?>";
 		})
 	});
+
+    var del = function(){
+        if(confirm("确定要删除数据吗?")){
+            window.location = $('#deleteAction').val();
+        }else{}
+    };
+
+    //正确输出请假的时间距离
+
 </script>
 <div class="modal fade" id="alert" tabindex="-1" data-backdrop="static">
 	<div class="modal-dialog">

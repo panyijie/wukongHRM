@@ -55,14 +55,16 @@
 				</div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">开始时间</label>
-					<div class="col-sm-3"><?php echo (date('Y-m-d H:i:s',$leave["start_time"])); ?></div>
+                    <input type="hidden" id="startTimeHidden" value="<?php echo (date('Y-m-d H:i:s',$leave["start_time"])); ?>"/>
+					<div class="col-sm-3" id="startTimeView"></div>
 					<label for="name" class="col-sm-2 control-label">结束时间</label>
-					<div class="col-sm-3"><?php echo (date('Y-m-d H:i:s',$leave["end_time"])); ?></div>
+                    <input type="hidden" id="endTimeHidden" value="<?php echo (date('Y-m-d H:i:s',$leave["end_time"])); ?>"/>
+					<div class="col-sm-3" id="endTimeView"></div>
 				</div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">计算结果</label>
 					<div class="col-sm-3">
-						共<span><?php echo ($leave["leave_days"]); ?></span>天<span><?php echo ($leave["leave_hours"]); ?></span>小时
+						共<span><?php echo ($leave["leave_days"]); ?></span>天
 					</div>
 				</div>
 				<div class="form-group">
@@ -100,6 +102,11 @@
 			location.href="<?php echo U('hrm/leave/auditing','id='.$leave['leave_id'].'&status=2&uid='.$leave['user_id'].'&euid='.$leave['entrust_user_id']);?>)}";
 		}
 	});
+
+    var startTimeFin = ($('#startTimeHidden').val().substring(11,19) == '06:00:00')?$('#startTimeHidden').val().substring(0,11) + '09:00:00': $('#startTimeHidden').val();
+    var endTimeFin = ($('#endTimeHidden').val().substring(11,19) == '06:00:00')?$('#endTimeHidden').val().substring(0,11) + '09:00:00': $('#endTimeHidden').val();
+    $('#startTimeView').append(startTimeFin);
+    $('#endTimeView').append(endTimeFin);
 </script>
 <div class="modal fade" id="alert" tabindex="-1" data-backdrop="static">
 	<div class="modal-dialog">

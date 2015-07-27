@@ -54,7 +54,6 @@
 							<th>请假类型</th>
 							<th>请假时间</th>
 							<th>天数</th>
-							<th>小时</th>
 							<th>创建时间</th>
 							<th>操作</th>
 						</tr>
@@ -73,14 +72,16 @@
 								</if>
 							</td>
 							<td>{$vo.category_name}</td>
-							<td>{$vo.start_time|date='Y-m-d H:i',###}&nbsp;至&nbsp;{$vo.end_time|date='Y-m-d H:i',###}</td>
+							<td id="leaveTimeFT">
+                                {$vo.start_time}&nbsp;至&nbsp;{$vo.end_time}
+                            </td>
 							<td>{$vo.leave_days}</td>
-							<td>{$vo.leave_hours}</td>
 							<td>{$vo.create_time|date='Y-m-d H:i:s',###}</td>
 							<td>
-								<a href="{:U('hrm/leave/view','id='.$vo['leave_id'])}">查看</a>&nbsp;|&nbsp;
-								<a href="{:U('hrm/leave/edit','id='.$vo['leave_id'])}">编辑</a>&nbsp;|&nbsp;
-								<a href="{:U('hrm/leave/delete','id='.$vo['leave_id'])}">删除</a>
+								<a href="{:U('hrm/leave/view','id='.$vo['leave_id'].'&leave_category_id='.$vo['category_id'].'&leave_category_id='.$vo['category_id'].'&leave_user_id='.$vo['user_id'].'&annual_leave='.$vo['annual_leave'].'&leave_days='.$vo['leave_days'])}">查看</a>&nbsp;|&nbsp;
+								<!--<a href="{:U('hrm/leave/edit','id='.$vo['leave_id'])}">编辑</a>&nbsp;|&nbsp;-->
+                                <input type="hidden" id="deleteAction" value="{:U('hrm/leave/delete','id='.$vo['leave_id'].'&leave_category_id='.$vo['category_id'].'&leave_user_id='.$vo['user_id'].'&annual_leave='.$vo['annual_leave'].'&leave_days='.$vo['leave_days'])}" />
+								<a id="delete_a" href="javascript:del()">删除</a>
 							</td>
 						</tr>
 						</volist>
@@ -158,6 +159,15 @@
 			window.location.href="{:U('hrm/leave/index')}";
 		})
 	});
+
+    var del = function(){
+        if(confirm("确定要删除数据吗?")){
+            window.location = $('#deleteAction').val();
+        }else{}
+    };
+
+    //正确输出请假的时间距离
+
 </script>
 <include file="Core:Public:alert" />
 <include file="Core:Public:footer" />

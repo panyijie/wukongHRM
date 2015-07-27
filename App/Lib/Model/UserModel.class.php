@@ -64,6 +64,12 @@
 			return $userlist;
 		}
 
+        public function getUserListByPosition($position_id){
+            $user = D('UserView');
+            $userlist = $user->where(array('position_id'=>$position_id))->select();
+            return $userlist;
+        }
+
 		public function getUserPageList($p,$status = 1){
 			$user = D('UserView');
 			$where['status'] = $status;

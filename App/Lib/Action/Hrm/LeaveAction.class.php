@@ -93,11 +93,11 @@ class LeaveAction extends Action{
 			$data['maker_user_id'] = session('user_id');
             $data['entrust_user_id'] = trim($_POST['user_id']);
 			$data['leave_category_id'] = $_POST['leave_category_id'];
-			$data['start_time'] = strtotime($_POST['start_time']);
-			$data['end_time'] = strtotime($_POST['end_time']);
+			$data['start_time'] = trim($_POST['start_time']);
+			$data['end_time'] = trim($_POST['end_time']);
 			$data['content'] = $_POST['content'];
-            $data['annual_leave'] = (int)$_POST['annual_leave'];
-            $data['leave_days'] = (int)$_POST['leave_days'];
+            $data['annual_leave'] = $_POST['annual_leave'];
+            $data['leave_days'] = $_POST['leave_days'];
 			$data['create_time'] = time();
 			$data['status'] = 0;
 			
@@ -117,17 +117,30 @@ class LeaveAction extends Action{
                 alert('error','年假申请超出剩余年假时间！',$_SERVER['HTTP_REFERER']);
             }
 
-			
 			$d_leave = D('Leave');
 			if($d_leave->addLeave($data)){
-                //给主管发送一封站内信，通知主管进行请假审核
-                $d_message = D('Message');
-                $info['title'] = '您有一封新的站内信通知：'.session('name').' 有请假信息需要您跟进，请即刻处理！';
-                $info['content'] = '您有一封新的站内信通知：'.session('name').' 有请假信息需要您跟进，请您认真处理！';
-                $info['user_id'] = session('user_id');
-                $info['to_user_id'] = 5;
-                $info['send_time'] = time();
-                $d_message->send($info);
+                $leave_duser = D('User');
+                $leave_user_info = $leave_duser->getUserInfo(array('user_id'=>$data['user_id']));
+                $leave_parent_position_id = $leave_user_info['parent_id'];
+                $leave_parent_position_user_list = $leave_duser->getUserListByPosition($leave_parent_position_id);
+                foreach($leave_parent_position_user_list as $val){
+                    $d_message = D('Message');
+                    $info['title'] = '您有一封新的站内信通知：'.session('name').' 有请假信息需要您跟进，请即刻处理！';
+                    $info['content'] = '您有一封新的站内信通知：'.session('name').' 有请假信息需要您跟进，请您认真处理！';
+                    $info['user_id'] = session('user_id');
+                    $info['to_user_id'] = $val['user_id'];
+                    $info['send_time'] = time();
+                    $d_message->send($info);
+                }
+
+//                给主管发送一封站内信，通知主管进行请假审核
+//                $d_message = D('Message');
+//                $info['title'] = '您有一封新的站内信通知：'.session('name').' 有请假信息需要您跟进，请即刻处理！';
+//                $info['content'] = '您有一封新的站内信通知：'.session('name').' 有请假信息需要您跟进，请您认真处理！';
+//                $info['user_id'] = session('user_id');
+//                $info['to_user_id'] = 5;
+//                $info['send_time'] = time();
+//                $d_message->send($info);
 
                 //修改剩余年假
                 if((int)$data['leave_category_id'] == 3){
@@ -168,18 +181,18 @@ class LeaveAction extends Action{
 		if(!empty($leave_id)){
 			if ($this->isPost()) {
 				$data['leave_id'] = intval($leave_id);
-                $data['user_id'] = session('user_id');
+                $data['user_id'] = trim($_POST['make_user_id']);
 //              $data['user_id'] = trim($_POST['user_id']);
-				$data['maker_user_id'] = session('user_id');
-                $data['entrust_user_id'] = trim($_POST['user_id']);
+				$data['maker_user_id'] = trim($_POST['make_user_id']);
+                $data['entrust_user_id'] = intval($_POST['user_id']);
 				$data['leave_category_id'] = $_POST['leave_category_id'];
-                $data['annual_leave'] = (int)$_POST['annual_leave'];
-                $data['leave_days'] = (int)$_POST['leave_days'];
-				$data['start_time'] = strtotime($_POST['start_time']);
-				$data['end_time'] = strtotime($_POST['end_time']);
+                $data['annual_leave'] = $_POST['annual_leave'];
+                $data['leave_days'] = $_POST['leave_days'];
+				$data['start_time'] = trim($_POST['start_time']);
+				$data['end_time'] = trim($_POST['end_time']);
 				$data['content'] = $_POST['content'];
 
-                if((int)$data['user_id'] != 5){
+                if(session('user_id') != 5){
                     alert('error','您没有编辑权限！', U('hrm/leave/view', 'id='.$leave_id));
                 }
 
@@ -201,6 +214,11 @@ class LeaveAction extends Action{
 				
 				$d_leave = D('Leave');
 				if($d_leave->editLeave($data)){
+                    if((int)$data['leave_category_id'] == 3){
+                        $user['user_id'] = session('user_id');
+                        $user['annual_leave'] = $data['annual_leave'] - $data['leave_days'];
+                        D('User')->editUserInfo($user);
+                    }
 					alert('success','编辑成功！', U('hrm/leave/view', 'id='.$leave_id));
 				}else{
 					alert('error','编辑失败！', U('hrm/leave/view', 'id='.$leave_id));
@@ -222,12 +240,22 @@ class LeaveAction extends Action{
 	//删除任务
 	public function delete(){
 		$leave_id = $_REQUEST['id'];
+        $leave_category = trim($_REQUEST['leave_category_id']);
+        $leave_user_id = $_REQUEST['leave_user_id'];
+        $annual_leave = (float)$_REQUEST['annual_leave'] + (float)$_REQUEST['leave_days'];
+
         if((int)session('user_id') != 5){
             alert('error', '删除失败,您没有权限！', U('hrm/leave/index'));
         }
+
 		if (!empty($leave_id)){
 			$d_leave = D('Leave');
 			if ($d_leave->deleteLeave($leave_id)) {
+                if($leave_category == 3){
+                    $user['user_id'] = $leave_user_id;
+                    $user['annual_leave'] = $annual_leave + $leave_days;
+                    D('User')->editUserInfo($user);
+                }
 				alert('success', '删除成功！', U('hrm/leave/index'));
 			}else{
 				alert('error', '删除失败！', U('hrm/leave/index'));
@@ -251,43 +279,75 @@ class LeaveAction extends Action{
 		if (empty($data['status'])){
 			alert('error', '未选择审核状态！', U('hrm/leave/index'));
 		}
-		$d_leave = D('Leave');
-		$leave = $d_leave->getLeaveById($leave_id);
-		if($data['status'] == $leave['status']){
-			alert('error', '请勿重复审核', U('hrm/leave/index'));
-		}else{
-			if ($d_leave->auditingLeave($data)) {
-                //将审核结果发给相应的同学，其中包括申请请假的同学和交接的同学都会收到相应的通知。（Message模块）
-                $d_message = D('Message');
-                if($data['status'] == 1){
-                    $info['title'] = '您的请假申请已通过审核，可前往请假管理查看详情！';
-                    $info['content'] = '您的请假审核经过'.session('name').'审核通过，可前往请假管理查看详细审核结果！';
-                }else if($data['status'] == 2){
-                    $info['title'] = '您的请假申请未通过审核，请前往请假管理查看详情！';
-                    $info['content'] = '您的请假审核经过'.session('name').'审核未通过，请前往请假管理查看详细审核结果！';
-                }
-                $info['user_id'] = session('user_id');
-                $info['to_user_id'] = $user_id;
-                $info['send_time'] = time();
-                $d_message->send($info);
 
-                if($data['status'] == 1){
-                    $info_en['title'] = '与您交接的小伙伴请假申请已通过审核，可前往请假管理查看详情！';
-                    $info_en['content'] = '与您交接的小伙伴请假审核经过'.session('name').'审核通过，可前往请假管理查看详细审核结果！';
-                }else if($data['status'] == 2){
-                    $info_en['title'] = '与您交接的小伙伴请假申请未通过审核，请前往请假管理查看详情！';
-                    $info_en['content'] = '与您交接的小伙伴请假审核经过'.session('name').'审核未通过，请前往请假管理查看详细审核结果！';
-                }
-                $info_en['user_id'] = session('user_id');
-                $info_en['to_user_id'] = $enuser_id;
-                $info_en['send_time'] = time();
-                $d_message->send($info_en);
+        //在这里的审核设计中，自己不能审核自己的请假条
+        //同时需要注意在得到登记内容的同时需要得到自己相对应上级的
+        if ($user_id == session('user_id')){
+            alert('error', '自己不能审核自己的请假条！', U('hrm/leave/index'));
+        }
 
-				alert('success', '审核成功！', U('hrm/leave/index'));
-			}else{
-				alert('error', '审核失败！', U('hrm/leave/index'));
-			}
-		}
+        //获取userId，通过userId得到position_id
+        $dUser = D('User');
+        $leave_user_information = $dUser->getUserInfo(array('user_id'=>$user_id));
+        $positionId = $leave_user_information['position_id'];
+        $dStructure = D('Structure');
+        $postionParentArray = array();
+        $Postion_information = $dStructure->getPositionInfo($positionId);
+        //获取到请假者自己的岗位的信息
+        //开始遍历，如果其父元素不是管理员的时候就一直向上遍历，因为管理员是最高权限，只要比自己岗位高的都可以进行审核。
+
+        while($Postion_information['parent_id'] != 0){
+            array_push($postionParentArray,$Postion_information['parent_id']);
+            $Postion_information = $dStructure->getPositionInfo($Postion_information['parent_id']);
+        }
+        array_push($postionParentArray,0);
+
+        $auditing_user_information = $dUser->getUserInfo(array('user_id'=>session('user_id')));
+        //如果操作者自己的岗位id在上面查的祖先数组之中，则可以进行审核，否则是权限不足
+        if(in_array($auditing_user_information['position_id'],$postionParentArray)){
+            $d_leave = D('Leave');
+            $leave = $d_leave->getLeaveById($leave_id);
+            if($data['status'] == $leave['status']){
+                alert('error', '请勿重复审核', U('hrm/leave/index'));
+            }else{
+                if ($d_leave->auditingLeave($data)) {
+
+                    //将审核结果发给相应的同学，其中包括申请请假的同学和交接的同学都会收到相应的通知。（Message模块）
+                    $d_message = D('Message');
+                    if($data['status'] == 1){
+                        $info['title'] = '您的请假申请已通过审核，可前往请假管理查看详情！';
+                        $info['content'] = '您的请假审核经过'.session('name').'审核通过，可前往请假管理查看详细审核结果！';
+                    }else if($data['status'] == 2){
+                        $info['title'] = '您的请假申请未通过审核，请前往请假管理查看详情！';
+                        $info['content'] = '您的请假审核经过'.session('name').'审核未通过，请前往请假管理查看详细审核结果！';
+                    }
+                    $info['user_id'] = session('user_id');
+                    $info['to_user_id'] = $user_id;
+                    $info['send_time'] = time();
+                    $d_message->send($info);
+
+                    if($data['status'] == 1){
+                        $info_en['title'] = '与您交接的小伙伴请假申请已通过审核，可前往请假管理查看详情！';
+                        $info_en['content'] = '与您交接的小伙伴请假审核经过'.session('name').'审核通过，可前往请假管理查看详细审核结果！';
+                    }else if($data['status'] == 2){
+                        $info_en['title'] = '与您交接的小伙伴请假申请未通过审核，请前往请假管理查看详情！';
+                        $info_en['content'] = '与您交接的小伙伴请假审核经过'.session('name').'审核未通过，请前往请假管理查看详细审核结果！';
+                    }
+                    $info_en['user_id'] = session('user_id');
+                    $info_en['to_user_id'] = $enuser_id;
+                    $info_en['send_time'] = time();
+                    $d_message->send($info_en);
+
+                    alert('success', '审核成功！', U('hrm/leave/index'));
+                }else{
+                    alert('error', '审核失败！', U('hrm/leave/index'));
+                }
+            }
+        }else{
+            alert('error', '您没有权限审核！', U('hrm/leave/index'));
+        }
+
+
 	}
 	
 }
