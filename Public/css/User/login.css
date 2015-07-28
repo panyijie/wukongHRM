@@ -1,0 +1,80 @@
+html{
+	background: none;
+}
+html body{
+	width: 100%;
+	height: 100%;
+	background-color: #5c3384;
+	background-image: url('../../img/login-bg.png');
+	background-repeat: no-repeat;
+	background-position: top center;
+}
+#wrap{
+	margin: 0;
+}
+.login-bg{
+	height: 0;
+	padding: 0;
+	margin: 0;
+}
+.login-logo{
+	padding: 0;
+}
+.login-logo img{
+	display: block;
+	position: absolute;
+	top: 230px;
+	left: 50%;
+	margin-left: -255px;
+	overflow: hidden;
+}
+.login-box{
+	top: 400px;
+}
+.login-main{
+	background: none;
+	border: none;
+	box-shadow: none;
+}
+.form-control{
+	border: none;
+	width: 100%;
+	border-bottom: 1px solid #7d5c9d;
+	padding: 0;
+	border-radius: 0;
+	box-shadow: none;
+	background: none;
+	color: #fff;
+}
+.form-control:focus{
+	border: none;
+	border-bottom: 1px solid #7d5c9d;
+	box-shadow: none;
+}
+.form-control::-webkit-input-placeholder { 
+    color: #fff;
+}
+.form-control:-moz-placeholder { 
+    color: #999;
+}
+.form-control::-moz-placeholder { 
+    color: #999;
+}
+.form-control:-ms-input-placeholder { 
+    color: #999;
+}
+.login-main .form-signin{
+	border: none;
+}
+.btn-primary{
+	width: 270px;
+	height: 34px;
+	background: #fff;
+	color: #56377b;
+	border: none;
+}
+.btn-primary:hover{
+	background: #fff;
+	color: #56377b;
+	border-color: none;
+}

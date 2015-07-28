@@ -21,6 +21,11 @@
 	</head>
 	<body>
 <?php echo W('Navigation');?>
+        <style type="text/css">
+            .user-infor{
+                padding-top: 8px;
+            }
+        </style>
 <div class="body-right">
 	<div class="row-table">
 		<div class="row-table-title">个人资料</div>
@@ -30,37 +35,37 @@
 				<p class="form-title">基本信息&nbsp;&nbsp;<a href="javascript:history.go(-1);">返回</a></p>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">用户名</label>
-					<div class="col-sm-3">
+					<div class="col-sm-3 user-infor">
 						<?php echo ($user["name"]); ?>
 					</div>
 					<label for="name" class="col-sm-2 control-label">用户类别</label>
-					<div class="col-sm-3">
+					<div class="col-sm-3 user-infor">
 						<?php if($user['category_id'] == 1): ?>管理员<?php else: ?>员工<?php endif; ?>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">部门</label>
-					<div class="col-sm-3">
+					<div class="col-sm-3 user-infor">
 						<?php echo ($department_list[$user['department_id']][name]); ?>
 					</div>
 					<label for="name" class="col-sm-2 control-label">岗位</label>
-					<div class="col-sm-3">
+					<div class="col-sm-3 user-infor">
 						<?php echo ($position['name']); ?>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">员工状态</label>
-					<div class="col-sm-3">
+					<div class="col-sm-3 user-infor">
 						<?php echo ($status[$user['status']]); ?>
 					</div>
 					<label for="name" class="col-sm-2 control-label">员工类型</label>
-					<div class="col-sm-3">
+					<div class="col-sm-3 user-infor">
 						<?php echo ($type[$user['type']]); ?>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">工作状态</label>
-					<div class="col-sm-3">
+					<div class="col-sm-3 user-infor">
 						<select  name="work_status" class="form-control" >
 							<?php if(is_array($work_status)): $i = 0; $__LIST__ = $work_status;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($key); ?>" <?php if($user['work_status'] == $key): ?>selected = "selected"<?php endif; ?>><?php echo ($vo); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
 						</select>
@@ -75,17 +80,17 @@
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">邮箱</label>
-					<div class="col-sm-3">
+					<div class="col-sm-3 user-infor">
 						<input class="form-control" name="email" type="text" value="<?php echo ($user["email"]); ?>">
 					</div>
 				</div><div class="form-group">
 					<label class="col-sm-2 control-label">手机</label>
-					<div class="col-sm-3">
+					<div class="col-sm-3 user-infor">
 						<input class="form-control" name="telephone" type="text" value="<?php echo ($user["telephone"]); ?>">
 					</div>
 				</div><div class="form-group">
 					<label class="col-sm-2 control-label">联系地址</label>
-					<div class="col-sm-3">
+					<div class="col-sm-3 user-infor">
 						<textarea name="address" class="form-control" ><?php echo ($user["address"]); ?></textarea>
 					</div>
 				</div>
