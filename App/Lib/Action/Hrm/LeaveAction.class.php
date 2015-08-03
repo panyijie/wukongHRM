@@ -5,8 +5,6 @@
  * author：悟空HR
 **/
 
-
-
 class LeaveAction extends Action{
 
 	public function _initialize(){
@@ -355,355 +353,383 @@ class LeaveAction extends Action{
 
     public function export(){
         if($this->isPost()){
-            $consoleTime = $_POST['search_start_time'];
-            $search_start_time = strtotime($consoleTime);
-            $search_end_time = strtotime($_POST['search_end_time']);
-            if(!empty($search_start_time)){
-                if(!empty($search_end_time)){
-                    $condition['start_time'] = array('between', array($search_start_time, $search_end_time));
-                }else{
-                    $condition['start_time'] = array('between', array($search_start_time-1, $search_start_time+86400));
-                }
-            }
-            if(!empty($search_end_time)){
+            if(session('user_id') != 1){
+                alert('error', '您没有权限审核！', U('hrm/leave/index'));
+            }else{
+                $consoleTime = $_POST['search_start_time'];
+                $search_start_time = strtotime($consoleTime);
+                $search_end_time = strtotime($_POST['search_end_time']);
                 if(!empty($search_start_time)){
-                    $condition['end_time'] = array('between', array($search_start_time, $search_end_time));
-                }else{
-                    $condition['end_time'] = array('between', array($search_end_time-1, $search_end_time+86400));
-                }
-            }
-            $p = $this->_get('p','intval',1);
-            $leavelist = D('Leave')->getLeave($p, $condition);
-
-   //excel代码开始：
-            Vendor("PHPExcel.PHPExcel");
-            $objPHPExcel = new PHPExcel();
-            $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-            $Year = explode("-",$consoleTime)[0];
-            $Month = explode("-",$consoleTime)[1];
-            $excelTitle = $Year.'年'.$Month.'月请假导出';
-            $objPHPExcel->setActiveSheetIndex(0);
-            $objPHPExcel->getActiveSheet()->setTitle($excelTitle);
-            $objPHPExcel->getActiveSheet()->setCellValue('A1', $excelTitle);
-            $objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setSize(20);
-            $objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
-            $objPHPExcel->getActiveSheet()->mergeCells('A1:AN2');
-            $objPHPExcel->getActiveSheet()->setCellValue('A3', '花名');
-            $objPHPExcel->getActiveSheet()->mergeCells('A3:A4');
-            $objPHPExcel->getActiveSheet()->setCellValue('B3', '姓名');
-            $objPHPExcel->getActiveSheet()->mergeCells('B3:B4');
-            $objPHPExcel->getActiveSheet()->setCellValue('C3', '星期');
-            $objPHPExcel->getActiveSheet()->setCellValue('C4', '日');
-            //设置单元格颜色
-            $objPHPExcel->getActiveSheet()->getStyle('A1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
-            $objPHPExcel->getActiveSheet()->getStyle('A1')->getFill()->getStartColor()->setARGB('d8e8c0');
-            $start_day = $_POST['search_start_time'];
-            D('Leave')->getExcelDay($start_day,$objPHPExcel);
-            D('Leave')->getExcelWk($start_day,$objPHPExcel);
-            $objPHPExcel->getActiveSheet()->setCellValue('AJ3', '总天数');
-            $objPHPExcel->getActiveSheet()->getStyle('AJ3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-            $objPHPExcel->getActiveSheet()->setCellValue('AK3', '年假');
-            $objPHPExcel->getActiveSheet()->getStyle('AK3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-            $objPHPExcel->getActiveSheet()->setCellValue('AL3', '事假');
-            $objPHPExcel->getActiveSheet()->getStyle('AL3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-            $objPHPExcel->getActiveSheet()->setCellValue('AM3', '病假');
-            $objPHPExcel->getActiveSheet()->getStyle('AM3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-            $objPHPExcel->getActiveSheet()->setCellValue('AN3', '其他');
-            $objPHPExcel->getActiveSheet()->getStyle('AN3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-            $objPHPExcel->getActiveSheet()->setCellValue('AJ4', '天数');
-            $objPHPExcel->getActiveSheet()->getStyle('AJ4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-            $objPHPExcel->getActiveSheet()->setCellValue('AK4', '天数');
-            $objPHPExcel->getActiveSheet()->getStyle('AK4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-            $objPHPExcel->getActiveSheet()->setCellValue('AL4', '天数');
-            $objPHPExcel->getActiveSheet()->getStyle('AL4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-            $objPHPExcel->getActiveSheet()->setCellValue('AM4', '天数');
-            $objPHPExcel->getActiveSheet()->getStyle('AM4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-            $objPHPExcel->getActiveSheet()->setCellValue('AN4', '天数');
-            $objPHPExcel->getActiveSheet()->getStyle('AN4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-
-            //获取所有用户的花名，由于数据库中还没有加入真名，等加入真名功能之后再在excel中加入真名
-            $user = D('UserView');
-            $userlist = $user->where(array('status'=>1))->select();
-            $excelDataStartLine = 5;
-            $addUserDateLine = $excelDataStartLine;
-            foreach($userlist as $key=>$val){
-                if($userlist[$key]['user_id'] == 1){
-                    continue;
-                }
-
-                //各类假期计数变量的定义
-                $userTotleLeave = 0;
-                $userTotleYearLeave = 0;
-                $userTotleEventLeave = 0;
-                $userTotleIllLeave = 0;
-                $userTotleElseLeave = 0;
-
-                //获取用户姓名等信息，后面进行其他信息的获取
-                $e_addUserDateLine = "A".$addUserDateLine;
-                $e_addUserRealNameLine = "B".$addUserDateLine;
-                $objPHPExcel->getActiveSheet()->setCellValue("C".$addUserDateLine, "上午");
-                $objPHPExcel->getActiveSheet()->setCellValue($e_addUserDateLine, $userlist[$key]['name']);
-                $objPHPExcel->getActiveSheet()->getStyle("C".$addUserDateLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-                $objPHPExcel->getActiveSheet()->getStyle($e_addUserDateLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-                $addUserDateLine++;
-                $objPHPExcel->getActiveSheet()->setCellValue("C".$addUserDateLine, "下午");
-                $objPHPExcel->getActiveSheet()->getStyle("C".$addUserDateLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-                $e_merge_addUserDateLine = $e_addUserDateLine.":"."A".$addUserDateLine;
-                $e_merge_addUserRealNameLine = $e_addUserRealNameLine.":"."B".$addUserDateLine;
-                $objPHPExcel->getActiveSheet()->mergeCells($e_merge_addUserDateLine);
-                $objPHPExcel->getActiveSheet()->mergeCells($e_merge_addUserRealNameLine);
-                $objPHPExcel->getActiveSheet()->getStyle($e_merge_addUserDateLine)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-                $objPHPExcel->getActiveSheet()->getStyle($e_merge_addUserRealNameLine)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-                $addUserDateLine++;
-
-                $excelLeaveData = [];
-                foreach(range('C','Z') as $v){
-                    array_push($excelLeaveData,$v);
-                }
-                foreach(range('A','H') as $v){
-                    array_push($excelLeaveData,'A'.$v);
-                }
-
-                //获取该用户的所有请假条的信息，然后根据用户的请假条信息进行判断
-                $only_condition['user_name'] = $userlist[$key]['name'];
-                $p = $this->_get('p','intval',1);
-                $userLeavelist = D('Leave')->getLeave($p, $only_condition);
-
-
-                foreach($userLeavelist['leavelist'] as $key=>$value){
-                    $userLeaveStartTime = strtotime($userLeavelist['leavelist'][$key]['start_time']);
-                    $userLeaveEndTime = strtotime($userLeavelist['leavelist'][$key]['end_time']);
-                    $leaveCategory = $userLeavelist['leavelist'][$key]['category_id'];
-
-                    if($leaveCategory == 1){
-                        $S_leaveCategory = '○';
-                    }elseif($leaveCategory == 2){
-                        $S_leaveCategory = '☆';
-                    }elseif($leaveCategory == 3){
-                        $S_leaveCategory = '●';
+                    if(!empty($search_end_time)){
+                        $condition['start_time'] = array('between', array($search_start_time, $search_end_time));
                     }else{
-                        $S_leaveCategory = '※';
+                        $condition['start_time'] = array('between', array($search_start_time-1, $search_start_time+86400));
+                    }
+                }
+                if(!empty($search_end_time)){
+                    if(!empty($search_start_time)){
+                        $condition['end_time'] = array('between', array($search_start_time, $search_end_time));
+                    }else{
+                        $condition['end_time'] = array('between', array($search_end_time-1, $search_end_time+86400));
+                    }
+                }
+                $p = $this->_get('p','intval',1);
+                $leavelist = D('Leave')->getLeave($p, $condition);
+
+                //excel代码开始：
+                Vendor("PHPExcel.PHPExcel");
+                $objPHPExcel = new PHPExcel();
+                $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+                $Year = explode("-",$consoleTime)[0];
+                $Month = explode("-",$consoleTime)[1];
+                $excelTitle = $Year.'年'.$Month.'月请假导出';
+                $objPHPExcel->setActiveSheetIndex(0);
+                $objPHPExcel->getActiveSheet()->setTitle($excelTitle);
+                $objPHPExcel->getActiveSheet()->setCellValue('A1', $excelTitle);
+                $objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setSize(20);
+                $objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
+                $objPHPExcel->getActiveSheet()->mergeCells('A1:AO2');
+                $objPHPExcel->getActiveSheet()->setCellValue('A3', '花名');
+                $objPHPExcel->getActiveSheet()->mergeCells('A3:A4');
+                $objPHPExcel->getActiveSheet()->setCellValue('B3', '姓名');
+                $objPHPExcel->getActiveSheet()->mergeCells('B3:B4');
+                $objPHPExcel->getActiveSheet()->setCellValue('C3', '星期');
+                $objPHPExcel->getActiveSheet()->setCellValue('C4', '日');
+                //设置单元格颜色
+//                $objPHPExcel->getActiveSheet()->getStyle('A1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
+//                $objPHPExcel->getActiveSheet()->getStyle('A1')->getFill()->getStartColor()->setARGB('112233');
+                $start_day = $_POST['search_start_time'];
+                D('Leave')->getExcelDay($start_day,$objPHPExcel);
+                D('Leave')->getExcelWk($start_day,$objPHPExcel);
+                $objPHPExcel->getActiveSheet()->setCellValue('AJ3', '总天数');
+                $objPHPExcel->getActiveSheet()->getStyle('AJ3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->setCellValue('AK3', '年假');
+                $objPHPExcel->getActiveSheet()->getStyle('AK3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->setCellValue('AL3', '事假');
+                $objPHPExcel->getActiveSheet()->getStyle('AL3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->setCellValue('AM3', '病假');
+                $objPHPExcel->getActiveSheet()->getStyle('AM3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->setCellValue('AN3', '调休');
+                $objPHPExcel->getActiveSheet()->getStyle('AN3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->setCellValue('AO3', '其他');
+                $objPHPExcel->getActiveSheet()->getStyle('AO3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->setCellValue('AJ4', '天数');
+                $objPHPExcel->getActiveSheet()->getStyle('AJ4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->setCellValue('AK4', '天数');
+                $objPHPExcel->getActiveSheet()->getStyle('AK4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->setCellValue('AL4', '天数');
+                $objPHPExcel->getActiveSheet()->getStyle('AL4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->setCellValue('AM4', '天数');
+                $objPHPExcel->getActiveSheet()->getStyle('AM4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->setCellValue('AN4', '天数');
+                $objPHPExcel->getActiveSheet()->getStyle('AN4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->setCellValue('AO4', '天数');
+                $objPHPExcel->getActiveSheet()->getStyle('AO4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+                //获取所有用户的花名，由于数据库中还没有加入真名，等加入真名功能之后再在excel中加入真名
+                $user = D('UserView');
+                $userlist = $user->where(array('status'=>1))->select();
+                $excelDataStartLine = 5;
+                $addUserDateLine = $excelDataStartLine;
+                foreach($userlist as $key=>$val){
+                    if($userlist[$key]['user_id'] == 1){
+                        continue;
                     }
 
-                    if(($search_start_time>=$userLeaveStartTime && $search_end_time<=$userLeaveEndTime) || ($search_start_time>=$userLeaveStartTime && $search_start_time<=$userLeaveEndTime && $search_end_time>=$userLeaveEndTime) || ($search_start_time<=$userLeaveStartTime && $search_end_time>=$userLeaveEndTime) || ($userLeaveStartTime>=$search_start_time && $search_end_time>=$userLeaveStartTime && $search_end_time<=$userLeaveEndTime)){
-                        if($search_start_time>=$userLeaveStartTime && $search_end_time<=$userLeaveEndTime){
-                            //这里是请了整个月的假，每天都在请假
-                            $to_e_leaveStartDay = substr(date('Y-m-d H:i:s',$search_start_time),0,11)."09:00:00";
-                            $to_e_leaveEndDay = substr(date('Y-m-d H:i:s',$search_end_time),0,11)."09:00:00";
-                        }elseif($search_start_time>=$userLeaveStartTime && $search_start_time<=$userLeaveEndTime && $search_end_time>=$userLeaveEndTime){
-                            //从这个月的开始就请了，这个月并没有请完，后面有没请假的时候
-                            $to_e_leaveStartDay = substr(date('Y-m-d H:i:s',$search_start_time),0,11)."09:00:00";
-                            $to_e_leaveEndDay = date('Y-m-d H:i:s',$userLeaveEndTime);
-                        }elseif($search_start_time<=$userLeaveStartTime && $search_end_time>=$userLeaveEndTime){
-                            //在这个月中间请的假，前后可能都有没有请的
-                            $to_e_leaveStartDay = date('Y-m-d H:i:s',$userLeaveStartTime);
-                            $to_e_leaveEndDay = date('Y-m-d H:i:s',$userLeaveEndTime);
-                        }elseif($userLeaveStartTime>=$search_start_time && $search_end_time>=$userLeaveStartTime && $search_end_time<=$userLeaveEndTime){
-                            //从月中请的假，持续到了下个月，结束时间是下个月
-                            $to_e_leaveStartDay = date('Y-m-d H:i:s',$userLeaveStartTime);
-                            $to_e_leaveEndDay = substr(date('Y-m-d H:i:s',$search_end_time),0,11)."09:00:00";
+                    //各类假期计数变量的定义
+                    $userTotleYearLeave = 0;
+                    $userTotleEventLeave = 0;
+                    $userTotleIllLeave = 0;
+                    $userTotleElseLeave = 0;
+                    $userTotleTiaoLeave = 0;
+
+                    //获取用户姓名等信息，后面进行其他信息的获取
+                    $e_addUserDateLine = "A".$addUserDateLine;
+                    $e_addUserRealNameLine = "B".$addUserDateLine;
+                    $objPHPExcel->getActiveSheet()->setCellValue("C".$addUserDateLine, "上午");
+                    $objPHPExcel->getActiveSheet()->setCellValue($e_addUserDateLine, $userlist[$key]['name']);
+                    $objPHPExcel->getActiveSheet()->getStyle("C".$addUserDateLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                    $objPHPExcel->getActiveSheet()->getStyle($e_addUserDateLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                    $addUserDateLine++;
+                    $objPHPExcel->getActiveSheet()->setCellValue("C".$addUserDateLine, "下午");
+                    $objPHPExcel->getActiveSheet()->getStyle("C".$addUserDateLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                    $e_merge_addUserDateLine = $e_addUserDateLine.":"."A".$addUserDateLine;
+                    $e_merge_addUserRealNameLine = $e_addUserRealNameLine.":"."B".$addUserDateLine;
+                    $objPHPExcel->getActiveSheet()->mergeCells($e_merge_addUserDateLine);
+                    $objPHPExcel->getActiveSheet()->mergeCells($e_merge_addUserRealNameLine);
+                    $objPHPExcel->getActiveSheet()->getStyle($e_merge_addUserDateLine)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+                    $objPHPExcel->getActiveSheet()->getStyle($e_merge_addUserRealNameLine)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+                    $addUserDateLine++;
+
+                    $excelLeaveData = [];
+                    foreach(range('C','Z') as $v){
+                        array_push($excelLeaveData,$v);
+                    }
+                    foreach(range('A','H') as $v){
+                        array_push($excelLeaveData,'A'.$v);
+                    }
+
+                    //获取该用户的所有请假条的信息，然后根据用户的请假条信息进行判断
+                    $only_condition['user_name'] = $userlist[$key]['name'];
+                    $p = $this->_get('p','intval',1);
+                    $userLeavelist = D('Leave')->getLeave($p, $only_condition);
+
+
+                    foreach($userLeavelist['leavelist'] as $key=>$value){
+                        $userLeaveStartTime = strtotime($userLeavelist['leavelist'][$key]['start_time']);
+                        $userLeaveEndTime = strtotime($userLeavelist['leavelist'][$key]['end_time']);
+                        $leaveCategory = $userLeavelist['leavelist'][$key]['category_id'];
+
+                        if($leaveCategory == 1){
+                            $S_leaveCategory = '○';
+                        }elseif($leaveCategory == 2){
+                            $S_leaveCategory = '☆';
+                        }elseif($leaveCategory == 3){
+                            $S_leaveCategory = '●';
+                        }elseif($leaveCategory == 5){
+                            $S_leaveCategory = '※';
+                        }else{
+                            $S_leaveCategory = '※';
                         }
+
+                        if(($search_start_time>=$userLeaveStartTime && $search_end_time<=$userLeaveEndTime) || ($search_start_time>=$userLeaveStartTime && $search_start_time<=$userLeaveEndTime && $search_end_time>=$userLeaveEndTime) || ($search_start_time<=$userLeaveStartTime && $search_end_time>=$userLeaveEndTime) || ($userLeaveStartTime>=$search_start_time && $search_end_time>=$userLeaveStartTime && $search_end_time<=$userLeaveEndTime)){
+                            if($search_start_time>=$userLeaveStartTime && $search_end_time<=$userLeaveEndTime){
+                                //这里是请了整个月的假，每天都在请假
+                                $to_e_leaveStartDay = substr(date('Y-m-d H:i:s',$search_start_time),0,11)."09:00:00";
+                                $to_e_leaveEndDay = substr(date('Y-m-d H:i:s',$search_end_time),0,11)."09:00:00";
+                            }elseif($search_start_time>=$userLeaveStartTime && $search_start_time<=$userLeaveEndTime && $search_end_time>=$userLeaveEndTime){
+                                //从这个月的开始就请了，这个月并没有请完，后面有没请假的时候
+                                $to_e_leaveStartDay = substr(date('Y-m-d H:i:s',$search_start_time),0,11)."09:00:00";
+                                $to_e_leaveEndDay = date('Y-m-d H:i:s',$userLeaveEndTime);
+                            }elseif($search_start_time<=$userLeaveStartTime && $search_end_time>=$userLeaveEndTime){
+                                //在这个月中间请的假，前后可能都有没有请的
+                                $to_e_leaveStartDay = date('Y-m-d H:i:s',$userLeaveStartTime);
+                                $to_e_leaveEndDay = date('Y-m-d H:i:s',$userLeaveEndTime);
+                            }elseif($userLeaveStartTime>=$search_start_time && $search_end_time>=$userLeaveStartTime && $search_end_time<=$userLeaveEndTime){
+                                //从月中请的假，持续到了下个月，结束时间是下个月
+                                $to_e_leaveStartDay = date('Y-m-d H:i:s',$userLeaveStartTime);
+                                $to_e_leaveEndDay = substr(date('Y-m-d H:i:s',$search_end_time),0,11)."09:00:00";
+                            }
 
 //                        $objPHPExcel->getActiveSheet()->setCellValue("F7", date('Y-m-d H:i:s',$userLeaveStartTime));
 //                        $objPHPExcel->getActiveSheet()->setCellValue("F8", $to_e_leaveStartDay);
 //                        $objPHPExcel->getActiveSheet()->setCellValue("F9", substr(date('Y-m-d H:i:s',$search_start_time),11,19));
 //                        $objPHPExcel->getActiveSheet()->setCellValue("F10", substr(date('Y-m-d H:i:s',$search_end_time),0,11)."06:00:00");
 
-                        $e_leaveStartDate = substr($to_e_leaveStartDay,8,2);
-                        $e_leaveStartTime = substr($to_e_leaveStartDay,11,8);
-                        $e_leaveEndDate = substr($to_e_leaveEndDay,8,2);
-                        $e_leaveEndTime = substr($to_e_leaveEndDay,11,8);
+                            $e_leaveStartDate = substr($to_e_leaveStartDay,8,2);
+                            $e_leaveStartTime = substr($to_e_leaveStartDay,11,8);
+                            $e_leaveEndDate = substr($to_e_leaveEndDay,8,2);
+                            $e_leaveEndTime = substr($to_e_leaveEndDay,11,8);
 
-                        for($monthDate=1; $monthDate<=31; $monthDate++){
+                            for($monthDate=1; $monthDate<=31; $monthDate++){
 //                            $objPHPExcel->getActiveSheet()->setCellValue("F7", $e_leaveStartTime);
 //                            $objPHPExcel->getActiveSheet()->setCellValue("F8", $e_leaveStartDate);
-                            if($e_leaveStartDate == $monthDate){
-                                if(($e_leaveEndDate == $e_leaveStartDate) || (($e_leaveEndDate==((int)$e_leaveStartDate+1)) && ($e_leaveEndTime=="09:00:00"))){
-                                    //请假在一天以内
-                                    if($e_leaveStartTime == "09:00:00" && $e_leaveEndTime == "12:00:00"){
-                                        $userLine = $addUserDateLine-2;
-                                        $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
-                                        $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                                if($e_leaveStartDate == $monthDate){
+                                    if(($e_leaveEndDate == $e_leaveStartDate) || (($e_leaveEndDate==((int)$e_leaveStartDate+1)) && ($e_leaveEndTime=="09:00:00"))){
+                                        //请假在一天以内
+                                        if($e_leaveStartTime == "09:00:00" && $e_leaveEndTime == "12:00:00"){
+                                            $userLine = $addUserDateLine-2;
+                                            $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
+                                            $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 //                                        $userTotleLeave += 0.5;
-                                        if($leaveCategory == 1){//事假
-                                            $userTotleEventLeave += 0.5;
-                                        }elseif($leaveCategory == 2){//病假
-                                            $userTotleIllLeave += 0.5;
-                                        }elseif($leaveCategory == 3){//年假
-                                            $userTotleYearLeave += 0.5;
-                                        }else{//其他
-                                            $userTotleElseLeave += 0.5;
-                                        }
-                                    }elseif($e_leaveStartTime == "12:00:00"){
-                                        $userLine = $addUserDateLine-1;
-                                        $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
-                                        $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                                            if($leaveCategory == 1){//事假
+                                                $userTotleEventLeave += 0.5;
+                                            }elseif($leaveCategory == 2){//病假
+                                                $userTotleIllLeave += 0.5;
+                                            }elseif($leaveCategory == 3){//年假
+                                                $userTotleYearLeave += 0.5;
+                                            }elseif($leaveCategory == 5){//调休
+                                                $userTotleTiaoLeave += 0.5;
+                                            }else{//其他
+                                                $userTotleElseLeave += 0.5;
+                                            }
+                                        }elseif($e_leaveStartTime == "12:00:00"){
+                                            $userLine = $addUserDateLine-1;
+                                            $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
+                                            $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 //                                        $userTotleLeave += 0.5;
-                                        if($leaveCategory == 1){//事假
-                                            $userTotleEventLeave += 0.5;
-                                        }elseif($leaveCategory == 2){//病假
-                                            $userTotleIllLeave += 0.5;
-                                        }elseif($leaveCategory == 3){//年假
-                                            $userTotleYearLeave += 0.5;
-                                        }else{//其他
-                                            $userTotleElseLeave += 0.5;
-                                        }
-                                    }elseif($e_leaveStartTime == "09:00:00" && $e_leaveEndTime == "18:00:00"){
-                                        $userLine = $addUserDateLine-2;
-                                        $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
-                                        $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-                                        $userLine = $addUserDateLine-1;
-                                        $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
-                                        $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                                            if($leaveCategory == 1){//事假
+                                                $userTotleEventLeave += 0.5;
+                                            }elseif($leaveCategory == 2){//病假
+                                                $userTotleIllLeave += 0.5;
+                                            }elseif($leaveCategory == 3){//年假
+                                                $userTotleYearLeave += 0.5;
+                                            }elseif($leaveCategory == 5){//调休
+                                                $userTotleTiaoLeave += 0.5;
+                                            }else{//其他
+                                                $userTotleElseLeave += 0.5;
+                                            }
+                                        }elseif($e_leaveStartTime == "09:00:00" && $e_leaveEndTime == "18:00:00"){
+                                            $userLine = $addUserDateLine-2;
+                                            $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
+                                            $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                                            $userLine = $addUserDateLine-1;
+                                            $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
+                                            $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 //                                        $userTotleLeave += 1;
+                                            if($leaveCategory == 1){//事假
+                                                $userTotleEventLeave += 1;
+                                            }elseif($leaveCategory == 2){//病假
+                                                $userTotleIllLeave += 1;
+                                            }elseif($leaveCategory == 3){//年假
+                                                $userTotleYearLeave += 1;
+                                            }elseif($leaveCategory == 5){//调休
+                                                $userTotleTiaoLeave += 1;
+                                            }else{//其他
+                                                $userTotleElseLeave += 1;
+                                            }
+                                        }
+                                        continue;
+                                    }else{
+                                        if($e_leaveStartTime == "09:00:00"){
+                                            $userLine = $addUserDateLine-2;
+                                            $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
+                                            $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                                            $userLine = $addUserDateLine-1;
+                                            $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
+                                            $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+//                                        $userTotleLeave += 1;
+                                            if($leaveCategory == 1){//事假
+                                                $userTotleEventLeave += 1;
+                                            }elseif($leaveCategory == 2){//病假
+                                                $userTotleIllLeave += 1;
+                                            }elseif($leaveCategory == 3){//年假
+                                                $userTotleYearLeave += 1;
+                                            }elseif($leaveCategory == 5){//调休
+                                                $userTotleTiaoLeave += 1;
+                                            }else{//其他
+                                                $userTotleElseLeave += 1;
+                                            }
+                                        }elseif($e_leaveStartTime == "12:00:00"){
+                                            $userLine = $addUserDateLine-1;
+                                            $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
+                                            $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+//                                        $userTotleLeave += 0.5;
+                                            if($leaveCategory == 1){//事假
+                                                $userTotleEventLeave += 0.5;
+                                            }elseif($leaveCategory == 2){//病假
+                                                $userTotleIllLeave += 0.5;
+                                            }elseif($leaveCategory == 3){//年假
+                                                $userTotleYearLeave += 0.5;
+                                            }elseif($leaveCategory == 5){//调休
+                                                $userTotleTiaoLeave += 0.5;
+                                            }else{//其他
+                                                $userTotleElseLeave += 0.5;
+                                            }
+                                        }
+                                        continue;
+                                    }
+                                }else if($e_leaveEndDate == $monthDate){
+                                    if($e_leaveStartTime == "12:00:00"){
+                                        $userLine = $addUserDateLine-2;
+                                        $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
+                                        $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+//                                    $userTotleLeave += 0.5;
                                         if($leaveCategory == 1){//事假
-                                            $userTotleEventLeave += 1;
+                                            $userTotleEventLeave += 0.5;
                                         }elseif($leaveCategory == 2){//病假
-                                            $userTotleIllLeave += 1;
+                                            $userTotleIllLeave += 0.5;
                                         }elseif($leaveCategory == 3){//年假
-                                            $userTotleYearLeave += 1;
+                                            $userTotleYearLeave += 0.5;
+                                        }elseif($leaveCategory == 5){//调休
+                                            $userTotleTiaoLeave += 0.5;
                                         }else{//其他
-                                            $userTotleElseLeave += 1;
+                                            $userTotleElseLeave += 0.5;
+                                        }
+                                    }elseif($e_leaveStartTime == "18:00:00"){
+                                        $userLine = $addUserDateLine-1;
+                                        $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
+                                        $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+//                                    $userTotleLeave += 0.5;
+                                        if($leaveCategory == 1){//事假
+                                            $userTotleEventLeave += 0.5;
+                                        }elseif($leaveCategory == 2){//病假
+                                            $userTotleIllLeave += 0.5;
+                                        }elseif($leaveCategory == 3){//年假
+                                            $userTotleYearLeave += 0.5;
+                                        }elseif($leaveCategory == 5){//调休
+                                            $userTotleTiaoLeave += 0.5;
+                                        }else{//其他
+                                            $userTotleElseLeave += 0.5;
                                         }
                                     }
                                     continue;
-                                }else{
-                                    if($e_leaveStartTime == "09:00:00"){
-                                        $userLine = $addUserDateLine-2;
-                                        $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
-                                        $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-                                        $userLine = $addUserDateLine-1;
-                                        $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
-                                        $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-//                                        $userTotleLeave += 1;
-                                        if($leaveCategory == 1){//事假
-                                            $userTotleEventLeave += 1;
-                                        }elseif($leaveCategory == 2){//病假
-                                            $userTotleIllLeave += 1;
-                                        }elseif($leaveCategory == 3){//年假
-                                            $userTotleYearLeave += 1;
-                                        }else{//其他
-                                            $userTotleElseLeave += 1;
-                                        }
-                                    }elseif($e_leaveStartTime == "12:00:00"){
-                                        $userLine = $addUserDateLine-1;
-                                        $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
-                                        $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-//                                        $userTotleLeave += 0.5;
-                                        if($leaveCategory == 1){//事假
-                                            $userTotleEventLeave += 0.5;
-                                        }elseif($leaveCategory == 2){//病假
-                                            $userTotleIllLeave += 0.5;
-                                        }elseif($leaveCategory == 3){//年假
-                                            $userTotleYearLeave += 0.5;
-                                        }else{//其他
-                                            $userTotleElseLeave += 0.5;
-                                        }
-                                    }
-                                    continue;
-                                }
-                            }else if($e_leaveEndDate == $monthDate){
-                                if($e_leaveStartTime == "12:00:00"){
+                                }elseif($e_leaveStartDate < $monthDate && $e_leaveEndDate > $monthDate){
                                     $userLine = $addUserDateLine-2;
                                     $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
                                     $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-//                                    $userTotleLeave += 0.5;
-                                    if($leaveCategory == 1){//事假
-                                        $userTotleEventLeave += 0.5;
-                                    }elseif($leaveCategory == 2){//病假
-                                        $userTotleIllLeave += 0.5;
-                                    }elseif($leaveCategory == 3){//年假
-                                        $userTotleYearLeave += 0.5;
-                                    }else{//其他
-                                        $userTotleElseLeave += 0.5;
-                                    }
-                                }elseif($e_leaveStartTime == "18:00:00"){
                                     $userLine = $addUserDateLine-1;
                                     $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
                                     $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-//                                    $userTotleLeave += 0.5;
-                                    if($leaveCategory == 1){//事假
-                                        $userTotleEventLeave += 0.5;
-                                    }elseif($leaveCategory == 2){//病假
-                                        $userTotleIllLeave += 0.5;
-                                    }elseif($leaveCategory == 3){//年假
-                                        $userTotleYearLeave += 0.5;
-                                    }else{//其他
-                                        $userTotleElseLeave += 0.5;
-                                    }
-                                }
-                                continue;
-                            }elseif($e_leaveStartDate < $monthDate && $e_leaveEndDate > $monthDate){
-                                $userLine = $addUserDateLine-2;
-                                $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
-                                $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-                                $userLine = $addUserDateLine-1;
-                                $objPHPExcel->getActiveSheet()->setCellValue($excelLeaveData[$monthDate].$userLine, $S_leaveCategory);
-                                $objPHPExcel->getActiveSheet()->getStyle($excelLeaveData[$monthDate].$userLine)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 //                                $e_leaveStartDate += 1;
-                                if($leaveCategory == 1){//事假
-                                    $userTotleEventLeave += 1;
-                                }elseif($leaveCategory == 2){//病假
-                                    $userTotleIllLeave += 1;
-                                }elseif($leaveCategory == 3){//年假
-                                    $userTotleYearLeave += 1;
-                                }else{//其他
-                                    $userTotleElseLeave += 1;
+                                    if($leaveCategory == 1){//事假
+                                        $userTotleEventLeave += 1;
+                                    }elseif($leaveCategory == 2){//病假
+                                        $userTotleIllLeave += 1;
+                                    }elseif($leaveCategory == 3){//年假
+                                        $userTotleYearLeave += 1;
+                                    }elseif($leaveCategory == 5){//调休
+                                        $userTotleTiaoLeave += 1;
+                                    }else{//其他
+                                        $userTotleElseLeave += 1;
+                                    }
+                                    continue;
                                 }
-                                continue;
                             }
+
                         }
-
                     }
+                    $userTotleLeave = $userTotleYearLeave + $userTotleEventLeave + $userTotleIllLeave + $userTotleElseLeave + $userTotleTiaoLeave;
+                    $objPHPExcel->getActiveSheet()->setCellValue("AJ".($addUserDateLine-2), $userTotleLeave);
+                    $objPHPExcel->getActiveSheet()->setCellValue("AK".($addUserDateLine-2), $userTotleYearLeave);
+                    $objPHPExcel->getActiveSheet()->setCellValue("AL".($addUserDateLine-2), $userTotleEventLeave);
+                    $objPHPExcel->getActiveSheet()->setCellValue("AM".($addUserDateLine-2), $userTotleIllLeave);
+                    $objPHPExcel->getActiveSheet()->setCellValue("AN".($addUserDateLine-2), $userTotleTiaoLeave);
+                    $objPHPExcel->getActiveSheet()->setCellValue("AO".($addUserDateLine-2), $userTotleElseLeave);
+                    $objPHPExcel->getActiveSheet()->getStyle("AJ".($addUserDateLine-2))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                    $objPHPExcel->getActiveSheet()->getStyle("AK".($addUserDateLine-2))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                    $objPHPExcel->getActiveSheet()->getStyle("AL".($addUserDateLine-2))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                    $objPHPExcel->getActiveSheet()->getStyle("AM".($addUserDateLine-2))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                    $objPHPExcel->getActiveSheet()->getStyle("AN".($addUserDateLine-2))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                    $objPHPExcel->getActiveSheet()->getStyle("AO".($addUserDateLine-2))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
                 }
-                $userTotleLeave = $userTotleYearLeave + $userTotleEventLeave + $userTotleIllLeave + $userTotleElseLeave;
-                $objPHPExcel->getActiveSheet()->setCellValue("AJ".($addUserDateLine-2), $userTotleLeave);
-                $objPHPExcel->getActiveSheet()->setCellValue("AK".($addUserDateLine-2), $userTotleYearLeave);
-                $objPHPExcel->getActiveSheet()->setCellValue("AL".($addUserDateLine-2), $userTotleEventLeave);
-                $objPHPExcel->getActiveSheet()->setCellValue("AM".($addUserDateLine-2), $userTotleIllLeave);
-                $objPHPExcel->getActiveSheet()->setCellValue("AN".($addUserDateLine-2), $userTotleElseLeave);
-                $objPHPExcel->getActiveSheet()->getStyle("AJ".($addUserDateLine-2))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-                $objPHPExcel->getActiveSheet()->getStyle("AK".($addUserDateLine-2))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-                $objPHPExcel->getActiveSheet()->getStyle("AL".($addUserDateLine-2))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-                $objPHPExcel->getActiveSheet()->getStyle("AM".($addUserDateLine-2))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-                $objPHPExcel->getActiveSheet()->getStyle("AN".($addUserDateLine-2))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-            }
 
-            $objPHPExcel->getActiveSheet()->getStyle('A1:AR2')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-            $objPHPExcel->getActiveSheet()->getStyle('A3:A4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-            $objPHPExcel->getActiveSheet()->getStyle('A3:A4')->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-            $objPHPExcel->getActiveSheet()->getStyle('B3:B4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-            $objPHPExcel->getActiveSheet()->getStyle('B3:B4')->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-            $objPHPExcel->getActiveSheet()->getStyle('C3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-            $objPHPExcel->getActiveSheet()->getStyle('C4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-            foreach(range('A','Z') as $v){
-                $objPHPExcel->getActiveSheet()->getColumnDimension($v)->setWidth(6);
-            }
-            foreach(range('A','N') as $v){
-                $objPHPExcel->getActiveSheet()->getColumnDimension('A'.$v)->setWidth(6);
-            }
-            $objPHPExcel->createSheet();
-            $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-            $objWriter->save($Year.'-'.$Month.".xlsx");
-            $objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
-            header("Pragma: public");
-            header("Expires: 0");
-            header("Cache-Control:must-revalidate, post-check=0, pre-check=0");
-            header("Content-Type:application/force-download");
-            header("Content-Type:application/vnd.ms-execl");
-            header("Content-Type:application/octet-stream");
-            header("Content-Type:application/download");
-            header('Content-Disposition:attachment;filename="'.$Year.'-'.$Month.'请假导出'.'.xls"');
-            header("Content-Transfer-Encoding:binary");
-            $objWriter->save('php://output');
+                $objPHPExcel->getActiveSheet()->getStyle('A1:AR2')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->getStyle('A3:A4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->getStyle('A3:A4')->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+                $objPHPExcel->getActiveSheet()->getStyle('B3:B4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->getStyle('B3:B4')->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+                $objPHPExcel->getActiveSheet()->getStyle('C3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->getStyle('C4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                foreach(range('A','Z') as $v){
+                    $objPHPExcel->getActiveSheet()->getColumnDimension($v)->setWidth(6);
+                }
+                foreach(range('A','O') as $v){
+                    $objPHPExcel->getActiveSheet()->getColumnDimension('A'.$v)->setWidth(6);
+                }
+                $objPHPExcel->createSheet();
+                $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+                $objWriter->save($Year.'-'.$Month.".xlsx");
+                $objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
+                header("Pragma: public");
+                header("Expires: 0");
+                header("Cache-Control:must-revalidate, post-check=0, pre-check=0");
+                header("Content-Type:application/force-download");
+                header("Content-Type:application/vnd.ms-execl");
+                header("Content-Type:application/octet-stream");
+                header("Content-Type:application/download");
+                header('Content-Disposition:attachment;filename="'.$Year.'-'.$Month.'请假导出'.'.xls"');
+                header("Content-Transfer-Encoding:binary");
+                $objWriter->save('php://output');
 //          对所有的请假条进行的操作
 //            $this->leavelist = $leavelist['leavelist'];
 //            $this->assign('page', $leavelist['page']);
 //            alert('success', '导出成功！', U('hrm/leave/index'));
+            }
         }
 
         $d_leave = D('Leave');
-        $leave = $d_leave->where(array('status'=>0))->order('create_time')->limit(1)->select();
+        $leave = $d_leave->where(array('status'=>1))->order('create_time')->limit(1)->select();
         $this->leave = $leave;
         $this->alert = parseAlert();
         $this->display();

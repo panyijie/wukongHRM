@@ -113,11 +113,11 @@
 
     if($('#input_annual_leave_day').val() == 0){
         var selectHtml = "<option value='1' selected='selected'>事假</option>";
-        selectHtml += "<option value='2'>病假</option><option value='4'>其他</option>";
+        selectHtml += "<option value='2'>病假</option><option value='5'>调休</option><option value='4'>其他</option>";
         $('#leave_select').append(selectHtml);
     }else{
         var selectHtml = "<option value='1' selected='selected'>事假</option>";
-        selectHtml += "<option value='2'>病假</option><option value='3'>年假</option><option value='4'>其他</option>";
+        selectHtml += "<option value='2'>病假</option><option value='3'>年假</option><option value='5'>调休</option><option value='4'>其他</option>";
         $('#leave_select').append(selectHtml);
     }
 
