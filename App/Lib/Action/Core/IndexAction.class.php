@@ -2,7 +2,7 @@
 class IndexAction extends Action {
     public function _initialize(){
 		$action = array(
-			'users'=>array('index'),
+			'users'=>array('index', 'checkLeaveMonth'),
 			'anonymous'=>array('')
 		);
 		B('Authenticate', $action);

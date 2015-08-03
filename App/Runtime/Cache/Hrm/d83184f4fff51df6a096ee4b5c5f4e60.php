@@ -22,16 +22,26 @@
 	<body>
 <?php echo W('Navigation');?>
 <script src="__PUBLIC__/js/datepicker/WdatePicker.js"></script>
+<style type="text/css">
+    .col-sm-3{
+        margin-top: 7px;
+    }
+
+    .viewBtn{
+        margin-top: 7px;
+        margin-left: 10px;
+    }
+</style>
 <div class="body-right">
 	<div class="row-table">
 		<div class="row-table-title">请假条详情</div>
 		<div class="row-table-body">
 			<form class="form-horizontal " action="<?php echo U('hrm/leave/add');?>" method="post">
 				<p class="form-title">
-					请假条详情&nbsp;&nbsp;<a href="<?php echo U('hrm/leave/edit','id='.$leave[leave_id]);?>">编辑</a>
+					请假条详情&nbsp;&nbsp;
 					&nbsp;&nbsp;<a href="javascript:history.go(-1);">返回</a>
-					<a href="javascript:void(0);" id="leave_pass" class="pull-right btn btn-primary btn-xs" >已通过</a>
-					<a href="javascript:void(0);" id="leave_fail" class="pull-right btn btn-primary btn-xs" >未通过</a>
+					<a href="javascript:void(0);" id="leave_pass" class="pull-right btn btn-primary btn-xs viewBtn">审核通过</a>
+					<a href="javascript:void(0);" id="leave_fail" class="pull-right btn btn-primary btn-xs viewBtn" >审核不通过</a>
 				</p>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">请假人</label>
@@ -75,7 +85,7 @@
 				</div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">请假原因</label>
-					<div class="col-sm-8">
+					<div class="col-sm-8" style="margin-top: 10px">
 						<pre style="min-height:150px;"><?php echo ($leave["content"]); ?></pre>
 					</div>
 				</div>

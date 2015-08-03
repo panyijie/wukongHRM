@@ -4,6 +4,7 @@
  * 请假 模型
  * author：悟空HR
  **/
+
 class LeaveModel extends Model{
 	/**
 	 * 获取分页请假数据
@@ -185,5 +186,71 @@ class LeaveModel extends Model{
 		$leave = $this->where($condition)->order('create_time desc')->select();
 		return $leave;
 	}
+
+    //日期获取星期（YY-MM-DD => 星期几）
+    public function wk($date1) {
+        $datearr = explode("-",$date1);     //将传来的时间使用“-”分割成数组
+        $year = $datearr[0];       //获取年份
+        $month = sprintf('%02d',$datearr[1]);  //获取月份
+        $day = sprintf('%02d',$datearr[2]);      //获取日期
+        $hour = $minute = $second = 0;   //默认时分秒均为0
+        $dayofweek = mktime($hour,$minute,$second,$month,$day,$year);    //将时间转换成时间戳
+        $shuchu = date("w",$dayofweek);      //获取星期值
+        $weekarray=array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+        return $weekarray[$shuchu];
+    }
+
+//获取月份日期并插入excel表中
+    public function getExcelDay($day,$objPHPExcel){
+        $datearr = explode("-",$day);
+        $i=1;
+        foreach(range('D','Z') as $v){
+            $sit = $v."4";
+            while($i<=cal_days_in_month(CAL_GREGORIAN, $datearr[1], $datearr[0])){
+                $objPHPExcel->getActiveSheet()->setCellValue($sit, $i);
+                $objPHPExcel->getActiveSheet()->getStyle($sit)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $i++;
+                break;
+            }
+            continue;
+        }
+        foreach(range('A','Z') as $v){
+            $sit = "A".$v."4";
+            while($i<=cal_days_in_month(CAL_GREGORIAN, $datearr[1], $datearr[0])){
+                $objPHPExcel->getActiveSheet()->setCellValue($sit, $i);
+                $objPHPExcel->getActiveSheet()->getStyle($sit)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $i++;
+                break;
+            }
+            continue;
+        }
+    }
+
+    public function getExcelWk($day,$objPHPExcel){
+        $datearr = explode("-",$day);
+        $i=1;
+        foreach(range('D','Z') as $v){
+            $sit = $v."3";
+            while($i<=cal_days_in_month(CAL_GREGORIAN, $datearr[1], $datearr[0])){
+                $weekDay = D('Leave')->wk(substr($day,0,8).$i);
+                $objPHPExcel->getActiveSheet()->setCellValue($sit, $weekDay);
+                $objPHPExcel->getActiveSheet()->getStyle($sit)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $i++;
+                break;
+            }
+            continue;
+        }
+        foreach(range('A','Z') as $v){
+            $sit = "A".$v."3";
+            while($i<=cal_days_in_month(CAL_GREGORIAN, $datearr[1], $datearr[0])){
+                $weekDay = D('Leave')->wk(substr($day,0,8).$i);
+                $objPHPExcel->getActiveSheet()->setCellValue($sit, $weekDay);
+                $objPHPExcel->getActiveSheet()->getStyle($sit)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $i++;
+                break;
+            }
+            continue;
+        }
+    }
 
 }

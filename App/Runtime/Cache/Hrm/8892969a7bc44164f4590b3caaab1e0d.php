@@ -48,7 +48,7 @@
 					<label for="name" class="col-sm-2 control-label">负责人</label>
 					<div class="col-sm-3">
 						<input type="hidden" name="executor_id" id="dialog_user_id" value="<?php echo session('user_id');?>"/>
-						<input class="form-control" type="text" name="dialog_user_name" id="dialog_user_name" value="<?php echo session('name');?>"/>
+                        <?php echo session('name');?>
 					</div>
 				</div>
 				<div class="form-group">

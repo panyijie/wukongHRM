@@ -22,6 +22,11 @@
 	<body>
 <?php echo W('Navigation');?>
 <script src="__PUBLIC__/js/datepicker/WdatePicker.js"></script>
+        <style type="text/css">
+            .col-sm-3{
+                margin-top: 7px;
+            }
+        </style>
 <div class="body-right">
 	<div class="row-table">
 		<div class="row-table-title">添加请假条</div>
@@ -52,7 +57,7 @@
 						</select>
 					</div>
                     <label for="name" class="col-sm-2 control-label">剩余年假</label>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2" style="margin-top: 7px">
                         <input class="form-control" value="<?php echo ($annual_leave); ?>" type="text" name="annual_leave" id="input_annual_leave_day" readonly="true"/>
                     </div>
                     <label for="name" class="col-sm-1" style="margin-left: -30px">天</label>
@@ -61,23 +66,23 @@
 					<label for="name" class="col-sm-2 control-label">开始时间</label>
 					<div class="col-sm-2">
                         <input type="hidden" name="start_time" id="start_time_post" value="" />
-						<input class="form-control"  type="text" id="d4311" onFocus="WdatePicker({maxDate:$('#d4312').val(),minDate:'%y-%M-%d', dateFmt:'yyyy-MM-dd'})" />
+						<input class="form-control" style="margin-top: 7px"  type="text" id="d4311" onFocus="WdatePicker({maxDate:$('#d4312').val(),minDate:'%y-%M-%d', dateFmt:'yyyy-MM-dd'})" />
 					</div>
                     <div class="col-sm-2">
-                        <select class="form-control" id="start_leave_time" style="margin-left: -30px" name="leave_date_time">
+                        <select class="form-control" id="start_leave_time" style="margin-left: -30px;margin-top: 7px" name="leave_date_time">
                             <option value="0" selected="selected">选择时间</option>
                             <option value="1">早上 9:00</option>
                             <option value="2">中午 12:00</option>
                             <option value="3">晚上 6:00</option>
                         </select>
                     </div>
-					<label for="name" class="col-sm-1 control-label">结束时间</label>
+					<label for="name" class="col-sm-2 control-label" style="margin-left: -78px">结束时间</label>
 					<div class="col-sm-2">
                         <input type="hidden" name="end_time" id="end_time_post" value="" />
-						<input class="form-control" type="text" id="d4312" onFocus="WdatePicker({minDate:$('#d4311').val(),maxDate:'2020-10-01',dateFmt:'yyyy-MM-dd'})" />
+						<input class="form-control" type="text" style="margin-top: 7px" id="d4312" onFocus="WdatePicker({minDate:$('#d4311').val(),maxDate:'2020-10-01',dateFmt:'yyyy-MM-dd'})" />
 					</div>
                     <div class="col-sm-2">
-                        <select class="form-control" id="end_leave_time" style="margin-left: -30px" name="leave_date_time">
+                        <select class="form-control" id="end_leave_time" style="margin-left: -30px;margin-top: 7px;" name="leave_date_time">
                             <option value="0" selected="selected">选择时间</option>
                             <option value="1">早上 9:00</option>
                             <option value="2">中午 12:00</option>
@@ -100,7 +105,7 @@
 				</div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">请假原因</label>
-					<div class="col-sm-8">
+					<div class="col-sm-8" style="margin-top: 10px">
 						<textarea name="content" class="col-sm-8 form-control" style="min-height:150px;"></textarea>
 					</div>
 				</div>

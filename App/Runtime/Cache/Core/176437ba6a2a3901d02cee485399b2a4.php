@@ -29,7 +29,6 @@
 	<div class="row-col">
 		<?php echo W('Message');?>
 	</div>
-
 </div>
 <div class="clear"></div>
 <div class="modal fade" id="alert" tabindex="-1" data-backdrop="static">
