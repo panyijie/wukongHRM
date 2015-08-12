@@ -120,12 +120,34 @@ class AppraisalTemplateModel extends Model{
 		$appraisal_template['category'] = $appraisal_template_category;
 		//考核详细
 		$socre = $m_appraisal_template_score->where('appraisal_template_id = %d', $appraisal_template_id)->select();
+        $d_appraisal_point = D('AppraisalPoint');
 		foreach($socre as $key=>$val){
 			$appraisal_template['score'][$key] = $this->getScoreById($val);
 		}
 		return $appraisal_template;
 	}
-	
+
+    public function getAppraisalTemplateById_1($appraisal_template_id, $appraisal_manager_id){
+        $appraisal_template = $this->where('appraisal_template_id = %d', $appraisal_template_id)->find();
+        $d_user = D('User');
+        $d_appraisal_template_category = D('AppraisalTemplateCategory');
+        $m_appraisal_template_score = M('appraisalTemplateScore');
+        //创建人
+        $user = $d_user->getUserInfo(array('user_id'=>$appraisal_template['creator_user_id']));
+        $appraisal_template['creator_user_name'] = $user['name'];
+        //效绩考核类型
+        $appraisal_template_category = $d_appraisal_template_category->where(array('category_id'=>$appraisal_template['category_id']))->find();
+        $appraisal_template['category'] = $appraisal_template_category;
+        //考核详细
+        $socre = $m_appraisal_template_score->where('appraisal_template_id = %d', $appraisal_template_id)->select();
+        $d_appraisal_point = D('AppraisalPoint');
+        foreach($socre as $key=>$val){
+            $appraisal_template['score'][$key] = $this->getScoreById($val);
+            $appraisal_template['score'][$key]['kpiDetail'] = $d_appraisal_point->where(array('examiner_user_id'=>$appraisal_template['creator_user_id'], 'appraisal_manager_id'=>$appraisal_manager_id, 'score_id'=>$appraisal_template['score'][$key]['score_id']))->getField('kpi_detail', true)[0];
+        }
+        return $appraisal_template;
+    }
+
 	/** 
 	 * 编辑绩效考核记录
 	 **/

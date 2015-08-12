@@ -50,7 +50,7 @@ class AppraisalManagerModel extends Model{
 			$examinee_user_count = sizeOf($examinee_user_idsArr);
 			$user_count = 0;
 			foreach($examiner_user_idsArr as $m=>$n){
-				$examiner_point_count = $m_appraisal_point->where(array('examiner_user_id'=>$n, 'appraisal_manager_id'=>$val['appraisal_manager_id']))->count();
+				$examiner_point_count = $m_appraisal_point->where(array('examiner_user_id'=>$n, 'appraisal_manager_id'=>$val['appraisal_manager_id'], 'is_point'=>1))->count();
 				if($template_socre_count * $examinee_user_count == $examiner_point_count){
 					$user_count++;
 				}
@@ -128,7 +128,7 @@ class AppraisalManagerModel extends Model{
 		$d_appraisal_template = D('AppraisalTemplate');
 		$appraisal_manager = $this->where('appraisal_manager_id= %d', $appraisal_manager_id)->find();
 		//考核模板
-		$template = $d_appraisal_template->getAppraisalTemplateById($appraisal_manager['appraisal_template_id']);
+		$template = $d_appraisal_template->getAppraisalTemplateById_1($appraisal_manager['appraisal_template_id'], $appraisal_manager_id);
 		$appraisal_manager['template'] = $template;
 		//被考核对象
 		$examinee_user_idsArr = array_filter(explode(',',$appraisal_manager['examinee_user_id']));
@@ -211,4 +211,20 @@ class AppraisalManagerModel extends Model{
 		}
 		return false;
 	}
+
+    /**
+     * 根据名字对考核模版进行查询（提前规定名字是不一样的这样可以方便进行查询）
+     **/
+    public function getAppraisalTem($TemName){
+        $template = $this->where(array('name'=>$TemName))->find();
+        return $template;
+    }
+
+    /**
+     * 根据名字对考核模版进行查询（提前规定名字是不一样的这样可以方便进行查询）
+     **/
+    public function getAppraisalManId($TemId){
+        $template = $this->where(array('appraisal_manager_id'=>$TemId))->find();
+        return $template;
+    }
 }

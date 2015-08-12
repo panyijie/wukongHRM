@@ -1,0 +1,42 @@
+<include file="Core:Public:header" />
+{:W('Navigation')}
+<script src="__PUBLIC__/js/datepicker/WdatePicker.js"></script>
+<div class="body-right">
+    <div class="row-table">
+        <div class="row-table-title">详细KPI制定</div>
+        <div class="row-table-body">
+            <form class="form-horizontal" action="{:U('hrm/appraisalmanager/getDetailAsk')}" method="post">
+                <input type="hidden" class="j_managerId" name="managerId" value="{$managerId}" />
+                <input type="hidden" class="j_numLen" name="numLen" value="" />
+                <p class="form-title">
+                    详细KPI制定&nbsp;&nbsp;<a href="javascript:history.go(-1);">返回</a>&nbsp;&nbsp;
+                </p>
+                <div class="j_form-group">
+                    <volist name="scoreList" id="vo">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">{$vo}</label>
+                        </div>
+                    </volist>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-3">
+                        <input name="submit" class="btn btn-primary" type="submit" value="确定"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="button" class="btn" value="取消" onclick="javascript:history.go(-1);"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<script type="text/javascript">
+    var voLen = $(".j_form-group").children().length;
+    for(var i=0; i<voLen; i++){
+        var j = ":eq("+ i + ")";
+        $(".j_form-group").children(j).append('<div class="col-sm-8" style="margin-top: 10px"><textarea name="description'+ (i+1) +'" class="form-control" cols="80" style="min-height:150px;"></textarea></div>');
+    }
+    $(".j_numLen").val(voLen);
+</script>
+<include file="Core:Public:alert" />
+<include file="Core:Public:footer" />

@@ -28,7 +28,7 @@
 			<p class="form-title">
 				绩效考核模板管理&nbsp;&nbsp;
 				<a href="<?php echo U('hrm/appraisaltemplate/category');?>">模板类型管理</a>
-				<a href="<?php echo U('hrm/appraisaltemplate/add');?>" class="pull-right btn btn-primary btn-xs" >添加</a>
+				<a href="<?php echo U('hrm/appraisaltemplate/add');?>" class="pull-right btn btn-primary btn-xs" style="margin-top: 7px" >添加</a>
 			</p>
 			<?php if(empty($templatelist)): ?><div>---暂无数据---</div>
 			<?php else: ?>

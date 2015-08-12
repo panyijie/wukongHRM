@@ -21,6 +21,11 @@
 	</head>
 	<body>
 <?php echo W('Navigation');?>
+        <style type="text/css">
+            .col-sm-3{
+                margin-top: 7px;
+            }
+        </style>
 <div class="body-right">
 	<div class="row-table">
 		<div class="row-table-title">添加绩效考核模板</div>
@@ -51,7 +56,7 @@
 				</div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">更多说明</label>
-					<div class="col-sm-8">
+					<div class="col-sm-8" style="margin-top: 10px">
 						<textarea name="description" class="form-control" cols="80" style="min-height:150px;"></textarea>
 					</div>
 				</div>
@@ -67,7 +72,7 @@
 								<td>标准分</td>
 								<td>评分范围</td>
 								<td>评分细则</td>
-								<td width="1%"><input type="button" id="additem" class="btn btn-primary btn-xs" value="+" /></td>
+								<td width="1%"><input style="margin-left: 15px" type="button" id="additem" class="btn btn-primary btn-xs" value="+" /></td>
 							</tr>
 						</table>
 					</div>
@@ -92,7 +97,7 @@
 		var num = 1;
 		$('#additem').click(function(){
 			var str = '<tr><td>';
-			str += '<input type="text" name="score_name['+num+']"/></td><td><input  type="text" name="standard_score['+num+']"/></td><td><input type="text" name="low_scope['+num+']" />&nbsp;至&nbsp;<input type="text" name="high_scope['+num+']" /></td><td><textarea name="score_description['+num+']" /></td><td width="1%"><input type="button" class="btn btn-primary btn-xs deleteitem" value="-" /></td></tr>';
+			str += '<input type="text" name="score_name['+num+']"/></td><td><input  type="text" name="standard_score['+num+']"/></td><td><input type="text" name="low_scope['+num+']" />&nbsp;至&nbsp;<input type="text" name="high_scope['+num+']" /></td><td><textarea name="score_description['+num+']" /></td><td width="1%"><input type="button"  style="margin-left: 15px" class="btn btn-primary btn-xs deleteitem" value="-" /></td></tr>';
 			$(this).parent().parent().parent().append(str);
 			num++;
 		});

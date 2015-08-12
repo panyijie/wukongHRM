@@ -21,6 +21,11 @@
 	</head>
 	<body>
 <?php echo W('Navigation');?>
+        <style type="text/css">
+            .col-sm-3{
+                margin-top: 7px;
+            }
+        </style>
 <div class="body-right">
 	<div class="row-table">
 		<div class="row-table-title">编辑绩效考核模板</div>
@@ -32,7 +37,7 @@
 					<a href="javascript:history.go(-1);">返回</a>&nbsp;&nbsp;
 					<a href="<?php echo U('hrm/appraisaltemplate/index');?>">返回上级</a>&nbsp;&nbsp;
 				</p>
-				<div class="form-group">
+				<div class="form-group" style="margin-top: 20px">
 					<label for="name" class="col-sm-2 control-label">模板名称</label>
 					<div class="col-sm-3">
 						<input class="form-control" type="text" name="name" value="<?php echo ($appraisal_template["name"]); ?>"/>
@@ -54,7 +59,7 @@
 				</div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">更多说明</label>
-					<div class="col-sm-8">
+					<div class="col-sm-8" style="margin-top: 10px">
 						<textarea name="description" class="form-control" style="min-height:150px;"><?php echo ($appraisal_template["description"]); ?></textarea>
 					</div>
 				</div>
@@ -63,21 +68,21 @@
 				</p>
 				<div class="form-group">
 					<label for="insurance_type" class="col-sm-2 control-label">考核详细</label>
-					<div class="col-sm-9" id="itembox">
+					<div class="col-sm-9" id="itembox" style="margin-top: 10px">
 						<table class="table table-bordered">
 							<tr>
 							<td>名称</td>
 							<td>标准分</td>
 							<td>评分范围</td>
 							<td>评分细则</td>
-							<td width="1%"><input type="button" id="additem" class="btn btn-primary btn-xs" value="+" /></td>
+							<td width="1%"><input style="margin-left: 15px" type="button" id="additem" class="btn btn-primary btn-xs" value="+" /></td>
 							</tr>
 							<?php if(is_array($appraisal_template['score'])): $i = 0; $__LIST__ = $appraisal_template['score'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
 								<td><a href="javascript:void(0);" title="编辑" class="edititem" rel="<?php echo ($vo["score_id"]); ?>"><?php echo ($vo["name"]); ?></a></td>
 								<td><?php echo ($vo["standard_score"]); ?></td>
 								<td><?php echo ($vo["low_scope"]); ?>&nbsp;至&nbsp;<?php echo ($vo["high_scope"]); ?></td>
 								<td><?php echo ($vo["description"]); ?></td>
-								<td><input type="button" class="btn btn-primary btn-xs deleteitem" rel="<?php echo ($vo["score_id"]); ?>" value="-"></td>
+								<td><input type="button"  style="margin-left: 15px" class="btn btn-primary btn-xs deleteitem" rel="<?php echo ($vo["score_id"]); ?>" value="-"></td>
 							</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 						</table>
 					</div>

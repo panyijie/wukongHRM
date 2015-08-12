@@ -6,7 +6,6 @@
 **/
 
 class LeaveAction extends Action{
-
 	public function _initialize(){
 		$action = array(
 			'users'=>array('index','add', 'edit', 'delete', 'view', 'export'),
@@ -348,8 +347,6 @@ class LeaveAction extends Action{
             alert('error', '您没有权限审核！', U('hrm/leave/index'));
         }
 	}
-
-
 
     public function export(){
         if($this->isPost()){

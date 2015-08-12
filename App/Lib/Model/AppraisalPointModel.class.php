@@ -38,12 +38,12 @@ class AppraisalPointModel extends Model{
 			}
 		}
 	}
-	
+
 	/**
 	 * 已打分用户
 	 **/
 	public function havePoint($examiner_user_id , $appraisal_manager_id){
-		$havePoint = $this->where(array('examiner_user_id'=>$examiner_user_id, 'appraisal_manager_id'=>$appraisal_manager_id))->group('examinee_user_id')->getField('examinee_user_id', true);
+		$havePoint = $this->where(array('examiner_user_id'=>$examiner_user_id, 'appraisal_manager_id'=>$appraisal_manager_id, 'is_point'=>1))->group('examinee_user_id')->getField('examinee_user_id', true);
 		return $havePoint ? $havePoint : array();
 	}
 	

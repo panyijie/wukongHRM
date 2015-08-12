@@ -21,6 +21,11 @@
 	</head>
 	<body>
 <?php echo W('Navigation');?>
+        <style type="text/css">
+            .col-sm-3{
+                margin-top: 7px;
+            }
+        </style>
 <div class="body-right">
 	<div class="row-table">
 		<div class="row-table-title">绩效考核模板详情</div>
@@ -45,7 +50,7 @@
 			</div>
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">更多说明</label>
-				<div class="col-sm-8">
+				<div class="col-sm-8" style="margin-top: 7px">
 					<pre name="description" class="col-sm-8"style="min-height:150px;"><?php echo ($appraisal_template["description"]); ?></pre>
 				</div>
 			</div>
@@ -54,7 +59,7 @@
 			</p>
 			<div class="form-group">
 				<label for="insurance_type" class="col-sm-2 control-label">考核详细</label>
-				<div class="col-sm-9" id="itembox">
+				<div class="col-sm-9" id="itembox" style="margin-top: 10px">
 					<table class="table table-bordered">
 						<tr>
 							<td>名称</td>

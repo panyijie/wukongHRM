@@ -1,5 +1,10 @@
 <include file="Core:Public:header" />
 {:W('Navigation')}
+        <style type="text/css">
+            .col-sm-3{
+                margin-top: 7px;
+            }
+        </style>
 <div class="body-right">
 	<div class="row-table">
 		<div class="row-table-title">编辑绩效考核模板</div>
@@ -11,7 +16,7 @@
 					<a href="javascript:history.go(-1);">返回</a>&nbsp;&nbsp;
 					<a href="{:U('hrm/appraisaltemplate/index')}">返回上级</a>&nbsp;&nbsp;
 				</p>
-				<div class="form-group">
+				<div class="form-group" style="margin-top: 20px">
 					<label for="name" class="col-sm-2 control-label">模板名称</label>
 					<div class="col-sm-3">
 						<input class="form-control" type="text" name="name" value="{$appraisal_template.name}"/>
@@ -35,7 +40,7 @@
 				</div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">更多说明</label>
-					<div class="col-sm-8">
+					<div class="col-sm-8" style="margin-top: 10px">
 						<textarea name="description" class="form-control" style="min-height:150px;">{$appraisal_template.description}</textarea>
 					</div>
 				</div>
@@ -44,14 +49,14 @@
 				</p>
 				<div class="form-group">
 					<label for="insurance_type" class="col-sm-2 control-label">考核详细</label>
-					<div class="col-sm-9" id="itembox">
+					<div class="col-sm-9" id="itembox" style="margin-top: 10px">
 						<table class="table table-bordered">
 							<tr>
 							<td>名称</td>
 							<td>标准分</td>
 							<td>评分范围</td>
 							<td>评分细则</td>
-							<td width="1%"><input type="button" id="additem" class="btn btn-primary btn-xs" value="+" /></td>
+							<td width="1%"><input style="margin-left: 15px" type="button" id="additem" class="btn btn-primary btn-xs" value="+" /></td>
 							</tr>
 							<volist name="appraisal_template['score']" id="vo">
 							<tr>
@@ -59,7 +64,7 @@
 								<td>{$vo.standard_score}</td>
 								<td>{$vo.low_scope}&nbsp;至&nbsp;{$vo.high_scope}</td>
 								<td>{$vo.description}</td>
-								<td><input type="button" class="btn btn-primary btn-xs deleteitem" rel="{$vo.score_id}" value="-"></td>
+								<td><input type="button"  style="margin-left: 15px" class="btn btn-primary btn-xs deleteitem" rel="{$vo.score_id}" value="-"></td>
 							</tr>
 							</volist>
 						</table>

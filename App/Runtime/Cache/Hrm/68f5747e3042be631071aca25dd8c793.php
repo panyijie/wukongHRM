@@ -21,6 +21,14 @@
 	</head>
 	<body>
 <?php echo W('Navigation');?>
+        <style type="text/css">
+            .table-tr th{
+                text-align: center;
+            }
+            .table-tr td{
+                text-align: center;
+            }
+        </style>
 <div class="body-right">
 	<div class="row-table">
 		<div class="row-table-title">模板类型管理</div>
@@ -28,21 +36,21 @@
 			<p class="form-title">
 				<a href="<?php echo U('hrm/appraisaltemplate/index');?>">绩效考核模板管理</a>&nbsp;&nbsp;
 				模板类型管理
-				<a href="<?php echo U('hrm/appraisaltemplate/addcategory');?>" class="pull-right btn btn-primary btn-xs" >添加</a>
+				<a href="<?php echo U('hrm/appraisaltemplate/addcategory');?>" class="pull-right btn btn-primary btn-xs" style="margin-top: 7px">添加</a>
 			</p>
 			<?php if(empty($category)): ?><div>---暂无数据---</div>
 			<?php else: ?>
 			<form class="form-horizontal " id="form1"  method="post">
 				<table class="table" style="margin-bottom:0px;">
 					<thead>
-						<tr>
+						<tr class="table-tr">
 							<th>名称</th>
 							<th>描述</th>
 							<th>操作</th>
 						</tr>
 					</thead>
 					<tbody>
-						<?php if(is_array($category)): $i = 0; $__LIST__ = $category;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+						<?php if(is_array($category)): $i = 0; $__LIST__ = $category;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr class="table-tr">
 							<td><?php echo ($vo["name"]); ?></td>
 							<td><?php echo ($vo["description"]); ?></td>
 							<td>

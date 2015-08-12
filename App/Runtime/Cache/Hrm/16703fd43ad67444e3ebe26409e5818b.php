@@ -30,7 +30,7 @@
 				<p class="form-title">
 					绩效考核评分&nbsp;&nbsp;
 					<a href="javascript:void(0);" onclick="close_page()">退出</a>
-					<input type="submit" class="pull-right btn btn-primary btn-xs" value="提交">
+					<input type="submit" style="margin-top: 7px" class="pull-right btn btn-primary btn-xs" value="提交">
 				</p>
 				<!-- CSS用了内嵌样式，待修改 -->
 				<div class="form-group">
@@ -51,21 +51,22 @@
 					<div class="col-sm-12" id="itembox">
 						<table class="table table-bordered">
 							<tr>
-								<td class="col-sm-2">考核内容</td>
-								<td class="col-sm-4">评分细则</td>
+								<td class="col-sm-1">考核内容</td>
+								<td class="col-sm-2">评分细则</td>
+                                <td class="col-sm-2">详细目标</td>
 								<td class="col-sm-1">标准分</td>
 								<td class="col-sm-1">评分范围</td>
 								<td class="col-sm-1">得分</td>
 								<td class="col-sm-2">评语</td>
-								
 							</tr>
 							<?php if(is_array($appraisalmanager['template']['score'])): $i = 0; $__LIST__ = $appraisalmanager['template']['score'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-								<td><?php echo ($vo["name"]); ?></td>
-								<td><pre><?php echo ($vo["description"]); ?></pre></td>
-								<td><?php echo ($vo["standard_score"]); ?></td>
-								<td><?php echo ($vo["low_scope"]); ?>&nbsp;至&nbsp;<?php echo ($vo["high_scope"]); ?></td>
-								<td><input type="text" name="point[<?php echo ($vo["score_id"]); ?>]" class="form-control col-sm-2" /></td>
-								<td><textarea class="form-control" name="comment[<?php echo ($vo["score_id"]); ?>]"></textarea></td>
+								<td style="vertical-align: middle"><?php echo ($vo["name"]); ?></td>
+								<td><?php echo ($vo["description"]); ?></td>
+                                <td><?php echo ($vo["kpiDetail"]); ?></td>
+								<td style="vertical-align: middle"><?php echo ($vo["standard_score"]); ?></td>
+								<td style="vertical-align: middle"><?php echo ($vo["low_scope"]); ?>&nbsp;至&nbsp;<?php echo ($vo["high_scope"]); ?></td>
+								<td style="vertical-align: middle"><input type="text" name="point[<?php echo ($vo["score_id"]); ?>]" class="form-control" /></td>
+								<td><textarea cols="25" style="min-height: 250px; margin: 0px 0px 10px 15px" class="form-control" name="comment[<?php echo ($vo["score_id"]); ?>]"></textarea></td>
 							</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 						</table>
 					</div>

@@ -36,16 +36,16 @@ class AppraisalpointAction extends Action{
 					$temp['examinee_user_id'] = $_POST['examinee_user_id'];
 					$temp['examiner_user_id'] = session('user_id');
 					$temp['score_id'] = $val['score_id'];
-					$data[] = $temp;
-					
-					if(!is_numeric($temp['point']) || $temp['point'] > $val['high_scope']){
-						alert('error', "【 ".$val['name']." 】".'份数格式不正确！', $_SERVER['HTTP_REFERER']);
-					}
+                    if(!is_numeric($temp['point']) || $temp['point'] > $val['high_scope']){
+                        alert('error', "【 ".$val['name']." 】".'份数格式不正确！', $_SERVER['HTTP_REFERER']);
+                    }
+                    $temp['is_point'] = 1;
+                    $d_appraisal_point->where(array('examiner_user_id'=>$temp['examiner_user_id'], 'appraisal_manager_id'=>$temp['appraisal_manager_id'], 'score_id'=>$temp['score_id']))->save($temp);
 				}
-				if($d_appraisal_point->addPoint($data)){
+				if(1){
 					$have_point_user = $d_appraisal_point->havePoint(session('user_id'), $appraisal_manager_id);
 					if(sizeOf($have_point_user) == sizeOf($appraisal_manager['examinee_user'])){
-						alert('success', '本次评分已结束！', U('hrm/appraisalpoint/index'));
+						alert('success', '本次评分结束，感谢！', U('hrm/appraisalpoint/index'));
 					}else{
 						alert('success', '评分成功！', $_SERVER['HTTP_REFERER']);
 					}

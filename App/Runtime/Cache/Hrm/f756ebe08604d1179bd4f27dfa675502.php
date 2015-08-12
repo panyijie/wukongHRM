@@ -25,7 +25,7 @@
 	<div class="row-table">
 		<div class="row-table-title">绩效考核管理</div>
 		<div class="row-table-body">
-			<p class="form-title"><a href="<?php echo U('hrm/appraisalmanager/enableTemplate');?>" class="pull-right btn btn-primary btn-xs">添加</a>绩效考核管理</p>
+			<p class="form-title"><a href="<?php echo U('hrm/appraisalmanager/enableTemplate');?>" style="margin-top: 7px" class="pull-right btn btn-primary btn-xs">添加</a>绩效考核管理</p>
 			<?php if(empty($managerlist)): ?><div>---暂无数据---</div>
 			<?php else: ?>
 			<form class="form-horizontal " id="form1"  method="post">
