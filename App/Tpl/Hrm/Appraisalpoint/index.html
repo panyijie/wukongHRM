@@ -5,7 +5,7 @@
 		<div class="row-table-title">在线评分</div>
 		<div class="row-table-body">
 			<p class="form-title">在线评分</p>
-			<if condition="empty($appraisalpoint)">
+			<if condition="empty($appraisalpoint) && empty(appraisalexaminerpoint)">
 				<div>---暂无数据---</div>
 			<else />
 			<form class="form-horizontal " id="form1"  method="post">
@@ -29,10 +29,62 @@
 							<td>{$vo.status_name}</td>
 							<td>{$vo.not_appraisal_user_num}</td>
 							<td>
-								<a href="{:U('hrm/appraisalpoint/edit','id='.$vo['appraisal_manager_id'])}" target="_blank">评分</a>
+								<a class="j_point-a" href="javascript:void(0)">评分</a>
+                                <input type="hidden" value="{:U('hrm/appraisalpoint/edit','id='.$vo['appraisal_manager_id'])}"/>
+                                <input type="hidden" value="{$vo.session_user_name}"/>
+                                <input type="hidden" value="{$vo.examiner_user_name}"/>
 							</td>
 						</tr>
 						</volist>
+                        <volist name="appraisalexaminerpoint" id="vo">
+                            <tr>
+                                <td><a href="{:U('hrm/appraisalmanager/view','id='.$vo['appraisal_manager_id'])}" target="_blank">{$vo.name}</a></td>
+                                <td>{$vo.template.category.name}</td>
+                                <td>{$vo.start_time|date='Y-m-d',###}</td>
+                                <td>{$vo.end_time|date='Y-m-d',###}</td>
+                                <td>{$vo.status_name}</td>
+                                <td>{$vo.not_appraisal_user_num}</td>
+                                <td>
+                                    <a class="j_point-a" href="javascript:void(0)">评分</a>
+                                    <input type="hidden" value="{:U('hrm/appraisalpoint/edit','id='.$vo['appraisal_manager_id'])}"/>
+                                    <input type="hidden" value="{$vo.session_user_name}"/>
+                                    <input type="hidden" value="{$vo.examiner_user_name}"/>
+                                </td>
+                            </tr>
+                        </volist>
+                        <volist name="appraisalpoint_1" id="vo">
+                            <tr>
+                                <td><a href="{:U('hrm/appraisalmanager/view','id='.$vo['appraisal_manager_id'])}" target="_blank">{$vo.name}</a></td>
+                                <td>{$vo.template.category.name}</td>
+                                <td>{$vo.start_time|date='Y-m-d',###}</td>
+                                <td>{$vo.end_time|date='Y-m-d',###}</td>
+                                <td>{$vo.status_name}</td>
+                                <td>{$vo.not_appraisal_user_num}</td>
+                                <td>
+                                    <a class="j_point-a" href="javascript:void(0)">编辑</a>&nbsp;|&nbsp;
+                                    <a class="j_point-a" href="javascript:void(0)">确认</a>
+                                    <input type="hidden" value="{:U('hrm/appraisalpoint/edit','id='.$vo['appraisal_manager_id'])}"/>
+                                    <input type="hidden" value="{$vo.session_user_name}"/>
+                                    <input type="hidden" value="{$vo.examiner_user_name}"/>
+                                </td>
+                            </tr>
+                        </volist>
+                        <volist name="appraisalexaminerpoint_1" id="vo">
+                            <tr>
+                                <td><a href="{:U('hrm/appraisalmanager/view','id='.$vo['appraisal_manager_id'])}" target="_blank">{$vo.name}</a></td>
+                                <td>{$vo.template.category.name}</td>
+                                <td>{$vo.start_time|date='Y-m-d',###}</td>
+                                <td>{$vo.end_time|date='Y-m-d',###}</td>
+                                <td>{$vo.status_name}</td>
+                                <td>{$vo.not_appraisal_user_num}</td>
+                                <td>
+                                    <a class="j_point-a" href="javascript:void(0)">评分</a>
+                                    <input type="hidden" value="{:U('hrm/appraisalpoint/edit','id='.$vo['appraisal_manager_id'])}"/>
+                                    <input type="hidden" value="{$vo.session_user_name}"/>
+                                    <input type="hidden" value="{$vo.examiner_user_name}"/>
+                                </td>
+                            </tr>
+                        </volist>
 					</tbody>
 					<tfoot>
 						<tr>
@@ -46,5 +98,15 @@
 	</div>
 </div>
 <div class="clear"></div>
+        <script type="text/javascript">
+            var pointA = $('.j_point-a');
+            pointA.click(function(){
+                if(pointA.next().next().val() == pointA.next().next().next().val().split(',')[1] && pointA.parent().prev().prev().html() == "被考核者评分中"){
+                    alert("被考核者评分中,请等候被考核者自评完毕后再进行评分");
+                }else{
+                    window.location.href = pointA.next().val();
+                }
+            });
+        </script>
 <include file="Core:Public:alert" />
 <include file="Core:Public:footer" />

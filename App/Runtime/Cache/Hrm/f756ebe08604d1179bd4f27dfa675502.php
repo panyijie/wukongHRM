@@ -40,7 +40,6 @@
 							<th>负责人</th>
 							<th>进度</th>
 							<th>状态</th>
-							<th>考核成绩</th>
 							<th>操作</th>
 						</tr>
 						<?php if(is_array($managerlist)): $i = 0; $__LIST__ = $managerlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
@@ -53,18 +52,10 @@
 							<td><?php echo ($vo["not_examin_examiner_num"]); ?>&nbsp;/&nbsp;<?php echo ($vo["total_examiner_num"]); ?></td>
 							<td><?php echo ($vo["status_name"]); ?></td>
 							<td>
-								<?php if('2' == $vo['status']): ?><a href="<?php echo U('hrm/appraisalpoint/results','id='.$vo['appraisal_manager_id']);?>">成绩</a>
-								<?php else: ?>
-									暂无成绩<?php endif; ?>
-							</td>
-							<td>
-								<?php if('1' == $vo['status']): ?><a href="javascript:void(0);" class="status_summary" title="汇总" rel="<?php echo ($vo['appraisal_manager_id']); ?>">	汇总</a>
+								<?php if('4' == $vo['status']): ?><a href="<?php echo U('hrm/appraisalmanager/summary','appraisal_manager_id='.$vo['appraisal_manager_id']);?>" class="status_summary" title="汇总" rel="<?php echo ($vo['appraisal_manager_id']); ?>">汇总</a>&nbsp;|&nbsp;
 								<?php elseif('2' == $vo['status']): ?>
-									<a href="javascript:void(0);" class="status_reset" title="撤销汇总" rel="<?php echo ($vo['appraisal_manager_id']); ?>">撤销</a><?php endif; ?>
-								&nbsp;|&nbsp;
-								<?php if('1' == $vo['status']): ?><a href="<?php echo U('hrm/appraisalmanager/delete','id='.$vo['appraisal_manager_id']);?>">删除</a>
-								<?php else: ?>
-									<del>删除</del><?php endif; ?>
+									<a href="javascript:void(0);" class="status_reset" title="查看" rel="<?php echo ($vo['appraisal_manager_id']); ?>">查看</a>&nbsp;|&nbsp;<?php endif; ?>
+                                <a href="<?php echo U('hrm/appraisalmanager/delete','id='.$vo['appraisal_manager_id']);?>">删除</a>
 							</td>
 						</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 					</tbody>
@@ -102,27 +93,25 @@
 		}
 	});
 	
-	/**
-	 * 汇总
-	 **/
-	$(".status_summary").click(function(){
-		var appraisal_manager_id = $(this).attr('rel');
-		if(confirm('确定要汇总数据吗？')){
-			$('#alert').modal({
-				show:true,
-				remote:"<?php echo U('hrm/appraisalmanager/summary', 'appraisal_manager_id');?>"+appraisal_manager_id
-			});
-		}
-	});
+//	/**
+//	 * 汇总
+//	 **/
+//	$(".status_summary").click(function(){
+//		var appraisal_manager_id = $(this).attr('rel');
+//		if(confirm('确定要汇总数据吗？')){
+//			$('#alert').modal({
+//				show:true,
+//				remote:"<?php echo U('hrm/appraisalmanager/summary', 'appraisal_manager_id');?>"+appraisal_manager_id
+//			});
+//		}
+//	});
 	
 	/**
 	 * 撤销汇总
 	 **/
 	$(".status_reset").click(function(){
 		var appraisal_manager_id = $(this).attr('rel');
-		if(confirm('确定要撤销汇总吗？')){
-			location.href = "<?php echo U('hrm/appraisalmanager/reset', 'appraisal_manager_id');?>"+appraisal_manager_id;
-		}
+        location.href = "<?php echo U('hrm/appraisalpoint/view', 'appraisal_manager_id');?>"+appraisal_manager_id;
 	});
 </script>
 <div class="modal fade" id="alert" tabindex="-1" data-backdrop="static">

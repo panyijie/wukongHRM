@@ -20,7 +20,6 @@
 							<th>负责人</th>
 							<th>进度</th>
 							<th>状态</th>
-							<th>考核成绩</th>
 							<th>操作</th>
 						</tr>
 						<volist name="managerlist" id="vo">
@@ -34,24 +33,12 @@
 							<td>{$vo.not_examin_examiner_num}&nbsp;/&nbsp;{$vo.total_examiner_num}</td>
 							<td>{$vo.status_name}</td>
 							<td>
-								<if condition="'2' eq $vo['status']">
-									<a href="{:U('hrm/appraisalpoint/results','id='.$vo['appraisal_manager_id'])}">成绩</a>
-								<else />
-									暂无成绩
-								</if>
-							</td>
-							<td>
-								<if condition="'1' eq $vo['status']">
-									<a href="javascript:void(0);" class="status_summary" title="汇总" rel="{$vo['appraisal_manager_id']}">	汇总</a>
+								<if condition="'4' eq $vo['status']">
+									<a href="{:U('hrm/appraisalmanager/summary','appraisal_manager_id='.$vo['appraisal_manager_id'])}" class="status_summary" title="汇总" rel="{$vo['appraisal_manager_id']}">汇总</a>&nbsp;|&nbsp;
 								<elseif condition="'2' eq $vo['status']"/>
-									<a href="javascript:void(0);" class="status_reset" title="撤销汇总" rel="{$vo['appraisal_manager_id']}">撤销</a>
+									<a href="javascript:void(0);" class="status_reset" title="查看" rel="{$vo['appraisal_manager_id']}">查看</a>&nbsp;|&nbsp;
 								</if>
-								&nbsp;|&nbsp;
-								<if condition="'1' eq $vo['status']">
-									<a href="{:U('hrm/appraisalmanager/delete','id='.$vo['appraisal_manager_id'])}">删除</a>
-								<else />
-									<del>删除</del>	
-								</if>
+                                <a href="{:U('hrm/appraisalmanager/delete','id='.$vo['appraisal_manager_id'])}">删除</a>
 							</td>
 						</tr>
 						</volist>
@@ -91,27 +78,25 @@
 		}
 	});
 	
-	/**
-	 * 汇总
-	 **/
-	$(".status_summary").click(function(){
-		var appraisal_manager_id = $(this).attr('rel');
-		if(confirm('确定要汇总数据吗？')){
-			$('#alert').modal({
-				show:true,
-				remote:"{:U('hrm/appraisalmanager/summary', 'appraisal_manager_id')}"+appraisal_manager_id
-			});
-		}
-	});
+//	/**
+//	 * 汇总
+//	 **/
+//	$(".status_summary").click(function(){
+//		var appraisal_manager_id = $(this).attr('rel');
+//		if(confirm('确定要汇总数据吗？')){
+//			$('#alert').modal({
+//				show:true,
+//				remote:"{:U('hrm/appraisalmanager/summary', 'appraisal_manager_id')}"+appraisal_manager_id
+//			});
+//		}
+//	});
 	
 	/**
 	 * 撤销汇总
 	 **/
 	$(".status_reset").click(function(){
 		var appraisal_manager_id = $(this).attr('rel');
-		if(confirm('确定要撤销汇总吗？')){
-			location.href = "{:U('hrm/appraisalmanager/reset', 'appraisal_manager_id')}"+appraisal_manager_id;
-		}
+        location.href = "{:U('hrm/appraisalpoint/view', 'appraisal_manager_id')}"+appraisal_manager_id;
 	});
 </script>
 <include file="Core:Public:alert" />

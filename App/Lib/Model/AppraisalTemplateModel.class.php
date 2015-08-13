@@ -139,7 +139,7 @@ class AppraisalTemplateModel extends Model{
         $appraisal_template_category = $d_appraisal_template_category->where(array('category_id'=>$appraisal_template['category_id']))->find();
         $appraisal_template['category'] = $appraisal_template_category;
         //考核详细
-        $socre = $m_appraisal_template_score->where('appraisal_template_id = %d', $appraisal_template_id)->select();
+        $socre = $m_appraisal_template_score->where('appraisal_template_id = %d', $appraisal_template_id)->order('score_id asc')->select();
         $d_appraisal_point = D('AppraisalPoint');
         foreach($socre as $key=>$val){
             $appraisal_template['score'][$key] = $this->getScoreById($val);

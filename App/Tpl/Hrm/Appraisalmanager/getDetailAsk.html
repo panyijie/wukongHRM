@@ -1,11 +1,67 @@
 <include file="Core:Public:header" />
 {:W('Navigation')}
 <script src="__PUBLIC__/js/datepicker/WdatePicker.js"></script>
+<style type="text/css">
+    .form-group-left{
+        float: left;
+        width: 130px;
+        padding-left: 50px;
+        margin-right: 10px;
+    }
+
+    .form-group-button{
+        margin-top: -10px;
+    }
+
+    .form-group-button input{
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        border: none;
+        outline: none;
+        margin:10px 0 0 6px;
+        color: #FFFFFF;
+        background-color: #745fff;
+        /*background-color: #744ae0;*/
+    }
+
+    .form-group-button input:hover{
+
+        background-color: #744ae0;
+    }
+
+    .form-group-right{
+        width: 700px;
+        height: auto;
+        min-height: 60px;
+        padding:0 10px;
+        float: left;
+    }
+
+    .form-group-right-child{
+        padding: 5px 0 10px 0;
+        border-top: 1px solid #cccccc;
+    }
+
+    .form-group-right-child-fir{
+        padding-bottom: 10px;
+    }
+    .form-group-right input{
+        width: 600px;
+        height: 30px;
+        padding-left: 5px;
+        margin-top: 5px;
+    }
+
+    hr{
+        margin: 20px 20px 0 0;
+    }
+</style>
 <div class="body-right">
     <div class="row-table">
         <div class="row-table-title">详细KPI制定</div>
         <div class="row-table-body">
-            <form class="form-horizontal" action="{:U('hrm/appraisalmanager/getDetailAsk')}" method="post">
+            <form class="form-horizontal" id="J_submit_form" action="{:U('hrm/appraisalmanager/getDetailAsk')}" method="post">
                 <input type="hidden" class="j_managerId" name="managerId" value="{$managerId}" />
                 <input type="hidden" class="j_numLen" name="numLen" value="" />
                 <p class="form-title">
@@ -14,14 +70,28 @@
                 <div class="j_form-group">
                     <volist name="scoreList" id="vo">
                         <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">{$vo}</label>
+                            <div class="form-group-left">
+                                <div style="text-align: center">{$vo}</div>
+                                <div class="form-group-button">
+                                    <input class="j_input-plus" type="button" value="+"/>
+                                    <input class="j_input-minus" type="button" value="-"/>
+                                </div>
+                            </div>
+                            <div class="form-group-right">
+                                <div class="form-group-right-child-fir">
+                                    <div><span>考核条目：</span><input name="form-group-right" placeholder="此处填写详细KPI计划，左边按钮可加减计划条目"/></div>
+                                    <div><span>衡量标准：</span><input name="form-group-right" placeholder="对应条目的衡量标准"/></div>
+                                </div>
+                            </div>
+                            <div style="clear: both"></div>
+                            <hr/>
                         </div>
                     </volist>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label"></label>
                     <div class="col-sm-3">
-                        <input name="submit" class="btn btn-primary" type="submit" value="确定"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="btn btn-primary j_submit" type="button" value="确定"/>&nbsp;&nbsp;&nbsp;&nbsp;
                         <input type="button" class="btn" value="取消" onclick="javascript:history.go(-1);"/>
                     </div>
                 </div>
@@ -34,9 +104,47 @@
     var voLen = $(".j_form-group").children().length;
     for(var i=0; i<voLen; i++){
         var j = ":eq("+ i + ")";
-        $(".j_form-group").children(j).append('<div class="col-sm-8" style="margin-top: 10px"><textarea name="description'+ (i+1) +'" class="form-control" cols="80" style="min-height:150px;"></textarea></div>');
+        $(".j_form-group").children(j).append('<div class="j_description'+ (i+1) +'"><input type="hidden" name="description'+ (i+1) +'"/></div>');
     }
     $(".j_numLen").val(voLen);
+
+    $('.j_input-plus').click(function(){
+        $(this).parent().parent().next().append('<div class="form-group-right-child"><div><span>考核条目：</span><input name="form-group-right" placeholder="此处填写详细KPI计划，左边按钮可加减计划条目"/></div><div><span>衡量标准：</span><input name="form-group-right" placeholder="对应条目的衡量标准"/></div></div>');
+    });
+
+    $('.j_input-minus').click(function(){
+        var inputNum = $(this).parent().parent().next().children().length;
+        if(inputNum <= 1){
+            alert("至少保留一项KPI条目");
+        }else{
+            $(this).parent().parent().next().children()[inputNum-1].remove();
+        }
+    });
+
+    $(".j_submit").click(function(){
+        var formGroup = $(".j_form-group");
+        var formNum = formGroup.children().length;
+        for(var i=0; i<formNum; i++){
+            var str = ":eq(" + i + ")";
+            var inputNum = formGroup.children(str).children(":eq(1)").children().length;
+            var desClassName = ".j_description" + (i+1);
+            var desStr = "";
+            console.log(inputNum);
+            for(var j=0; j<inputNum; j++){
+                var inputStr = ":eq(" + j + ")";
+                var inputVal = formGroup.children(str).children(":eq(1)").children(inputStr).children(":eq(0)").children(":eq(1)").val() + "^^" + formGroup.children(str).children(":eq(1)").children(inputStr).children(":eq(1)").children(":eq(1)").val();
+                console.log(inputVal);
+                if(inputVal == "" || inputVal == null){
+                    continue;
+                }else{
+                    desStr += inputVal + "$$";
+                }
+            }
+            $(desClassName).children(":eq(0)").val(desStr);
+        }
+        $("#J_submit_form").submit();
+    });
+
 </script>
 <include file="Core:Public:alert" />
 <include file="Core:Public:footer" />

@@ -24,6 +24,57 @@ class AppraisalPointModel extends Model{
 		}
 		return $appraisal_point;
 	}
+
+    public function getAppraisalPoint_1(){
+        $appraisal_point = array();
+        $d_appraisal_manager = D('AppraisalManager');
+        $where['status'] = 5;
+        $where['end_time'] = array('gt',time());
+        $appraisal_manager = $d_appraisal_manager->getAllAppraisalManager($where);
+        foreach($appraisal_manager as $key=>$val){
+            $havePoint = $this->havePoint(session('user_id'), $val['appraisal_manager_id']);
+            //如果状态为进行中(status = 1)，未过期，并且登陆用户在考核评分对象里面，则加入在线评分数组
+            if(in_array(session('user_id'),$val['examiner_userArr']) && sizeOf($havePoint) < sizeOf($val['examinee_userArr'])){
+                $val['not_appraisal_user_num'] = sizeOf($val['examinee_userArr']) - sizeOf($havePoint);
+                $appraisal_point[] = $val;
+            }
+        }
+        return $appraisal_point;
+    }
+
+    public function getAppraisalExaminerPoint(){
+        $appraisal_point = array();
+        $d_appraisal_manager = D('AppraisalManager');
+        $where['status'] = 3;
+        $where['end_time'] = array('gt',time());
+        $appraisal_manager = $d_appraisal_manager->getAllAppraisalManager($where);
+        foreach($appraisal_manager as $key=>$val){
+            $havePoint = $this->havePoint(session('user_id'), $val['appraisal_manager_id']);
+            //如果状态为进行中(status = 1)，未过期，并且登陆用户在考核评分对象里面，则加入在线评分数组
+            if(in_array(session('user_id'),$val['examiner_userArr']) && sizeOf($havePoint) < sizeOf($val['examinee_userArr'])){
+                $val['not_appraisal_user_num'] = sizeOf($val['examinee_userArr']) - sizeOf($havePoint);
+                $appraisal_point[] = $val;
+            }
+        }
+        return $appraisal_point;
+    }
+
+    public function getAppraisalExaminerPoint_1(){
+        $appraisal_point = array();
+        $d_appraisal_manager = D('AppraisalManager');
+        $where['status'] = 6;
+        $where['end_time'] = array('gt',time());
+        $appraisal_manager = $d_appraisal_manager->getAllAppraisalManager($where);
+        foreach($appraisal_manager as $key=>$val){
+            $havePoint = $this->havePoint(session('user_id'), $val['appraisal_manager_id']);
+            //如果状态为进行中(status = 1)，未过期，并且登陆用户在考核评分对象里面，则加入在线评分数组
+            if(in_array(session('user_id'),$val['examiner_userArr']) && sizeOf($havePoint) < sizeOf($val['examinee_userArr'])){
+                $val['not_appraisal_user_num'] = sizeOf($val['examinee_userArr']) - sizeOf($havePoint);
+                $appraisal_point[] = $val;
+            }
+        }
+        return $appraisal_point;
+    }
 	
 	/**
 	 * 评分
@@ -73,10 +124,14 @@ class AppraisalPointModel extends Model{
 		}
 		//状态
 		if(1 == $appraisal_manager['status']){
-			$appraisal_manager['status_name'] = '进行中';
-		}else{
+			$appraisal_manager['status_name'] = '被考核者评分中';
+		}elseif(2 == $appraisal_manager['status']){
 			$appraisal_manager['status_name'] = '已汇总';
-		}
+		}elseif(4 == $appraisal_manager['status']){
+            $appraisal_manager['status_name'] = '待汇总';
+        }else{
+            $appraisal_manager['status_name'] = '主管评分中';
+        }
 		return $appraisal_manager;
 	}
 	
@@ -145,4 +200,20 @@ class AppraisalPointModel extends Model{
 		$user_appraisal_list = $m_appraisal_avg_point->where(array('examinee_user_id'=>$examinee_user_id))->group('appraisal_manager_id')->getField('examinee_user_id,appraisal_manager_id, sum(avg_point) as sum_point');
 		return $user_appraisal_list;
 	}
+
+    public function getScoreByTemId($tem_id){
+        $m_appraisal_template_score = M('appraisalTemplateScore');
+        $score = $m_appraisal_template_score->where(Array('appraisal_template_id'=>$tem_id))->order('score_id')->select();
+        return $score;
+    }
+
+    public function getPointByThreeOptions($appraisal_manager_id, $score_id, $examiner_id){
+        $point_result = $this->where(Array('appraisal_manager_id'=>$appraisal_manager_id, 'score_id'=>$score_id, 'examiner_user_id'=>$examiner_id))->select();
+        return $point_result;
+    }
+
+    public function getPointByIdAndIsPoint($appraisal_manager_id, $is_point){
+        $point_result = $this->where(Array('appraisal_manager_id'=>$appraisal_manager_id, 'is_point'=>$is_point))->order('score_id asc')->select();
+        return $point_result;
+    }
 }

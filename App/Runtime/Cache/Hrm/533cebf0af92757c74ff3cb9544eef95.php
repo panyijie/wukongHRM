@@ -26,7 +26,7 @@
 		<div class="row-table-title">在线评分</div>
 		<div class="row-table-body">
 			<p class="form-title">在线评分</p>
-			<?php if(empty($appraisalpoint)): ?><div>---暂无数据---</div>
+			<?php if(empty($appraisalpoint) && empty(appraisalexaminerpoint)): ?><div>---暂无数据---</div>
 			<?php else: ?>
 			<form class="form-horizontal " id="form1"  method="post">
 				<table class="table" style="margin-bottom:0px;">
@@ -48,9 +48,55 @@
 							<td><?php echo ($vo["status_name"]); ?></td>
 							<td><?php echo ($vo["not_appraisal_user_num"]); ?></td>
 							<td>
-								<a href="<?php echo U('hrm/appraisalpoint/edit','id='.$vo['appraisal_manager_id']);?>" target="_blank">评分</a>
+								<a class="j_point-a" href="javascript:void(0)">评分</a>
+                                <input type="hidden" value="<?php echo U('hrm/appraisalpoint/edit','id='.$vo['appraisal_manager_id']);?>"/>
+                                <input type="hidden" value="<?php echo ($vo["session_user_name"]); ?>"/>
+                                <input type="hidden" value="<?php echo ($vo["examiner_user_name"]); ?>"/>
 							</td>
 						</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+                        <?php if(is_array($appraisalexaminerpoint)): $i = 0; $__LIST__ = $appraisalexaminerpoint;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+                                <td><a href="<?php echo U('hrm/appraisalmanager/view','id='.$vo['appraisal_manager_id']);?>" target="_blank"><?php echo ($vo["name"]); ?></a></td>
+                                <td><?php echo ($vo["template"]["category"]["name"]); ?></td>
+                                <td><?php echo (date('Y-m-d',$vo["start_time"])); ?></td>
+                                <td><?php echo (date('Y-m-d',$vo["end_time"])); ?></td>
+                                <td><?php echo ($vo["status_name"]); ?></td>
+                                <td><?php echo ($vo["not_appraisal_user_num"]); ?></td>
+                                <td>
+                                    <a class="j_point-a" href="javascript:void(0)">评分</a>
+                                    <input type="hidden" value="<?php echo U('hrm/appraisalpoint/edit','id='.$vo['appraisal_manager_id']);?>"/>
+                                    <input type="hidden" value="<?php echo ($vo["session_user_name"]); ?>"/>
+                                    <input type="hidden" value="<?php echo ($vo["examiner_user_name"]); ?>"/>
+                                </td>
+                            </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+                        <?php if(is_array($appraisalpoint_1)): $i = 0; $__LIST__ = $appraisalpoint_1;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+                                <td><a href="<?php echo U('hrm/appraisalmanager/view','id='.$vo['appraisal_manager_id']);?>" target="_blank"><?php echo ($vo["name"]); ?></a></td>
+                                <td><?php echo ($vo["template"]["category"]["name"]); ?></td>
+                                <td><?php echo (date('Y-m-d',$vo["start_time"])); ?></td>
+                                <td><?php echo (date('Y-m-d',$vo["end_time"])); ?></td>
+                                <td><?php echo ($vo["status_name"]); ?></td>
+                                <td><?php echo ($vo["not_appraisal_user_num"]); ?></td>
+                                <td>
+                                    <a class="j_point-a" href="javascript:void(0)">编辑</a>&nbsp;|&nbsp;
+                                    <a class="j_point-a" href="javascript:void(0)">确认</a>
+                                    <input type="hidden" value="<?php echo U('hrm/appraisalpoint/edit','id='.$vo['appraisal_manager_id']);?>"/>
+                                    <input type="hidden" value="<?php echo ($vo["session_user_name"]); ?>"/>
+                                    <input type="hidden" value="<?php echo ($vo["examiner_user_name"]); ?>"/>
+                                </td>
+                            </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+                        <?php if(is_array($appraisalexaminerpoint_1)): $i = 0; $__LIST__ = $appraisalexaminerpoint_1;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+                                <td><a href="<?php echo U('hrm/appraisalmanager/view','id='.$vo['appraisal_manager_id']);?>" target="_blank"><?php echo ($vo["name"]); ?></a></td>
+                                <td><?php echo ($vo["template"]["category"]["name"]); ?></td>
+                                <td><?php echo (date('Y-m-d',$vo["start_time"])); ?></td>
+                                <td><?php echo (date('Y-m-d',$vo["end_time"])); ?></td>
+                                <td><?php echo ($vo["status_name"]); ?></td>
+                                <td><?php echo ($vo["not_appraisal_user_num"]); ?></td>
+                                <td>
+                                    <a class="j_point-a" href="javascript:void(0)">评分</a>
+                                    <input type="hidden" value="<?php echo U('hrm/appraisalpoint/edit','id='.$vo['appraisal_manager_id']);?>"/>
+                                    <input type="hidden" value="<?php echo ($vo["session_user_name"]); ?>"/>
+                                    <input type="hidden" value="<?php echo ($vo["examiner_user_name"]); ?>"/>
+                                </td>
+                            </tr><?php endforeach; endif; else: echo "" ;endif; ?>
 					</tbody>
 					<tfoot>
 						<tr>
@@ -63,6 +109,16 @@
 	</div>
 </div>
 <div class="clear"></div>
+        <script type="text/javascript">
+            var pointA = $('.j_point-a');
+            pointA.click(function(){
+                if(pointA.next().next().val() == pointA.next().next().next().val().split(',')[1] && pointA.parent().prev().prev().html() == "被考核者评分中"){
+                    alert("被考核者评分中,请等候被考核者自评完毕后再进行评分");
+                }else{
+                    window.location.href = pointA.next().val();
+                }
+            });
+        </script>
 <div class="modal fade" id="alert" tabindex="-1" data-backdrop="static">
 	<div class="modal-dialog">
 		<div class="modal-content">

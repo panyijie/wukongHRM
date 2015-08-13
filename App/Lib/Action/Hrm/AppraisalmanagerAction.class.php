@@ -167,7 +167,7 @@ class AppraisalmanagerAction extends Action{
         $d_appraisal_manager = D('AppraisalManager');
         $appraisal_manager = $d_appraisal_manager->getAppraisalTem($appraisal_name);
         $m_score = M('appraisalTemplateScore');
-        $score = $m_score->where('appraisal_template_id = %d', $appraisal_manager['appraisal_template_id'])->select();
+        $score = $m_score->where('appraisal_template_id = %d', $appraisal_manager['appraisal_template_id'])->order('score_id')->select();
         $scoreArr = [];
         foreach($score as $scoreVal){
             array_push($scoreArr, $scoreVal[name]);
@@ -183,8 +183,42 @@ class AppraisalmanagerAction extends Action{
 		$appraisal_manager_id = intval($_GET['appraisal_manager_id']);
 		$d_appraisal_manager = D('AppraisalManager');
 		$d_appraisal_point = D('AppraisalPoint');
+        $appraisal_manager = $d_appraisal_manager->getAppraisalManId($appraisal_manager_id);
+        $appraisal_score = $d_appraisal_point->getScoreByTemId($appraisal_manager['appraisal_template_id']);
+        $d_userview = D('UserView');
+        $examinee_user = $d_userview->where(array('user_id'=>explode(',',$appraisal_manager['examiner_user_id'])[0]))->find();
+        $examiner_user = $d_userview->where(array('user_id'=>explode(',',$appraisal_manager['examiner_user_id'])[1]))->find();
+        $examiner_point = [];
+        foreach($appraisal_score as $key=>$val){
+            $appraisal_score[$key]['examineePoint'] = $d_appraisal_point->getPointByThreeOptions($appraisal_manager['appraisal_manager_id'], $val['score_id'], explode(',',$appraisal_manager['examiner_user_id'])[0]);
+            $appraisal_score[$key]['examinerPoint'] = $d_appraisal_point->getPointByThreeOptions($appraisal_manager['appraisal_manager_id'], $val['score_id'], explode(',',$appraisal_manager['examiner_user_id'])[1]);
+//            echo $appraisal_score[$key]['examinerPoint'][0]['kpi_detail'];
+//            echo $appraisal_score[$key]['examineePoint'][0]['kpi_detail'];
+            array_push($examiner_point, $appraisal_score[$key]['examinerPoint'][0]['point']);
+        }
+        $sum_point = 0;
+        for($i=0; $i<sizeof($examiner_point); $i++){
+            $sum_point += $examiner_point[$i];
+        }
+        $avg_user_point[] = array('appraisal_manager_id'=>$appraisal_manager['appraisal_manager_id'], 'avg_score'=>number_format($sum_point/sizeof($examiner_point),1));
+        if($d_appraisal_point->addAvgPoint($avg_user_point)){
+            $data['appraisal_manager_id'] = $appraisal_manager['appraisal_manager_id'];
+            $data['status'] = 2;
+            $d_appraisal_manager->editAppraisalManager($data);
+            $this->result_avg = number_format($sum_point/sizeof($examiner_point),1);
+            $this->examinee_user = $examinee_user;
+            $this->examiner_user = $examiner_user;
+            $this->appraisal_manager = $appraisal_manager;
+            $this->appraisal_score = $appraisal_score;
+            $this->display();
+        }else{
+            alert('error','汇总失败！', $_SERVER['HTTP_REFERER']);
+        }
 
-//		$appraisal_manager = $d_appraisal_manager->getAppraisalManagerById($appraisal_manager_id);
+//        foreach($appraisal_score as $key=>$val){
+//            echo $val['score_id'];
+//        }
+
 //		if(isset($_GET['user_key'])){
 //			$user_key = $_GET['user_key'];
 //			$examinee_user = $appraisal_manager['examinee_user'][$user_key];

@@ -64,14 +64,13 @@
 					考核内容
 				</p>
 				<div class="form-group">
-					<label for="insurance_type" class="col-sm-2 control-label">考核详细</label>
-					<div class="col-sm-9" id="itembox">
+					<div class="col-sm-12" id="itembox">
 						<table class="table table-bordered">
 							<tr>
-								<td>名称</td>
-								<td>标准分</td>
-								<td>评分范围</td>
-								<td>评分细则</td>
+								<td style="width: 150px">名称</td>
+								<td style="width: 70px">标准分</td>
+								<td style="width: 200px">评分范围</td>
+								<td>考核内容简介</td>
 								<td width="1%"><input style="margin-left: 15px" type="button" id="additem" class="btn btn-primary btn-xs" value="+" /></td>
 							</tr>
 						</table>
@@ -96,8 +95,8 @@
 	$(function(){
 		var num = 1;
 		$('#additem').click(function(){
-			var str = '<tr><td>';
-			str += '<input type="text" name="score_name['+num+']"/></td><td><input  type="text" name="standard_score['+num+']"/></td><td><input type="text" name="low_scope['+num+']" />&nbsp;至&nbsp;<input type="text" name="high_scope['+num+']" /></td><td><textarea name="score_description['+num+']" /></td><td width="1%"><input type="button"  style="margin-left: 15px" class="btn btn-primary btn-xs deleteitem" value="-" /></td></tr>';
+			var str = '<tr style="height: 50px"><td>';
+			str += '<input style="width: 100px; height: 30px" type="text" name="score_name['+num+']"/></td><td><input style="width: 50px; height: 30px;text-align:center" type="text" value="6" name="standard_score['+num+']"/></td><td><input style="width: 50px;  height: 30px;text-align:center" type="text" value="0"  name="low_scope['+num+']" />&nbsp;至&nbsp;<input style="width: 50px; height: 30px;text-align:center" type="text" value="10"  name="high_scope['+num+']" /></td><td><input style="width: 350px; height: 30px" name="score_description['+num+']" /></td><td width="1%"><input type="button"  style="margin-left: 15px" class="btn btn-primary btn-xs deleteitem" value="-" /></td></tr>';
 			$(this).parent().parent().parent().append(str);
 			num++;
 		});

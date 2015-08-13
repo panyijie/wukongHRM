@@ -1,41 +1,128 @@
-<div class="modal-dialog">
-	<div class="modal-content">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h4 class="modal-title" id="myModalLabel"><b>{$appraisalmanager.name}</b></h4>
-		</div>
-		<div class="modal-body form-horizontal">
-			<p class="form-title">汇总进度...</p>
-			<pre id="content"></pre>
-		</div>
-		<div class="modal-footer" style="display:none;">
-			<input type="button" class="btn btn-primary" id="close_summary" data-dismiss="modal" value="关闭" />
-		</div>
-	</div>
+<include file="Core:Public:header" />
+{:W('Navigation')}
+<style type="text/css">
+    .summary-title{
+        width: 100%;
+        height: 35px;
+        text-align: center;
+        margin: 20px 0 0 0;
+        font: 25px bolder;
+
+    }
+</style>
+<div class="body-right">
+    <div class="row-table">
+        <div class="row-table-title">绩效考核详情</div>
+        <div class="row-table-body form-horizontal">
+            <p class="form-title">
+                绩效考核详情&nbsp;&nbsp;
+                <a href="{:U('hrm/appraisalmanager/index')}">返回</a>&nbsp;&nbsp;
+            </p>
+            <div class="form-group">
+                <div class="summary-title">{$appraisal_manager.name}</div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3" style="text-align: center">
+                    考核责任人：{$examinee_user.name}
+                </div>
+                <div class="col-sm-3" style="text-align: center">
+                    考核主管：{$examiner_user.name}
+                </div>
+                <div class="col-sm-2" style="text-align: center">
+                    考核得分：{$result_avg}
+                </div>
+                <div class="col-sm-4" style="text-align: center">
+                    时间段：{$appraisal_manager.start_time|date='Y-m-d',###}&nbsp;~&nbsp;{$appraisal_manager.end_time|date='Y-m-d',###}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12" id="itembox">
+                    <table class="table table-bordered">
+                        <tr>
+                            <volist name="appraisal_score" id="score_name">
+                                <td width="33%" colspan="2">{$score_name.name}</td>
+                            </volist>
+                        </tr>
+                        <tr>
+                            <volist name="appraisal_score" id="score_description">
+                                <td colspan="2">{$score_description.description}</td>
+                            </volist>
+                        </tr>
+                        <tr class="j_kpi-detail">
+                            <volist name="appraisal_score" id="score_examinee_point">
+                                <td class="col-sm-1" style="vertical-align: middle">考评细则</td>
+                                <td>
+                                    <input type="hidden" value="{$score_examinee_point['examineePoint'][0].kpi_detail}"/>
+                                </td>
+                            </volist>
+                        </tr>
+                        <tr>
+                            <td colspan="2">自我评价</td>
+                            <td colspan="2">自我评价</td>
+                            <td colspan="2">自我评价</td>
+                        </tr>
+                        <tr>
+                            <volist name="appraisal_score" id="score_examinee_point">
+                                <td class="col-sm-1">评分</td>
+                                <td>{$score_examinee_point['examineePoint'][0].point}</td>
+                            </volist>
+                        </tr>
+                        <tr>
+                            <volist name="appraisal_score" id="score_examinee_point">
+                                <td class="col-sm-1">自我评价</td>
+                                <td>{$score_examinee_point['examineePoint'][0].comment}</td>
+                            </volist>
+                        </tr>
+                        <tr>
+                            <td colspan="2">主管评价</td>
+                            <td colspan="2">主管评价</td>
+                            <td colspan="2">主管评价</td>
+                        </tr>
+                        <tr>
+                            <volist name="appraisal_score" id="score_examiner_point">
+                                <td class="col-sm-1">评分</td>
+                                <td>{$score_examiner_point['examinerPoint'][0].point}</td>
+                            </volist>
+                        </tr>
+                        <tr>
+                            <volist name="appraisal_score" id="score_examiner_point">
+                                <td class="col-sm-1">主管评价</td>
+                                <td>{$score_examiner_point['examinerPoint'][0].comment}</td>
+                            </volist>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="clear"></div>
 <script type="text/javascript">
-	$(function(){
-		execute_summary(0);
-		$('#close_summary').click(function(){
-			location.href="{:U('hrm/appraisalmanager/index')}";
-		});
-	});
-	
-	function execute_summary(user_key){
-		$.get(
-			"{:U('hrm/appraisalmanager/summary', 'appraisal_manager_id='.$appraisalmanager['appraisal_manager_id'].'&user_key=')}"+user_key,
-			function(data){
-				if(data.status == 1){
-					str_content = '<span style="color:red;">'+data.tip+'</span> 已完成汇总，考核分数已生成...<br />';
-					$('#content').append(str_content);
-					user_key++;
-					execute_summary(user_key);
-				}else{
-					str_content = data.tip;
-					$('#content').append('<span style="color:red;">'+str_content+'</span>');
-					$('.modal-footer').show();
-				}
-			}
-		);
-	}
+    /**
+     * 得分详细
+     **/
+    $(".detail_results").click(function(){
+        var id = $(this).attr('rel');
+        var uid = $(this).attr('value');
+        $('#alert').modal({
+            show:true,
+            remote:"{:U('hrm/appraisalpoint/detailResults','id=')}"+id+'&uid='+uid
+        });
+    });
+
+    $(document).ready(function(){
+        var kpiDetail = $('.j_kpi-detail');
+        var childNum = kpiDetail.children().length;
+        for(var i=1; i<childNum; i=i+2){
+            var str = ":eq(" + i + ")";
+            var kpiArr = kpiDetail.children(str).children(":eq(0)").val().split("$$");
+            var kpiStr = "";
+            for(var j=0; j<kpiArr.length-1; j++){
+                kpiStr += "<p style='text-align: left'>" + (j+1) + "." + kpiArr[j] + "</p>";
+            }
+            kpiDetail.children(str).append(kpiStr);
+        }
+    });
 </script>
+<include file="Core:Public:alert" />
+<include file="Core:Public:footer" />

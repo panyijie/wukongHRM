@@ -47,26 +47,58 @@
 						</select>
 					</label>
 				</div>
+                <?php if('3' == $appraisalmanager['status']): ?><div class="form-group">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <?php if(is_array($appraisalmanager['template']['score'])): $i = 0; $__LIST__ = $appraisalmanager['template']['score'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><td colspan="2" width="33%"><?php echo ($vo["name"]); ?></td><?php endforeach; endif; else: echo "" ;endif; ?>
+                                </tr>
+                                <tr>
+                                    <?php if(is_array($appraisalmanager['template']['score'])): $i = 0; $__LIST__ = $appraisalmanager['template']['score'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><td class="col-sm-1" style="vertical-align: middle">测试项简介</td>
+                                        <td style="vertical-align: middle;text-align: left"><?php echo ($vo["description"]); ?></td><?php endforeach; endif; else: echo "" ;endif; ?>
+                                </tr>
+                                <tr>
+                                    <?php if(is_array($appraisalmanager['template']['score'])): $i = 0; $__LIST__ = $appraisalmanager['template']['score'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><td class="col-sm-1" style="vertical-align: middle">详细指标</td>
+                                        <td class="kpi-detail<?php echo ($vo["score_id"]); ?>" style="text-align: left; vertical-align: middle">
+                                            <input type="hidden" value="<?php echo ($vo["kpiDetail"]); ?>"/>
+                                        </td><?php endforeach; endif; else: echo "" ;endif; ?>
+                                </tr>
+                                <tr>
+                                    <?php if(is_array($pointdetail)): $i = 0; $__LIST__ = $pointdetail;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><td class="col-sm-1" style="vertical-align: middle">自评得分</td>
+                                        <td style="vertical-align: middle;"><?php echo ($vo["point"]); ?></td><?php endforeach; endif; else: echo "" ;endif; ?>
+                                </tr>
+                                <tr>
+                                    <?php if(is_array($pointdetail)): $i = 0; $__LIST__ = $pointdetail;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><td class="col-sm-1" style="vertical-align: middle">自评陈述</td>
+                                        <td style="vertical-align: middle;"><?php echo ($vo["comment"]); ?></td><?php endforeach; endif; else: echo "" ;endif; ?>
+                                </tr>
+                            </table>
+                        </div>
+                    </div><?php endif; ?>
 				<div class="form-group">
 					<div class="col-sm-12" id="itembox">
-						<table class="table table-bordered">
+						<table class="table table-bordered j_table">
 							<tr>
 								<td class="col-sm-1">考核内容</td>
-								<td class="col-sm-2">评分细则</td>
-                                <td class="col-sm-2">详细目标</td>
+								<td class="col-sm-2">考核简介</td>
+                                <td class="col-sm-2">考核细则</td>
 								<td class="col-sm-1">标准分</td>
 								<td class="col-sm-1">评分范围</td>
 								<td class="col-sm-1">得分</td>
 								<td class="col-sm-2">评语</td>
 							</tr>
 							<?php if(is_array($appraisalmanager['template']['score'])): $i = 0; $__LIST__ = $appraisalmanager['template']['score'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-								<td style="vertical-align: middle"><?php echo ($vo["name"]); ?></td>
-								<td><?php echo ($vo["description"]); ?></td>
-                                <td><?php echo ($vo["kpiDetail"]); ?></td>
+								<td style="vertical-align: middle">
+                                    <?php echo ($vo["name"]); ?>
+                                    <input class="j_score-id" value="<?php echo ($vo["score_id"]); ?>" type="hidden"/>
+                                </td>
+								<td style="vertical-align: middle"><?php echo ($vo["description"]); ?></td>
+                                <td class="kpi-detail<?php echo ($vo["score_id"]); ?>" style="text-align: left; vertical-align: middle">
+                                    <input type="hidden" value="<?php echo ($vo["kpiDetail"]); ?>"/>
+                                </td>
 								<td style="vertical-align: middle"><?php echo ($vo["standard_score"]); ?></td>
 								<td style="vertical-align: middle"><?php echo ($vo["low_scope"]); ?>&nbsp;至&nbsp;<?php echo ($vo["high_scope"]); ?></td>
 								<td style="vertical-align: middle"><input type="text" name="point[<?php echo ($vo["score_id"]); ?>]" class="form-control" /></td>
-								<td><textarea cols="25" style="min-height: 250px; margin: 0px 0px 10px 15px" class="form-control" name="comment[<?php echo ($vo["score_id"]); ?>]"></textarea></td>
+								<td><textarea cols="25" style="height: 300px; margin: 0px 0px 10px 15px" class="form-control" name="comment[<?php echo ($vo["score_id"]); ?>]"></textarea></td>
 							</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 						</table>
 					</div>
@@ -76,12 +108,26 @@
 	</div>
 </div>
 <div class="clear"></div>
-<script type="">
+<script type="text/javascript">
 	function close_page(){
 		if(confirm('确定要关闭页面，退出本次打分吗？')){
 			window.close();
 		}
 	}
+
+    $(document).ready(function(){
+        var scoreId = parseInt($(".j_score-id").val());
+        var trNum = ($(".j_table").children().children().length-2) + scoreId;
+        for(var i=scoreId; i<=trNum; i++){
+            var kpiClass = ".kpi-detail" + i;
+            var kpiDetailArr = $(kpiClass).children(":eq(0)").val().split("$$");
+            var kpiDetail = "";
+            for(var j=0; j<kpiDetailArr.length-1; j++){
+                kpiDetail += "<p>" + (j+1) + "." + kpiDetailArr[j] + "</p>";
+            }
+            $(kpiClass).append(kpiDetail);
+        }
+    });
 </script>
 <div class="modal fade" id="alert" tabindex="-1" data-backdrop="static">
 	<div class="modal-dialog">
