@@ -60,7 +60,7 @@
                 <div class="col-sm-12" id="itembox">
                     <table class="table table-bordered">
                         <tr>
-                            <?php if(is_array($appraisal_score)): $i = 0; $__LIST__ = $appraisal_score;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$score_name): $mod = ($i % 2 );++$i;?><td width="33%" colspan="2"><?php echo ($score_name["name"]); ?></td><?php endforeach; endif; else: echo "" ;endif; ?>
+                            <?php if(is_array($appraisal_score)): $i = 0; $__LIST__ = $appraisal_score;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$score_name): $mod = ($i % 2 );++$i;?><td width="33%" colspan="2" style="background-color: #cccccc;color: #000000;"><?php echo ($score_name["name"]); ?></td><?php endforeach; endif; else: echo "" ;endif; ?>
                         </tr>
                         <tr>
                             <?php if(is_array($appraisal_score)): $i = 0; $__LIST__ = $appraisal_score;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$score_description): $mod = ($i % 2 );++$i;?><td colspan="2"><?php echo ($score_description["description"]); ?></td><?php endforeach; endif; else: echo "" ;endif; ?>
@@ -72,9 +72,9 @@
                                 </td><?php endforeach; endif; else: echo "" ;endif; ?>
                         </tr>
                         <tr>
-                            <td colspan="2">自我评价</td>
-                            <td colspan="2">自我评价</td>
-                            <td colspan="2">自我评价</td>
+                            <td colspan="2" style="background-color: #cccccc;">自我评价</td>
+                            <td colspan="2" style="background-color: #cccccc;">自我评价</td>
+                            <td colspan="2" style="background-color: #cccccc;">自我评价</td>
                         </tr>
                         <tr>
                             <?php if(is_array($appraisal_score)): $i = 0; $__LIST__ = $appraisal_score;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$score_examinee_point): $mod = ($i % 2 );++$i;?><td class="col-sm-1">评分</td>
@@ -85,9 +85,9 @@
                                 <td><?php echo ($score_examinee_point['examineePoint'][0]["comment"]); ?></td><?php endforeach; endif; else: echo "" ;endif; ?>
                         </tr>
                         <tr>
-                            <td colspan="2">主管评价</td>
-                            <td colspan="2">主管评价</td>
-                            <td colspan="2">主管评价</td>
+                            <td colspan="2" style="background-color: #cccccc;">主管评价</td>
+                            <td colspan="2" style="background-color: #cccccc;">主管评价</td>
+                            <td colspan="2" style="background-color: #cccccc;">主管评价</td>
                         </tr>
                         <tr>
                             <?php if(is_array($appraisal_score)): $i = 0; $__LIST__ = $appraisal_score;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$score_examiner_point): $mod = ($i % 2 );++$i;?><td class="col-sm-1">评分</td>
@@ -126,6 +126,7 @@
             var kpiStr = "";
             for(var j=0; j<kpiArr.length-1; j++){
                 kpiStr += "<p style='text-align: left'>" + (j+1) + "." + kpiArr[j] + "</p>";
+                kpiStr += "<p style='color: red; margin-top: -9px;'>(考核标准:" + kpiArr[j].split("^^")[1] + ")</p>";
             }
             kpiDetail.children(str).append(kpiStr);
         }

@@ -16,8 +16,11 @@ class AppraisalManagerModel extends Model{
         $d_user  = D('User');
         $m_appraisal_point = M('appraisalPoint');
         $d_appraisal_template = D('AppraisalTemplate');
-        empty($where) ? $where = array() : $where = $where;
-        $appraisal_manager_list = $this->where($where)->order('appraisal_manager_id desc')->page($p.',15')->select();
+        $examinee_user_id = session('user_id').',';
+        $appraisal_condition['executor_id'] = session('user_id');
+        $appraisal_condition['examinee_user_id'] = $examinee_user_id;
+        $appraisal_condition['_logic'] = 'OR';
+        $appraisal_manager_list = $this->where($appraisal_condition)->order('appraisal_manager_id desc')->page($p.',15')->select();
         foreach($appraisal_manager_list as $key=>$val){
             //考核模板
             $template = $d_appraisal_template->getAppraisalTemplateById($val['appraisal_template_id']);

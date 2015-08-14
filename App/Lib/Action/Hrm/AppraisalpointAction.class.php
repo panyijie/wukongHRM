@@ -37,11 +37,6 @@ class AppraisalpointAction extends Action{
 			$d_appraisal_manager = D('AppraisalManager');
 			$d_appraisal_point = D('AppraisalPoint');
 
-//            $temp_appraisal_manager = $d_appraisal_manager->getAppraisalManId($appraisal_manager_id);
-//            if(session('user_id') == explode(',',$temp_appraisal_manager('examiner_user_id')[1])){
-//
-//            }
-
 			if($this->isPost()){
 				$appraisal_manager = $d_appraisal_manager->getAppraisalManagerById($appraisal_manager_id);
 				foreach($appraisal_manager['template']['score'] as $val){
@@ -68,7 +63,7 @@ class AppraisalpointAction extends Action{
                         $data['status'] = 6;
                         $d_appraisal_manager->editAppraisalManager($data);
                     }
-                    alert('success', '本次评分结束，感谢！', U('hrm/appraisalpoint/index'));
+                    alert('success', '评分结束，待确认后提交主管评价！', U('hrm/appraisalpoint/index'));
 				}else{
 					alert('error', '评分失败！', $_SERVER['HTTP_REFERER']);
 				}
@@ -147,6 +142,74 @@ class AppraisalpointAction extends Action{
         $this->examiner_user = $examiner_user;
         $this->appraisal_manager = $appraisal_manager;
         $this->appraisal_score = $appraisal_score;
+        $this->display();
+    }
+
+    public function confirm(){
+        $appraisal_manager_id = intval($_GET['id']);
+        $d_appraisal_manager = D('AppraisalManager');
+        $d_appraisal_point = D('AppraisalPoint');
+        $temp_appraisal_manager = $d_appraisal_manager->getAppraisalManId($appraisal_manager_id);
+        if($temp_appraisal_manager['status'] == 5){
+            //修改考核状态为主管评分状态
+            $data['appraisal_manager_id'] = $appraisal_manager_id;
+            $data['status'] = 3;
+            $d_appraisal_manager->editAppraisalManager($data);
+            //修改对应的is_point为已评分状态
+            $temp['is_point'] = 1;
+            $temp['examiner_user_id'] = session('user_id');
+            $temp['appraisal_manager_id'] = $appraisal_manager_id;
+            $d_appraisal_point->where(array('examiner_user_id'=>$temp['examiner_user_id'], 'appraisal_manager_id'=>$temp['appraisal_manager_id']))->save($temp);
+            alert('success', '确认成功！', U('hrm/appraisalmanager/index'));
+        }elseif($temp_appraisal_manager['status'] == 6){
+            $data['appraisal_manager_id'] = $appraisal_manager_id;
+            $data['status'] = 4;
+            $d_appraisal_manager->editAppraisalManager($data);
+            //修改对应的is_point为已评分状态
+            $temp['is_point'] = 1;
+            $temp['appraisal_manager_id'] = $appraisal_manager_id;
+            $d_appraisal_point->where(array('appraisal_manager_id'=>$temp['appraisal_manager_id']))->save($temp);
+            alert('success', '确认成功，进入待汇总状态！', U('hrm/appraisalmanager/index'));
+        }
+    }
+
+    public function editPoint(){
+        $appraisal_manager_id = $_REQUEST['id'];
+        if(!empty($appraisal_manager_id)){
+            $d_appraisal_manager = D('AppraisalManager');
+            $d_appraisal_point = D('AppraisalPoint');
+
+            if($this->isPost()){
+                $appraisal_manager = $d_appraisal_manager->getAppraisalManagerById($appraisal_manager_id);
+                foreach($appraisal_manager['template']['score'] as $val){
+                    $temp['appraisal_manager_id'] = $appraisal_manager_id;
+                    $temp['point'] = $_POST['point'][$val['score_id']];
+                    $temp['comment'] = $_POST['comment'][$val['score_id']];
+                    $temp['examinee_user_id'] = $_POST['examinee_user_id'];
+                    $temp['examiner_user_id'] = session('user_id');
+                    $temp['score_id'] = $val['score_id'];
+                    $temp['is_point'] = 0;
+                    if(!is_numeric($temp['point']) || $temp['point'] > $val['high_scope']){
+                        alert('error', "【 ".$val['name']." 】".'份数格式不正确！', $_SERVER['HTTP_REFERER']);
+                    }
+                    $d_appraisal_point->where(array('examiner_user_id'=>$temp['examiner_user_id'], 'appraisal_manager_id'=>$temp['appraisal_manager_id'], 'score_id'=>$temp['score_id']))->save($temp);
+                }
+                alert('success', '编辑成功！', U('hrm/appraisalpoint/index'));
+            }else{
+                $appraisal_manager = $d_appraisal_manager->getAppraisalManagerById($appraisal_manager_id);
+                $have_point_user = $d_appraisal_point->havePoint(session('user_id'), $appraisal_manager_id);
+                if(sizeOf($have_point_user) == sizeOf($appraisal_manager['examinee_user'])){
+                    alert('error', '您已为该考核表打过分！', U('hrm/appraisalpoint/index'));
+                }
+                $point_detail = $d_appraisal_point->getPointByIdAndIsPoint($appraisal_manager_id, 1);
+                $this->pointdetail = $point_detail;
+                $this->have_point_user = $have_point_user;
+                $this->appraisalmanager = $appraisal_manager;
+            }
+        }else{
+            alert('error', '参数错误！', U('hrm/appraisalpoint/index'));
+        }
+        $this->alert = parseAlert();
         $this->display();
     }
 }

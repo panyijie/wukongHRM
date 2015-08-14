@@ -65,9 +65,11 @@
                         <tr>
                             <?php if(is_array($appraisal_score)): $i = 0; $__LIST__ = $appraisal_score;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$score_description): $mod = ($i % 2 );++$i;?><td colspan="2"><?php echo ($score_description["description"]); ?></td><?php endforeach; endif; else: echo "" ;endif; ?>
                         </tr>
-                        <tr>
+                        <tr class="j_kpi-detail">
                             <?php if(is_array($appraisal_score)): $i = 0; $__LIST__ = $appraisal_score;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$score_examinee_point): $mod = ($i % 2 );++$i;?><td class="col-sm-1" style="vertical-align: middle">考评细则</td>
-                                <td><?php echo ($score_examinee_point['examineePoint'][0]["kpi_detail"]); ?></td><?php endforeach; endif; else: echo "" ;endif; ?>
+                                <td>
+                                    <input type="hidden" value="<?php echo ($score_examinee_point['examineePoint'][0]["kpi_detail"]); ?>"/>
+                                </td><?php endforeach; endif; else: echo "" ;endif; ?>
                         </tr>
                         <tr>
                             <td colspan="2">自我评价</td>
@@ -79,6 +81,10 @@
                                 <td><?php echo ($score_examinee_point['examineePoint'][0]["point"]); ?></td><?php endforeach; endif; else: echo "" ;endif; ?>
                         </tr>
                         <tr>
+                            <?php if(is_array($appraisal_score)): $i = 0; $__LIST__ = $appraisal_score;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$score_examinee_point): $mod = ($i % 2 );++$i;?><td class="col-sm-1">自我评价</td>
+                                <td><?php echo ($score_examinee_point['examineePoint'][0]["comment"]); ?></td><?php endforeach; endif; else: echo "" ;endif; ?>
+                        </tr>
+                        <tr>
                             <td colspan="2">主管评价</td>
                             <td colspan="2">主管评价</td>
                             <td colspan="2">主管评价</td>
@@ -88,10 +94,9 @@
                                 <td><?php echo ($score_examiner_point['examinerPoint'][0]["point"]); ?></td><?php endforeach; endif; else: echo "" ;endif; ?>
                         </tr>
                         <tr>
-                            <?php if(is_array($appraisal_score)): $i = 0; $__LIST__ = $appraisal_score;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$score_examiner_point): $mod = ($i % 2 );++$i;?><td class="col-sm-1" style="vertical-align: middle">总结陈述</td>
-                                <td><?php echo ($score_examiner_point['examinerPoint'][0]["kpi_detail"]); ?></td><?php endforeach; endif; else: echo "" ;endif; ?>
+                            <?php if(is_array($appraisal_score)): $i = 0; $__LIST__ = $appraisal_score;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$score_examiner_point): $mod = ($i % 2 );++$i;?><td class="col-sm-1">主管评价</td>
+                                <td><?php echo ($score_examiner_point['examinerPoint'][0]["comment"]); ?></td><?php endforeach; endif; else: echo "" ;endif; ?>
                         </tr>
-
                     </table>
                 </div>
             </div>
@@ -110,6 +115,20 @@
             show:true,
             remote:"<?php echo U('hrm/appraisalpoint/detailResults','id=');?>"+id+'&uid='+uid
         });
+    });
+
+    $(document).ready(function(){
+        var kpiDetail = $('.j_kpi-detail');
+        var childNum = kpiDetail.children().length;
+        for(var i=1; i<childNum; i=i+2){
+            var str = ":eq(" + i + ")";
+            var kpiArr = kpiDetail.children(str).children(":eq(0)").val().split("$$");
+            var kpiStr = "";
+            for(var j=0; j<kpiArr.length-1; j++){
+                kpiStr += "<p style='text-align: left'>" + (j+1) + "." + kpiArr[j] + "</p>";
+            }
+            kpiDetail.children(str).append(kpiStr);
+        }
     });
 </script>
 <div class="modal fade" id="alert" tabindex="-1" data-backdrop="static">

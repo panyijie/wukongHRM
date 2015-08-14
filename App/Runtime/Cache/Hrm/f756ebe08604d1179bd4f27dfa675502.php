@@ -52,10 +52,10 @@
 							<td><?php echo ($vo["not_examin_examiner_num"]); ?>&nbsp;/&nbsp;<?php echo ($vo["total_examiner_num"]); ?></td>
 							<td><?php echo ($vo["status_name"]); ?></td>
 							<td>
-								<?php if('4' == $vo['status']): ?><a href="<?php echo U('hrm/appraisalmanager/summary','appraisal_manager_id='.$vo['appraisal_manager_id']);?>" class="status_summary" title="汇总" rel="<?php echo ($vo['appraisal_manager_id']); ?>">汇总</a>&nbsp;|&nbsp;
+								<?php if('4' == $vo['status']): ?><a href="<?php echo U('hrm/appraisalmanager/summary','appraisal_manager_id='.$vo['appraisal_manager_id']);?>" class="status_summary" title="汇总" rel="<?php echo ($vo['appraisal_manager_id']); ?>">汇总</a><!--&nbsp;|&nbsp;-->
 								<?php elseif('2' == $vo['status']): ?>
-									<a href="javascript:void(0);" class="status_reset" title="查看" rel="<?php echo ($vo['appraisal_manager_id']); ?>">查看</a>&nbsp;|&nbsp;<?php endif; ?>
-                                <a href="<?php echo U('hrm/appraisalmanager/delete','id='.$vo['appraisal_manager_id']);?>">删除</a>
+									<a href="javascript:void(0);" class="status_reset" title="查看" rel="<?php echo ($vo['appraisal_manager_id']); ?>">查看</a><!--&nbsp;|&nbsp;--><?php endif; ?>
+                                <!--<a href="<?php echo U('hrm/appraisalmanager/delete','id='.$vo['appraisal_manager_id']);?>">删除</a>-->
 							</td>
 						</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 					</tbody>

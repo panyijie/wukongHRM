@@ -1,0 +1,164 @@
+<include file="Core:Public:header" />
+{:W('Navigation')}
+<div class="body-right">
+    <div class="row-table">
+        <div class="row-table-title">绩效考核评分</div>
+        <div class="row-table-body form-horizontal">
+            <form method="post" action="{:U('hrm/appraisalpoint/editPoint')}">
+                <input type="hidden" name="id" value="{$appraisalmanager.appraisal_manager_id}" />
+                <p class="form-title">
+                    绩效考核评分&nbsp;&nbsp;
+                    <a href="javascript:void(0);" onclick="close_page()">退出</a>
+                    <input type="submit" style="margin-top: 7px" class="pull-right btn btn-primary btn-xs" value="提交">
+                </p>
+                <!-- CSS用了内嵌样式，待修改 -->
+                <div class="form-group">
+                    <div class="col-sm-12" style="text-align:center;font-size: 20px;margin-top: 15px;"><b>{$appraisalmanager.name}</b></div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="col-sm-3 control-label">启动时间：{$appraisalmanager.start_time|date='Y-m-d',###}</label>
+                    <label for="name" class="col-sm-3 control-label">截止时间：{$appraisalmanager.end_time|date='Y-m-d',###}</label>
+                    <label for="name" class="col-sm-2 control-label">类型：{$appraisalmanager.template.category.name}</label>
+                    <label for="name" class="col-sm-3 control-label">
+                        考核对象：
+                        <select name="examinee_user_id">
+                            <volist name="appraisalmanager['examinee_user']" id="vo">
+                                <if condition="!in_array($vo['user_id'], $have_point_user)">
+                                    <option value="{$vo['user_id']}">{$vo.name}</option>
+                                </if>
+                            </volist>
+                        </select>
+                    </label>
+                </div>
+                <if condition="'6' eq $appraisalmanager['status']">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <volist name="appraisalmanager['template']['score']" id="vo">
+                                        <td colspan="2" width="33%">{$vo.name}</td>
+                                        <input class="j_score-id" value="{$vo.score_id}" type="hidden"/>
+                                    </volist>
+                                </tr>
+                                <tr>
+                                    <volist name="appraisalmanager['template']['score']" id="vo">
+                                        <td class="col-sm-1" style="vertical-align: middle">测试项简介</td>
+                                        <td style="vertical-align: middle;text-align: left">{$vo.description}</td>
+                                    </volist>
+                                </tr>
+                                <tr class="j_tr-control">
+                                    <volist name="appraisalmanager['template']['score']" id="vo">
+                                        <td class="col-sm-1" style="vertical-align: middle">详细指标</td>
+                                        <td class="kpi-detail{$vo.score_id}" style="text-align: left; vertical-align: middle">
+                                            <input type="hidden" value="{$vo.kpiDetail}"/>
+                                        </td>
+                                    </volist>
+                                </tr>
+                                <tr>
+                                    <volist name="pointdetail" id="vo">
+                                        <td class="col-sm-1" style="vertical-align: middle">自评得分</td>
+                                        <td style="vertical-align: middle;">{$vo.point}</td>
+                                    </volist>
+                                </tr>
+                                <tr>
+                                    <volist name="pointdetail" id="vo">
+                                        <td class="col-sm-1" style="vertical-align: middle">自评陈述</td>
+                                        <td style="vertical-align: middle;">{$vo.comment}</td>
+                                    </volist>
+                                </tr>
+                                <tr>
+                                    <volist name="appraisalmanager['template']['score']" id="vo">
+                                        <td class="col-sm-1" style="vertical-align: middle">主管评分</td>
+                                        <td style="vertical-align: middle;"><input type="text" value="{$vo.point}" name="point[{$vo.score_id}]" style="width: 100px; height: 30px; margin-bottom: 8px;"  class="form-control" /></td>
+                                    </volist>
+                                </tr>
+                                <tr>
+                                    <volist name="pointdetail" id="vo">
+                                        <td class="col-sm-1" style="vertical-align: middle">主管评述</td>
+                                        <td style="vertical-align: middle;">
+                                            <textarea cols="25" style="height: 300px; margin: 0px 0px 10px 15px" class="form-control" name="comment[{$vo.score_id}]">{$vo.comment}</textarea>
+                                        </td>
+                                    </volist>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                <else />
+                <div class="form-group">
+                    <div class="col-sm-12" id="itembox">
+                        <table class="table table-bordered j_table">
+                            <tr>
+                                <td class="col-sm-1">考核内容</td>
+                                <td class="col-sm-1">考核简介</td>
+                                <td class="col-sm-2">考核细则</td>
+                                <td class="col-sm-1">标准分</td>
+                                <td class="col-sm-1">评分范围</td>
+                                <td class="col-sm-1">得分</td>
+                                <td class="col-sm-2">评语</td>
+                            </tr>
+                            <volist name="appraisalmanager['template']['score']" id="vo">
+                                <tr>
+                                    <td style="vertical-align: middle">
+                                        {$vo.name}
+                                        <input class="j_score-id" value="{$vo.score_id}" type="hidden"/>
+                                    </td>
+                                    <td style="vertical-align: middle">{$vo.description}</td>
+                                    <td class="kpi-detail{$vo.score_id}" style="text-align: left; vertical-align: middle">
+                                        <input type="hidden" value="{$vo.kpiDetail}"/>
+                                    </td>
+                                    <td style="vertical-align: middle">{$vo.standard_score}</td>
+                                    <td style="vertical-align: middle">{$vo.low_scope}&nbsp;至&nbsp;{$vo.high_scope}</td>
+                                    <td style="vertical-align: middle"><input type="text" value="{$vo.point}" name="point[{$vo.score_id}]" class="form-control" /></td>
+                                    <td style="vertical-align: middle">
+                                        <textarea cols="25" style="height: 300px; margin: 0px 0px 10px 15px" class="form-control" name="comment[{$vo.score_id}]">{$vo.comment}</textarea>
+                                    </td>
+                                </tr>
+                            </volist>
+                        </table>
+                    </div>
+                </div>
+                </if>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<script type="text/javascript">
+    function close_page(){
+        if(confirm('确定要关闭页面，退出本次打分吗？')){
+            window.close();
+        }
+    }
+
+    $(document).ready(function(){
+        var scoreId = parseInt($(".j_score-id").val());
+        var trNum = ($(".j_table").children().children().length-2) + scoreId;
+        for(var i=scoreId; i<=trNum; i++){
+            var kpiClass = ".kpi-detail" + i;
+            var kpiDetailArr = $(kpiClass).children(":eq(0)").val().split("$$");
+            var kpiDetail = "";
+            for(var j=0; j<kpiDetailArr.length-1; j++){
+                kpiDetail += "<p>" + (j+1) + "." + kpiDetailArr[j].split("^^")[0] + "</p>";
+                kpiDetail += "<p style='color: red; margin-top: -9px;'>(考核标准:" + kpiDetailArr[j].split("^^")[1] + ")</p>";
+            }
+            $(kpiClass).append(kpiDetail);
+        }
+
+        var tr = $('.j_tr-control');
+        var tdNum = tr.children().length/2;
+        for(var k=scoreId; k<scoreId+tdNum; k++){
+            var strClass = ".kpi-detail" + k;
+            var kpiDetailArr = $(strClass).children(":eq(0)").val().split("$$");
+            var kpiDetail = "";
+            for(var l=0; l<kpiDetailArr.length-1; l++){
+                kpiDetail += "<p>" + (l+1) + "." + kpiDetailArr[l].split("^^")[0] + "</p>";
+                kpiDetail += "<p style='color: red; margin-top: -9px;'>(考核标准:" + kpiDetailArr[l].split("^^")[1] + ")</p>";
+            }
+            $(strClass).append(kpiDetail);
+        }
+    });
+
+
+</script>
+<include file="Core:Public:alert" />
+<include file="Core:Public:footer" />

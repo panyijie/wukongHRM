@@ -22,32 +22,32 @@
 	<body>
 <?php echo W('Navigation');?>
 <div class="body-right">
-	<div class="row-table">
-		<div class="row-table-title">绩效考核评分</div>
-		<div class="row-table-body form-horizontal">
-			<form method="post" action="<?php echo U('hrm/appraisalpoint/edit');?>">
-				<input type="hidden" name="id" value="<?php echo ($appraisalmanager["appraisal_manager_id"]); ?>" />
-				<p class="form-title">
-					绩效考核评分&nbsp;&nbsp;
-					<a href="javascript:void(0);" onclick="close_page()">退出</a>
-					<input type="submit" style="margin-top: 7px" class="pull-right btn btn-primary btn-xs" value="提交">
-				</p>
-				<!-- CSS用了内嵌样式，待修改 -->
-				<div class="form-group">
-					<div class="col-sm-12" style="text-align:center;font-size: 20px;margin-top: 15px;"><b><?php echo ($appraisalmanager["name"]); ?></b></div>
-				</div>
-				<div class="form-group">
-					<label for="name" class="col-sm-3 control-label">启动时间：<?php echo (date('Y-m-d',$appraisalmanager["start_time"])); ?></label>
-					<label for="name" class="col-sm-3 control-label">截止时间：<?php echo (date('Y-m-d',$appraisalmanager["end_time"])); ?></label>
-					<label for="name" class="col-sm-2 control-label">类型：<?php echo ($appraisalmanager["template"]["category"]["name"]); ?></label>
-					<label for="name" class="col-sm-3 control-label">
-						考核对象：
-						<select name="examinee_user_id">
-							<?php if(is_array($appraisalmanager['examinee_user'])): $i = 0; $__LIST__ = $appraisalmanager['examinee_user'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if(!in_array($vo['user_id'], $have_point_user)): ?><option value="<?php echo ($vo['user_id']); ?>"><?php echo ($vo["name"]); ?></option><?php endif; endforeach; endif; else: echo "" ;endif; ?>
-						</select>
-					</label>
-				</div>
-                <?php if('3' == $appraisalmanager['status']): ?><div class="form-group">
+    <div class="row-table">
+        <div class="row-table-title">绩效考核评分</div>
+        <div class="row-table-body form-horizontal">
+            <form method="post" action="<?php echo U('hrm/appraisalpoint/editPoint');?>">
+                <input type="hidden" name="id" value="<?php echo ($appraisalmanager["appraisal_manager_id"]); ?>" />
+                <p class="form-title">
+                    绩效考核评分&nbsp;&nbsp;
+                    <a href="javascript:void(0);" onclick="close_page()">退出</a>
+                    <input type="submit" style="margin-top: 7px" class="pull-right btn btn-primary btn-xs" value="提交">
+                </p>
+                <!-- CSS用了内嵌样式，待修改 -->
+                <div class="form-group">
+                    <div class="col-sm-12" style="text-align:center;font-size: 20px;margin-top: 15px;"><b><?php echo ($appraisalmanager["name"]); ?></b></div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="col-sm-3 control-label">启动时间：<?php echo (date('Y-m-d',$appraisalmanager["start_time"])); ?></label>
+                    <label for="name" class="col-sm-3 control-label">截止时间：<?php echo (date('Y-m-d',$appraisalmanager["end_time"])); ?></label>
+                    <label for="name" class="col-sm-2 control-label">类型：<?php echo ($appraisalmanager["template"]["category"]["name"]); ?></label>
+                    <label for="name" class="col-sm-3 control-label">
+                        考核对象：
+                        <select name="examinee_user_id">
+                            <?php if(is_array($appraisalmanager['examinee_user'])): $i = 0; $__LIST__ = $appraisalmanager['examinee_user'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if(!in_array($vo['user_id'], $have_point_user)): ?><option value="<?php echo ($vo['user_id']); ?>"><?php echo ($vo["name"]); ?></option><?php endif; endforeach; endif; else: echo "" ;endif; ?>
+                        </select>
+                    </label>
+                </div>
+                <?php if('6' == $appraisalmanager['status']): ?><div class="form-group">
                         <div class="col-sm-12">
                             <table class="table table-bordered">
                                 <tr>
@@ -74,58 +74,60 @@
                                 </tr>
                                 <tr>
                                     <?php if(is_array($appraisalmanager['template']['score'])): $i = 0; $__LIST__ = $appraisalmanager['template']['score'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><td class="col-sm-1" style="vertical-align: middle">主管评分</td>
-                                        <td style="vertical-align: middle;"><input type="text" name="point[<?php echo ($vo["score_id"]); ?>]" style="width: 100px; height: 30px; margin-bottom: 8px;" /></td><?php endforeach; endif; else: echo "" ;endif; ?>
+                                        <td style="vertical-align: middle;"><input type="text" value="<?php echo ($vo["point"]); ?>" name="point[<?php echo ($vo["score_id"]); ?>]" style="width: 100px; height: 30px; margin-bottom: 8px;"  class="form-control" /></td><?php endforeach; endif; else: echo "" ;endif; ?>
                                 </tr>
                                 <tr>
                                     <?php if(is_array($pointdetail)): $i = 0; $__LIST__ = $pointdetail;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><td class="col-sm-1" style="vertical-align: middle">主管评述</td>
                                         <td style="vertical-align: middle;">
-                                            <textarea cols="25" style="height: 300px; margin: 0px 0px 10px 15px" class="form-control" name="comment[<?php echo ($vo["score_id"]); ?>]"></textarea>
+                                            <textarea cols="25" style="height: 300px; margin: 0px 0px 10px 15px" class="form-control" name="comment[<?php echo ($vo["score_id"]); ?>]"><?php echo ($vo["comment"]); ?></textarea>
                                         </td><?php endforeach; endif; else: echo "" ;endif; ?>
                                 </tr>
                             </table>
                         </div>
                     </div>
                 <?php else: ?>
-				<div class="form-group">
-					<div class="col-sm-12" id="itembox">
-						<table class="table table-bordered j_table">
-							<tr>
-								<td class="col-sm-1">考核内容</td>
-								<td class="col-sm-1">考核简介</td>
+                <div class="form-group">
+                    <div class="col-sm-12" id="itembox">
+                        <table class="table table-bordered j_table">
+                            <tr>
+                                <td class="col-sm-1">考核内容</td>
+                                <td class="col-sm-1">考核简介</td>
                                 <td class="col-sm-2">考核细则</td>
-								<td class="col-sm-1">标准分</td>
-								<td class="col-sm-1">评分范围</td>
-								<td class="col-sm-1">得分</td>
-								<td class="col-sm-2">评语</td>
-							</tr>
-							<?php if(is_array($appraisalmanager['template']['score'])): $i = 0; $__LIST__ = $appraisalmanager['template']['score'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-								<td style="vertical-align: middle">
-                                    <?php echo ($vo["name"]); ?>
-                                    <input class="j_score-id" value="<?php echo ($vo["score_id"]); ?>" type="hidden"/>
-                                </td>
-								<td style="vertical-align: middle"><?php echo ($vo["description"]); ?></td>
-                                <td class="kpi-detail<?php echo ($vo["score_id"]); ?>" style="text-align: left; vertical-align: middle">
-                                    <input type="hidden" value="<?php echo ($vo["kpiDetail"]); ?>"/>
-                                </td>
-								<td style="vertical-align: middle"><?php echo ($vo["standard_score"]); ?></td>
-								<td style="vertical-align: middle"><?php echo ($vo["low_scope"]); ?>&nbsp;至&nbsp;<?php echo ($vo["high_scope"]); ?></td>
-								<td style="vertical-align: middle"><input type="text" name="point[<?php echo ($vo["score_id"]); ?>]" class="form-control" /></td>
-								<td style="vertical-align: middle"><textarea cols="25" style="height: 300px; margin: 0px 0px 10px 15px" class="form-control" name="comment[<?php echo ($vo["score_id"]); ?>]"></textarea></td>
-							</tr><?php endforeach; endif; else: echo "" ;endif; ?>
-						</table>
-					</div>
-				</div><?php endif; ?>
-			</form>
-		</div>
-	</div>
+                                <td class="col-sm-1">标准分</td>
+                                <td class="col-sm-1">评分范围</td>
+                                <td class="col-sm-1">得分</td>
+                                <td class="col-sm-2">评语</td>
+                            </tr>
+                            <?php if(is_array($appraisalmanager['template']['score'])): $i = 0; $__LIST__ = $appraisalmanager['template']['score'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+                                    <td style="vertical-align: middle">
+                                        <?php echo ($vo["name"]); ?>
+                                        <input class="j_score-id" value="<?php echo ($vo["score_id"]); ?>" type="hidden"/>
+                                    </td>
+                                    <td style="vertical-align: middle"><?php echo ($vo["description"]); ?></td>
+                                    <td class="kpi-detail<?php echo ($vo["score_id"]); ?>" style="text-align: left; vertical-align: middle">
+                                        <input type="hidden" value="<?php echo ($vo["kpiDetail"]); ?>"/>
+                                    </td>
+                                    <td style="vertical-align: middle"><?php echo ($vo["standard_score"]); ?></td>
+                                    <td style="vertical-align: middle"><?php echo ($vo["low_scope"]); ?>&nbsp;至&nbsp;<?php echo ($vo["high_scope"]); ?></td>
+                                    <td style="vertical-align: middle"><input type="text" value="<?php echo ($vo["point"]); ?>" name="point[<?php echo ($vo["score_id"]); ?>]" class="form-control" /></td>
+                                    <td style="vertical-align: middle">
+                                        <textarea cols="25" style="height: 300px; margin: 0px 0px 10px 15px" class="form-control" name="comment[<?php echo ($vo["score_id"]); ?>]"><?php echo ($vo["comment"]); ?></textarea>
+                                    </td>
+                                </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+                        </table>
+                    </div>
+                </div><?php endif; ?>
+            </form>
+        </div>
+    </div>
 </div>
 <div class="clear"></div>
 <script type="text/javascript">
-	function close_page(){
-		if(confirm('确定要关闭页面，退出本次打分吗？')){
-			window.close();
-		}
-	}
+    function close_page(){
+        if(confirm('确定要关闭页面，退出本次打分吗？')){
+            window.close();
+        }
+    }
 
     $(document).ready(function(){
         var scoreId = parseInt($(".j_score-id").val());
@@ -135,17 +137,11 @@
             var kpiDetailArr = $(kpiClass).children(":eq(0)").val().split("$$");
             var kpiDetail = "";
             for(var j=0; j<kpiDetailArr.length-1; j++){
-                if(kpiDetailArr[j] != "^^"){
-                    kpiDetail += "<p>" + (j+1) + "." + kpiDetailArr[j].split("^^")[0] + "</p>";
-                    kpiDetail += "<p style='color: red; margin-top: -9px;'>(考核标准:" + kpiDetailArr[j].split("^^")[1] + ")</p>";
-                }else{
-                    kpiDetail += "无";
-                }
-
+                kpiDetail += "<p>" + (j+1) + "." + kpiDetailArr[j].split("^^")[0] + "</p>";
+                kpiDetail += "<p style='color: red; margin-top: -9px;'>(考核标准:" + kpiDetailArr[j].split("^^")[1] + ")</p>";
             }
             $(kpiClass).append(kpiDetail);
         }
-
 
         var tr = $('.j_tr-control');
         var tdNum = tr.children().length/2;
@@ -160,6 +156,8 @@
             $(strClass).append(kpiDetail);
         }
     });
+
+
 </script>
 <div class="modal fade" id="alert" tabindex="-1" data-backdrop="static">
 	<div class="modal-dialog">

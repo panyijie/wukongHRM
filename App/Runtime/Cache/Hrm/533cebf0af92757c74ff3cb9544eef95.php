@@ -76,11 +76,13 @@
                                 <td><?php echo ($vo["status_name"]); ?></td>
                                 <td><?php echo ($vo["not_appraisal_user_num"]); ?></td>
                                 <td>
-                                    <a class="j_point-a" href="javascript:void(0)">编辑</a>&nbsp;|&nbsp;
-                                    <a class="j_point-a" href="javascript:void(0)">确认</a>
+                                    <input type="hidden" value="<?php echo U('hrm/appraisalpoint/editPoint','id='.$vo['appraisal_manager_id']);?>"/>
+                                    <a class="j_edit-a" href="javascript:void(0)">编辑</a>&nbsp;|&nbsp;
+                                    <a class="j_confirm-a" href="javascript:void(0)">确认</a>
                                     <input type="hidden" value="<?php echo U('hrm/appraisalpoint/edit','id='.$vo['appraisal_manager_id']);?>"/>
                                     <input type="hidden" value="<?php echo ($vo["session_user_name"]); ?>"/>
                                     <input type="hidden" value="<?php echo ($vo["examiner_user_name"]); ?>"/>
+                                    <input type="hidden" value="<?php echo U('hrm/appraisalpoint/confirm','id='.$vo['appraisal_manager_id']);?>"/>
                                 </td>
                             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
                         <?php if(is_array($appraisalexaminerpoint_1)): $i = 0; $__LIST__ = $appraisalexaminerpoint_1;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
@@ -91,10 +93,13 @@
                                 <td><?php echo ($vo["status_name"]); ?></td>
                                 <td><?php echo ($vo["not_appraisal_user_num"]); ?></td>
                                 <td>
-                                    <a class="j_point-a" href="javascript:void(0)">评分</a>
+                                    <input type="hidden" value="<?php echo U('hrm/appraisalpoint/editPoint','id='.$vo['appraisal_manager_id']);?>"/>
+                                    <a class="j_edit-a" href="javascript:void(0)">编辑</a>&nbsp;|&nbsp;
+                                    <a class="j_confirm-a" href="javascript:void(0)">确认</a>
                                     <input type="hidden" value="<?php echo U('hrm/appraisalpoint/edit','id='.$vo['appraisal_manager_id']);?>"/>
                                     <input type="hidden" value="<?php echo ($vo["session_user_name"]); ?>"/>
                                     <input type="hidden" value="<?php echo ($vo["examiner_user_name"]); ?>"/>
+                                    <input type="hidden" value="<?php echo U('hrm/appraisalpoint/confirm','id='.$vo['appraisal_manager_id']);?>"/>
                                 </td>
                             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
 					</tbody>
@@ -111,11 +116,29 @@
 <div class="clear"></div>
         <script type="text/javascript">
             var pointA = $('.j_point-a');
+            var editA = $('.j_edit-a');
+            var confirmA = $('.j_confirm-a');
             pointA.click(function(){
-                if(pointA.next().next().val() == pointA.next().next().next().val().split(',')[1] && pointA.parent().prev().prev().html() == "被考核者评分中"){
+                if($(this).next().next().val() == $(this).next().next().next().val().split(',')[1] && $(this).parent().prev().prev().html() == "被考核者评分中"){
                     alert("被考核者评分中,请等候被考核者自评完毕后再进行评分");
                 }else{
-                    window.location.href = pointA.next().val();
+                    window.location.href = $(this).next().val();
+                }
+            });
+            editA.click(function(){
+                if($(this).next().next().next().val() == $(this).next().next().next().next().val().split(',')[1] && $(this).parent().prev().prev().html() == "待被考核者确认"){
+                    alert("被考核者评分中,请等候被考核者自评完毕后再进行评分");
+                }else{
+                    window.location.href = $(this).prev().val();
+                }
+            });
+            confirmA.click(function(){
+                if($(this).next().next().val() == $(this).next().next().next().val().split(',')[1] && $(this).parent().prev().prev().html() == "待被考核者确认"){
+                    alert("被考核者评分中,请等候被考核者自评完毕后再进行评分");
+                }else{
+                    if(confirm("确定提交评分吗？确认后不可再进行编辑")){
+                        window.location.href = $(this).next().next().next().next().val();
+                    }
                 }
             });
         </script>

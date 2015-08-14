@@ -34,11 +34,11 @@
 							<td>{$vo.status_name}</td>
 							<td>
 								<if condition="'4' eq $vo['status']">
-									<a href="{:U('hrm/appraisalmanager/summary','appraisal_manager_id='.$vo['appraisal_manager_id'])}" class="status_summary" title="汇总" rel="{$vo['appraisal_manager_id']}">汇总</a>&nbsp;|&nbsp;
+									<a href="{:U('hrm/appraisalmanager/summary','appraisal_manager_id='.$vo['appraisal_manager_id'])}" class="status_summary" title="汇总" rel="{$vo['appraisal_manager_id']}">汇总</a><!--&nbsp;|&nbsp;-->
 								<elseif condition="'2' eq $vo['status']"/>
-									<a href="javascript:void(0);" class="status_reset" title="查看" rel="{$vo['appraisal_manager_id']}">查看</a>&nbsp;|&nbsp;
+									<a href="javascript:void(0);" class="status_reset" title="查看" rel="{$vo['appraisal_manager_id']}">查看</a><!--&nbsp;|&nbsp;-->
 								</if>
-                                <a href="{:U('hrm/appraisalmanager/delete','id='.$vo['appraisal_manager_id'])}">删除</a>
+                                <!--<a href="{:U('hrm/appraisalmanager/delete','id='.$vo['appraisal_manager_id'])}">删除</a>-->
 							</td>
 						</tr>
 						</volist>

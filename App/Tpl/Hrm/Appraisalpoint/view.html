@@ -40,7 +40,7 @@
                     <table class="table table-bordered">
                         <tr>
                             <volist name="appraisal_score" id="score_name">
-                                <td width="33%" colspan="2">{$score_name.name}</td>
+                                <td width="33%" colspan="2" style="background-color: #cccccc;color: #000000;">{$score_name.name}</td>
                             </volist>
                         </tr>
                         <tr>
@@ -57,9 +57,9 @@
                             </volist>
                         </tr>
                         <tr>
-                            <td colspan="2">自我评价</td>
-                            <td colspan="2">自我评价</td>
-                            <td colspan="2">自我评价</td>
+                            <td colspan="2" style="background-color: #cccccc;">自我评价</td>
+                            <td colspan="2" style="background-color: #cccccc;">自我评价</td>
+                            <td colspan="2" style="background-color: #cccccc;">自我评价</td>
                         </tr>
                         <tr>
                             <volist name="appraisal_score" id="score_examinee_point">
@@ -74,9 +74,9 @@
                             </volist>
                         </tr>
                         <tr>
-                            <td colspan="2">主管评价</td>
-                            <td colspan="2">主管评价</td>
-                            <td colspan="2">主管评价</td>
+                            <td colspan="2" style="background-color: #cccccc;">主管评价</td>
+                            <td colspan="2" style="background-color: #cccccc;">主管评价</td>
+                            <td colspan="2" style="background-color: #cccccc;">主管评价</td>
                         </tr>
                         <tr>
                             <volist name="appraisal_score" id="score_examiner_point">
@@ -118,7 +118,14 @@
             var kpiArr = kpiDetail.children(str).children(":eq(0)").val().split("$$");
             var kpiStr = "";
             for(var j=0; j<kpiArr.length-1; j++){
-                kpiStr += "<p style='text-align: left'>" + (j+1) + "." + kpiArr[j] + "</p>";
+                if(kpiArr[j] != '^^'){
+                    console.log(kpiArr[j]);
+                    kpiStr += "<p style='text-align: left'>" + (j+1) + "." + kpiArr[j] + "</p>";
+                    kpiStr += "<p style='color: red; margin-top: -9px;'>(考核标准:" + kpiArr[j].split("^^")[1] + ")</p>";
+                }else{
+                    kpiStr += "无";
+                }
+
             }
             kpiDetail.children(str).append(kpiStr);
         }

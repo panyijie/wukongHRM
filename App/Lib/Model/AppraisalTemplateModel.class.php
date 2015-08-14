@@ -143,7 +143,9 @@ class AppraisalTemplateModel extends Model{
         $d_appraisal_point = D('AppraisalPoint');
         foreach($socre as $key=>$val){
             $appraisal_template['score'][$key] = $this->getScoreById($val);
-            $appraisal_template['score'][$key]['kpiDetail'] = $d_appraisal_point->where(array('examiner_user_id'=>$appraisal_template['creator_user_id'], 'appraisal_manager_id'=>$appraisal_manager_id, 'score_id'=>$appraisal_template['score'][$key]['score_id']))->getField('kpi_detail', true)[0];
+            $appraisal_template['score'][$key]['kpiDetail'] = $d_appraisal_point->where(array('examiner_user_id'=>$appraisal_template['creator_user_id'], 'appraisal_manager_id'=>$appraisal_manager_id, 'score_id'=>$appraisal_template['score'][$key]['score_id']))->order('score_id asc')->getField('kpi_detail', true)[0];
+            $appraisal_template['score'][$key]['point'] = $d_appraisal_point->where(array('examiner_user_id'=>session('user_id'), 'appraisal_manager_id'=>$appraisal_manager_id, 'score_id'=>$appraisal_template['score'][$key]['score_id']))->order('score_id asc')->getField('point', true)[0];
+            $appraisal_template['score'][$key]['comment'] = $d_appraisal_point->where(array('examiner_user_id'=>session('user_id'), 'appraisal_manager_id'=>$appraisal_manager_id, 'score_id'=>$appraisal_template['score'][$key]['score_id']))->order('score_id asc')->getField('comment', true)[0];
         }
         return $appraisal_template;
     }
