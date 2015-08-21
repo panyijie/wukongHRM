@@ -192,7 +192,7 @@ class LeaveAction extends Action{
 				$data['end_time'] = trim($_POST['end_time']);
 				$data['content'] = $_POST['content'];
 
-                if(session('user_id') != 5){
+                if(session('user_id') != 1){
                     alert('error','您没有编辑权限！', U('hrm/leave/view', 'id='.$leave_id));
                 }
 
@@ -244,7 +244,7 @@ class LeaveAction extends Action{
         $leave_user_id = $_REQUEST['leave_user_id'];
         $annual_leave = (float)$_REQUEST['annual_leave'] + (float)$_REQUEST['leave_days'];
 
-        if((int)session('user_id') != 5){
+        if((int)session('user_id') != 1){
             alert('error', '删除失败,您没有权限！', U('hrm/leave/index'));
         }
 

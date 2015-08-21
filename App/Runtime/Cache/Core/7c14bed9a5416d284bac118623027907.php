@@ -80,14 +80,6 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name" class="col-sm-2 control-label">工作状态</label>
-					<div class="col-sm-3">
-						<select  name="work_status" class="form-control" >
-							<?php if(is_array($work_status)): $i = 0; $__LIST__ = $work_status;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($key); ?>" <?php if($user['work_status'] == $key): ?>selected = "selected"<?php endif; ?>><?php echo ($vo); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
-						</select>
-					</div>
-				</div>
-				<div class="form-group">
 					<label class="col-sm-2 control-label">性别</label>
 					<div class="col-sm-3">
 						<label class="checkbox-inline"><input type="radio"  name="sex" value="1" <?php if($user['sex'] == 1): ?>checked="checked"<?php endif; ?>/>男</label>

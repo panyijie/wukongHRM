@@ -26,7 +26,7 @@
 		<div class="row-table-title">员工列表</div>
 		<div class="row-table-body">
 			<p class="form-title">
-				<a class="pull-right btn btn-primary btn-xs" href="<?php echo U('core/user/adduser');?>">添加员工</a>
+				<a class="pull-right btn btn-primary btn-xs" href="<?php echo U('core/user/adduser');?>" style="margin-top: 7px">添加员工</a>
 				<?php if(is_array($status_array)): $i = 0; $__LIST__ = $status_array;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if($key == $status): echo ($vo); ?>&nbsp;&nbsp;&nbsp;<?php else: ?><a href='<?php echo U("core/user/index","status=$key");?>'><?php echo ($vo); ?></a>&nbsp;&nbsp;&nbsp;<?php endif; endforeach; endif; else: echo "" ;endif; ?>
 			</p>
 			<table class="table" style="margin-bottom:0px;">
@@ -37,7 +37,6 @@
 						<th>部门 - 岗位</th>
 						<th>员工状态</th>
 						<th>员工类型</th>
-						<th>工作状态</th>
 						<th>手机</th>
 						<th>Email</th>
 						<th>操作</th>
@@ -47,26 +46,15 @@
 						<td><?php if($vo['sex'] == 1): ?>男<?php elseif($vo['sex'] == 2): ?>女<?php else: ?>未知<?php endif; ?></td>
 						<td><?php echo ($vo["department_name"]); ?> - <?php echo ($vo["position_name"]); ?></td>
 						<td><?php if($vo['status'] == 0): ?>未激活<?php elseif($vo['status'] == 1): ?>在职<?php elseif($vo['status'] == 2): ?>离职<?php else: ?>退休<?php endif; ?></td>
-						<td><?php if($vo['type'] == 0): ?>试用期<?php elseif($vo['type'] == 1): ?>正式工<?php elseif($vo['type'] == 2): ?>临时工<?php else: ?>其他<?php endif; ?></td>
-						<td>
-							<?php if($vo['work_status'] == 0): ?>正常
-							<?php elseif($vo['work_status'] == 1): ?>
-								休假
-							<?php elseif($vo['work_status'] == 2): ?>
-								出差
-							<?php elseif($vo['work_status'] == 3): ?>
-								请假
-							<?php elseif($vo['work_status'] == 4): ?>
-								调休<?php endif; ?>
-						</td>
+						<td><?php if($vo['type'] == 0): ?>试用期<?php elseif($vo['type'] == 1): ?>正式工<?php elseif($vo['type'] == 2): ?>实习生<?php else: ?>其他<?php endif; ?></td>
 						<td><?php echo ($vo["telephone"]); ?></td>
 						<td><?php echo ($vo["email"]); ?></td>
 						<td>
-							<a href="<?php echo U('core/user/editinfo','id='.$vo['user_id']);?>">编辑</a>&nbsp;|&nbsp;
-							<a href="<?php echo U('hrm/staffcontract/index','user_id='.$vo['user_id']);?>">人事合同</a>&nbsp;|&nbsp;
-							<a href="<?php echo U('hrm/archives/view','user_id='.$vo['user_id']);?>">人事档案</a>&nbsp;|&nbsp;
-							<a href="javascript:void(0);" class="punch_in" rel="<?php echo ($vo["user_id"]); ?>" value="0">上班打卡</a>&nbsp;|&nbsp;
-							<a href="javascript:void(0);" class="punch_out" rel="<?php echo ($vo["user_id"]); ?>" value="1">下班打卡</a>
+							<a href="<?php echo U('core/user/editinfo','id='.$vo['user_id']);?>">编辑</a>
+							<!--<a href="<?php echo U('hrm/staffcontract/index','user_id='.$vo['user_id']);?>">人事合同</a>&nbsp;|&nbsp;-->
+							<!--<a href="<?php echo U('hrm/archives/view','user_id='.$vo['user_id']);?>">人事档案</a>&nbsp;|&nbsp;-->
+							<!--<a href="javascript:void(0);" class="punch_in" rel="<?php echo ($vo["user_id"]); ?>" value="0">上班打卡</a>&nbsp;|&nbsp;-->
+							<!--<a href="javascript:void(0);" class="punch_out" rel="<?php echo ($vo["user_id"]); ?>" value="1">下班打卡</a>-->
 						</td>
 					</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 				</tbody>
