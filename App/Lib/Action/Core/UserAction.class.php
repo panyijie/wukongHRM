@@ -18,7 +18,7 @@ class UserAction extends Action {
 		$userpagelist = $d_user->getUserPageList($p,$status);
 		$this->assign('userlist', $userpagelist['userlist']);
 		$this->assign('page', $userpagelist['page']);
-		$this->assign('status_array',array('1'=>'在职','2'=>'离职','3'=>'退休','0'=>'未激活'));
+		$this->assign('status_array',array('1'=>'在职','2'=>'离职'));
 		$this->assign('status', $status);
 		$this->alert = parseAlert();
 		$this->display();
@@ -89,16 +89,14 @@ class UserAction extends Action {
 				}
 			}
 			$user['salt'] = D('User')->getSalt();
-			if($_POST['radio_type'] == 'add'){
-				$password = $this->_post('password','tirm','');
-				if($password == ''){
-					alert('error','请填写用户密码',U('core/user/adduser'));
-				}
-				$user['password'] = md5(md5($password) . $user['salt']);
-				$user['status'] = 1;
-			}else{
-				$user['status'] = 0;
-			}
+
+            $password = $this->_post('password','tirm','');
+            if($password == ''){
+                alert('error','请填写用户密码',U('core/user/adduser'));
+            }
+            $user['password'] = md5(md5($password) . $user['salt']);
+            $user['status'] = 1;
+
 			$user['salt'] = D('User')->getSalt();
 			$user['category_id'] = $this->_post('category_id','intval',0);
 			$user['position_id'] = $this->_post('position_id','intval',0);
@@ -149,7 +147,7 @@ class UserAction extends Action {
 				alert('error','添加失败，请联系管理员！',U('core/user/adduser'));
 			}
 		}else{
-			$this->assign('type',array('0'=>'试用期','1'=>'正式工','2'=>'临时工'));
+			$this->assign('type',array('0'=>'试用期','1'=>'正式工','2'=>'实习生'));
 			$department_list = D('Structure')->getDepartmentList(0,'--',1);
 			$this->assign('department_list', $department_list);
 			$this->alert = parseAlert();
@@ -248,7 +246,10 @@ class UserAction extends Action {
 				}
 				$user['category_id'] = $this->_post('category_id','intval',0);
 				$user['position_id'] = $this->_post('position_id','intval',0);
-				if(!D('Structure')->getPositionInfo($user['position_id'])){
+                $user['type'] = $this->_post('type','intval',0);
+                $user['status'] = $this->_post('status','intval',0);
+
+                if(!D('Structure')->getPositionInfo($user['position_id'])){
 					alert('error','所选岗位不存在',U('core/user/editInfo','id='.$user_id));
 				}
 			}
@@ -287,9 +288,8 @@ class UserAction extends Action {
 			$this->assign('department_list', $department_list);
 			$this->assign('position_list', $position_list);
 			$this->assign('user',$user);
-			$this->assign('status',array('0'=>'未激活','1'=>'在职','2'=>'离职','3'=>'退休'));
-			$this->assign('type',array('0'=>'试用期','1'=>'正式工','2'=>'临时工'));
-			$this->assign('work_status',array('0'=>'正常','1'=>'休假','2'=>'出差'));
+            $this->assign('status',array('1'=>'在职','2'=>'离职'));
+            $this->assign('type',array('0'=>'试用期','1'=>'正式工','2'=>'实习生'));
 			$this->alert = parseAlert();
 			$this->display();
 		}
