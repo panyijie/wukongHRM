@@ -5,7 +5,7 @@
 		<div class="row-table-title">员工列表</div>
 		<div class="row-table-body">
 			<p class="form-title">
-                <a class="pull-right btn btn-primary btn-xs" href="{:U('core/user/adduser')}" style="margin-top: 7px">添加员工</a>
+				<a class="pull-right btn btn-primary btn-xs" href="{:U('core/user/adduser')}" style="margin-top: 7px">添加员工</a>
 				<volist name="status_array" id="vo">
 				<if condition="$key == $status">{$vo}&nbsp;&nbsp;&nbsp;<else /><a href='{:U("core/user/index","status=$key")}'>{$vo}</a>&nbsp;&nbsp;&nbsp;</if>
 				</volist>
@@ -28,10 +28,11 @@
 						<td><if condition="$vo['sex'] == 1">男<elseif condition="$vo['sex'] == 2" />女<else />未知</if></td>
 						<td>{$vo.department_name} - {$vo.position_name}</td>
 						<td><if condition="$vo['status'] == 0">未激活<elseif condition="$vo['status'] == 1" />在职<elseif condition="$vo['status'] == 2" />离职<else />退休</if></td>
+						<td><if condition="$vo['type'] == 0">试用期<elseif condition="$vo['type'] == 1" />正式工<elseif condition="$vo['type'] == 2" />实习生<else />其他</if></td>
 						<td>{$vo.telephone}</td>
 						<td>{$vo.email}</td>
 						<td>
-							<a href="{:U('core/user/editinfo','id='.$vo['user_id'])}">编辑</a>&nbsp;|&nbsp;
+							<a href="{:U('core/user/editinfo','id='.$vo['user_id'])}">编辑</a>
 							<!--<a href="{:U('hrm/staffcontract/index','user_id='.$vo['user_id'])}">人事合同</a>&nbsp;|&nbsp;-->
 							<!--<a href="{:U('hrm/archives/view','user_id='.$vo['user_id'])}">人事档案</a>&nbsp;|&nbsp;-->
 							<!--<a href="javascript:void(0);" class="punch_in" rel="{$vo.user_id}" value="0">上班打卡</a>&nbsp;|&nbsp;-->
