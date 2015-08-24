@@ -184,6 +184,7 @@
 			}
 			return $user;
 		}
+
 		
 		/**
 		 * 
@@ -193,6 +194,27 @@
 			$users = D('UserView')->where(array('position_id'=>$position_id),array('status'=>1),array('work_status'=>0))->select();
 			return $users;
 		}
+
+        /*
+         * 检查是否下级员工
+         */
+        public function checkIsSubUser($target_user_id, $current_user_id){
+            $dUser = D('User');
+            $user_information = $dUser->getUserInfo(array('user_id'=>$current_user_id));
+            $positionId = $user_information['position_id'];
+
+            $sub_users = $dUser->getSubUser($positionId);
+
+            $is_sub_user = false;
+
+            foreach($sub_users as $v){
+                if($v['user_id'] == $target_user_id){
+                    $is_sub_user = true;
+                }
+            }
+            return $is_sub_user;
+        }
+
 		/**
 		* 
 		* 根据working_shift_id获取用户列表

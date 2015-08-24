@@ -172,6 +172,13 @@ class LeaveAction extends Action{
 		}else{
 			alert('error', '参数错误！', U('hrm/leave/index'));
 		}
+        $leave_user_id = $_REQUEST['leave_user_id'];
+        $session_user_id = session('user_id');
+        $dUser = D('User');
+
+        $is_sub_user = $dUser->checkIsSubUser($leave_user_id, $session_user_id);
+
+        $this->assign('isSubUser', $is_sub_user);
 		$this->alert = parseAlert();
 		$this->display();
 	}

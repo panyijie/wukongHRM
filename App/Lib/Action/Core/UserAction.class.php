@@ -249,7 +249,11 @@ class UserAction extends Action {
                 $user['type'] = $this->_post('type','intval',0);
                 $user['status'] = $this->_post('status','intval',0);
 
+<<<<<<< HEAD
+                if(!D('Structure')->getPositionInfo($user['position_id'])){
+=======
 				if(!D('Structure')->getPositionInfo($user['position_id'])){
+>>>>>>> master
 					alert('error','所选岗位不存在',U('core/user/editInfo','id='.$user_id));
 				}
 			}
@@ -290,8 +294,13 @@ class UserAction extends Action {
 			$this->assign('department_list', $department_list);
 			$this->assign('position_list', $position_list);
 			$this->assign('user',$user);
+<<<<<<< HEAD
+            $this->assign('status',array('1'=>'在职','2'=>'离职'));
+            $this->assign('type',array('0'=>'试用期','1'=>'正式工','2'=>'实习生'));
+=======
 			$this->assign('status',array('1'=>'在职','2'=>'离职'));
 			$this->assign('type',array('0'=>'试用期','1'=>'正式工','2'=>'实习生'));
+>>>>>>> master
 			$this->alert = parseAlert();
 			$this->display();
 		}
