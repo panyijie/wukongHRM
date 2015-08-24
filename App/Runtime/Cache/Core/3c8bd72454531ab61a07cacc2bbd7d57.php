@@ -27,12 +27,12 @@
             <form class="form-signin" role="form" action="<?php echo U('core/user/login');?>" method="post" >
                 <p><input class="form-control" type="text" name="name" autofocus="" required="" placeholder="用户名"></p>
                 <p><input class="form-control" type="password" name="password" required="" placeholder="密码"></p>
-                    <p>
-                        <label class="checkbox" style="color: #ffffff; font-weight: normal">
-                            <input type="checkbox" name="autologin" >
-                            三日内自动登录
-                        </label>
-                    </p>
+                <p>
+                    <label class="checkbox" style="color: #ffffff; font-weight: normal">
+                        <input type="checkbox" name="autologin" >
+                        三日内自动登录
+                    </label>
+                </p>
                 <p><button class="btn btn-primary" type="submit">登录</button></p>
             </form>
         </div>

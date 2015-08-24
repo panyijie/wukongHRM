@@ -1,0 +1,1 @@
+<?php	return array ( 'name' => '尚妆HRM', 'description' => '人力资源管理系统', 'allow_file_type' => 'pdf,doc,jpg,jpeg,png,gif,txt,doc,xls,zip,docx', 'logo' => './Uploads/201507/27/55b5e454c1fd1.png', );?>
