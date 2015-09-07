@@ -30,7 +30,7 @@
                 <p>
                     <label class="checkbox" style="color: #ffffff; font-weight: normal">
                         <input type="checkbox" name="autologin" >
-                        三日内自动登录
+                        一个月自动登录
                     </label>
                 </p>
                 <p><button class="btn btn-primary" type="submit">登录</button></p>

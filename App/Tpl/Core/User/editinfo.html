@@ -1,5 +1,10 @@
 <include file="Public:header" />
 {:W('Navigation')}
+    <style type="text/css">
+        .col-sm-3{
+            margin-top: 7px;
+        }
+    </style>
 <div class="body-right">
 	<div class="row-table">
 		<div class="row-table-title">个人资料</div>
@@ -48,6 +53,13 @@
 						</select>
 					</div>
 				</div>
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">直属人事管理</label>
+                    <div class="col-sm-3">
+                        <input type="hidden" name="hr_supervisor_id" id="to_user_id" value=""/>
+                        <input class="form-control" type="text" name="hr_supervisor" id="to_name" value="{$user['hr_supervisor_list']}"/>
+                    </div>
+                </div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">员工状态</label>
 					<div class="col-sm-3">
@@ -63,16 +75,16 @@
 					<div class="col-sm-3">
 						<select  name="type" class="form-control" >
 							<volist name="type" id="vo">
-							<option value="{$key}" <if condition="$user['type'] == $key">selected = "selected"</if>>{$vo}</option>
+							<option value="{$key}" <if condition="$user['type'] == $key">selected = "selected"</if> >{$vo}</option>
 							</volist>
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">性别</label>
-					<div class="col-sm-3">
-						<label class="checkbox-inline"><input type="radio"  name="sex" value="1" <if condition="$user['sex'] eq 1">checked="checked"</if>/>男</label>
-						<label class="checkbox-inline"><input type="radio"  name="sex" value="2" <if condition="$user['sex'] eq 2">checked="checked"</if>/>女</label>
+					<div class="col-sm-3" style="margin-top: -1px">
+						<label class="checkbox-inline"><input type="radio"  name="sex" value="1" <if condition="$user['sex'] eq 1">checked="checked"</if>/>&nbsp;&nbsp;男</label>
+						<label class="checkbox-inline"><input type="radio"  name="sex" value="2" <if condition="$user['sex'] eq 2">checked="checked"</if>/>&nbsp;&nbsp;女</label>
 					</div>
 				</div>
 				<div class="form-group">
@@ -80,17 +92,19 @@
 					<div class="col-sm-3">
 						<input class="form-control" name="email" type="text" value="{$user.email}">
 					</div>
-				</div><div class="form-group">
+				</div>
+                <div class="form-group">
 					<label class="col-sm-2 control-label">手机</label>
 					<div class="col-sm-3">
 						<input class="form-control" name="telephone" type="text" value="{$user.telephone}">
 					</div>
-				</div><div class="form-group">
-					<label class="col-sm-2 control-label">联系地址</label>
-					<div class="col-sm-3">
-						<textarea name="address" class="form-control" >{$user.address}</textarea>
-					</div>
 				</div>
+                <!--<div class="form-group">-->
+					<!--<label class="col-sm-2 control-label">联系地址</label>-->
+					<!--<div class="col-sm-3">-->
+						<!--<textarea name="address" class="form-control" >{$user.address}</textarea>-->
+					<!--</div>-->
+				<!--</div>-->
 				<div class="form-group">
 					<label class="col-sm-2 control-label"></label>
 					<div class="col-sm-3">
@@ -140,6 +154,30 @@
 			});		
 		}
 	}
+
+    /**
+     * 选择评分人和考核对象
+     *
+     **/
+    $("#to_name").click(function(){
+        $('#alert').modal({
+            show:true,
+            remote:'{:U("core/user/getuserindex")}'
+        });
+    });
+    $("#str_user_name").click(function(){
+        $('#alert').modal({
+            show:true,
+            remote:'{:U("hrm/appraisalmanager/getUserListDialog")}'
+        });
+    });
+
+    /**
+     * 全选
+     **/
+    $("#check_all").click(function(){
+        $("input[class='check_list']").prop('checked',$(this).prop('checked'));
+    });
 </script>
 <include file="Public:alert" />
 <include file="Public:footer" />

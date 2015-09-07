@@ -121,9 +121,8 @@ class LeaveAction extends Action{
 			if($d_leave->addLeave($data)){
                 $leave_duser = D('User');
                 $leave_user_info = $leave_duser->getUserInfo(array('user_id'=>$data['user_id']));
-                $leave_parent_position_id = $leave_user_info['parent_id'];
-                $leave_parent_position_user_list = $leave_duser->getUserListByPosition($leave_parent_position_id);
-                foreach($leave_parent_position_user_list as $val){
+                $auditingUserList = explode(',', $leave_user_info['hr_supervisor']);
+                foreach($auditingUserList as $val){
                     $d_message = D('Message');
                     $info['title'] = '您有一封新的站内信通知：'.session('name').' 有请假信息需要您跟进，请即刻处理！';
                     $info['content'] = '您有一封新的站内信通知：'.session('name').' 有请假信息需要您跟进，请您认真处理！';
@@ -131,6 +130,12 @@ class LeaveAction extends Action{
                     $info['to_user_id'] = $val['user_id'];
                     $info['send_time'] = time();
                     $d_message->send($info);
+
+                    $email_user_info = $leave_duser->getUserInfo(array('user_id'=>$val['user_id']));
+                    C(F('smtp'),'smtp');
+                    import('@.ORG.Mail');
+                    $content = $leave_user_info['name'].'有一项请假请求需要您进行处理，请您登录ShowJoyHRM系统（hrm.showjoy.net）进行处理操作。谢谢'.'<br/><br/>--'.'(这是一封自动产生的email，请勿回复。)';
+                    SendMail($email_user_info['email'], '【ShowJoyHRM】来自'.$leave_user_info['name'].'的请假审批请您处理', $content,'尚妆人力资源管理系统');
                 }
 
 //                给主管发送一封站内信，通知主管进行请假审核
@@ -260,7 +265,7 @@ class LeaveAction extends Action{
 			if ($d_leave->deleteLeave($leave_id)) {
                 if($leave_category == 3){
                     $user['user_id'] = $leave_user_id;
-                    $user['annual_leave'] = $annual_leave + $leave_days;
+                    $user['annual_leave'] = $annual_leave;
                     D('User')->editUserInfo($user);
                 }
 				alert('success', '删除成功！', U('hrm/leave/index'));
@@ -293,40 +298,36 @@ class LeaveAction extends Action{
             alert('error', '自己不能审核自己的请假条！', U('hrm/leave/index'));
         }
 
-        //获取userId，通过userId得到position_id
         $dUser = D('User');
         $leave_user_information = $dUser->getUserInfo(array('user_id'=>$user_id));
-        $positionId = $leave_user_information['position_id'];
-        $dStructure = D('Structure');
-        $postionParentArray = array();
-        $Postion_information = $dStructure->getPositionInfo($positionId);
-        //获取到请假者自己的岗位的信息
-        //开始遍历，如果其父元素不是管理员的时候就一直向上遍历，因为管理员是最高权限，只要比自己岗位高的都可以进行审核。
+        //获取user_id之后获取其hr_supervisor_id，通过其人事管理来确认是否有权限进行信息的审核。
+        $auditingUserList = explode(',', $leave_user_information['hr_supervisor']);
 
-        while($Postion_information['parent_id'] != 0){
-            array_push($postionParentArray,$Postion_information['parent_id']);
-            $Postion_information = $dStructure->getPositionInfo($Postion_information['parent_id']);
-        }
-        array_push($postionParentArray,0);
-
-        $auditing_user_information = $dUser->getUserInfo(array('user_id'=>session('user_id')));
-        //如果操作者自己的岗位id在上面查的祖先数组之中，则可以进行审核，否则是权限不足
-        if(in_array($auditing_user_information['position_id'],$postionParentArray)){
+        if(in_array(session('user_id'), $auditingUserList)){
             $d_leave = D('Leave');
             $leave = $d_leave->getLeaveById($leave_id);
             if($data['status'] == $leave['status']){
                 alert('error', '请勿重复审核', U('hrm/leave/index'));
             }else{
                 if ($d_leave->auditingLeave($data)) {
-
                     //将审核结果发给相应的同学，其中包括申请请假的同学和交接的同学都会收到相应的通知。（Message模块）
                     $d_message = D('Message');
                     if($data['status'] == 1){
                         $info['title'] = '您的请假申请已通过审核，可前往请假管理查看详情！';
                         $info['content'] = '您的请假审核经过'.session('name').'审核通过，可前往请假管理查看详细审核结果！';
+
+                        C(F('smtp'),'smtp');
+                        import('@.ORG.Mail');
+                        $content = '您的请假已通过审批，可登录ShowJoyHRM系统（hrm.showjoy.net）进行查看。谢谢'.'<br/><br/>--'.'(这是一封自动产生的email，请勿回复。)';
+                        SendMail($leave_user_information['email'], '【ShowJoyHRM】您的请假已通过审批', $content,'尚妆人力资源管理系统');
+
                     }else if($data['status'] == 2){
                         $info['title'] = '您的请假申请未通过审核，请前往请假管理查看详情！';
                         $info['content'] = '您的请假审核经过'.session('name').'审核未通过，请前往请假管理查看详细审核结果！';
+                        C(F('smtp'),'smtp');
+                        import('@.ORG.Mail');
+                        $content = '您的请假未通过审批，可登录ShowJoyHRM系统（hrm.showjoy.net）进行查看。谢谢'.'<br/><br/>--'.'(这是一封自动产生的email，请勿回复。)';
+                        SendMail($leave_user_information['email'], '【ShowJoyHRM】您的请假未通过审批', $content,'尚妆人力资源管理系统');
                     }
                     $info['user_id'] = session('user_id');
                     $info['to_user_id'] = $user_id;
@@ -344,7 +345,6 @@ class LeaveAction extends Action{
                     $info_en['to_user_id'] = $enuser_id;
                     $info_en['send_time'] = time();
                     $d_message->send($info_en);
-
                     alert('success', '审核成功！', U('hrm/leave/index'));
                 }else{
                     alert('error', '审核失败！', U('hrm/leave/index'));

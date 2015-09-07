@@ -45,7 +45,7 @@ class UserAction extends Action {
                         alert('error', '您的账号正在审核中，请耐心等待！',U('core/user/login'));
                     }else {
                         if ($_POST['autologin'] == 1) {
-                            session(array('expire'=>259200));
+                            session(array('expire'=>2592000));
                         } else {
                             session(array('expire'=>3600));
                         }
@@ -74,10 +74,11 @@ class UserAction extends Action {
 		session(null);
 		alert('success', '已经退出！',U('core/user/login'));
 	}
+
 	public function addUser(){
 		$d_user = D('User');
 		if($this->isPost()) {
-			$user['name'] = $this->_post('name','tirm','');
+			$user['name'] = $this->_post('name', 'tirm', '');
 			if($return_name = $d_user->checkUsername($user['name'],$user['user_id'])){
 				switch($return_name){
 					case -1:
@@ -89,35 +90,33 @@ class UserAction extends Action {
 				}
 			}
 			$user['salt'] = D('User')->getSalt();
-
             $password = $this->_post('password','tirm','');
             if($password == ''){
                 alert('error','请填写用户密码',U('core/user/adduser'));
             }
             $user['password'] = md5(md5($password) . $user['salt']);
+            $user['email'] = $this->_post('email','tirm','');
+            if($return_email = $d_user->checkEmail($user['email'],$user['user_id'])){
+                switch($return_email){
+                    case -1:
+                        alert('error','请填写用户邮箱',U('core/user/adduser'));
+                        break;
+                    case -2:
+                        alert('error','邮箱格式不正确',U('core/user/adduser'));
+                        break;
+                    case -3:
+                        alert('error','用户邮箱重复',U('core/user/adduser'));
+                        break;
+                }
+            }
             $user['status'] = 1;
-
-			$user['salt'] = D('User')->getSalt();
 			$user['category_id'] = $this->_post('category_id','intval',0);
 			$user['position_id'] = $this->_post('position_id','intval',0);
 			$d_structure = D('Structure');
 			if(!($d_structure->getPositionInfo($user['position_id']))){
 				alert('error','所选岗位不存在',U('core/user/adduser'));
 			}
-			$user['email'] = $this->_post('email','tirm','');
-			if($return_email = $d_user->checkEmail($user['email'],$user['user_id'])){
-				switch($return_email){
-					case -1:
-						alert('error','请填写用户邮箱',U('core/user/adduser'));
-						break;
-					case -2:
-						alert('error','邮箱格式不正确',U('core/user/adduser'));
-						break;
-					case -3:
-						alert('error','用户邮箱重复',U('core/user/adduser'));
-						break;
-				}
-			}
+            $user['hr_supervisor'] = $this->_post('hr_supervisor_id', 'tirm', '');
 			$user['sex'] = $this->_post('sex','intval',1);
 			$user['telephone'] = $this->_post('telephone','trim','');
 			$user['address'] = $this->_post('address','trim','');
@@ -125,16 +124,16 @@ class UserAction extends Action {
 			$user['reg_ip'] = get_client_ip();
 			$time = time();
 			$user['reg_time'] = $time;
-			
 			if($user_id = D('User')->addUser($user)){
 				if($_POST['radio_type'] == 'email'){
+                    //这一段是通过邮件的方式来继续注册，我们现在系统暂时不通过这样的方式来进行用户注册
 					$verify_code = md5(md5($user['reg_time']) . $user['salt']);
 					C(F('smtp'),'smtp');
 					import('@.ORG.Mail');
 					$url = U('user/active', array('user_id'=>$user_id, 'verify_code'=>$verify_code),'','',true);
 					$content ='尊敬的' . $_POST['name'] . '：<br/><br/>您好！您的'.C('defaultinfo.name').'管理员已经给您发送了邀请，请查收！
 						请点击下面的链接完成注册：<br/><br/>' . $url .'<br/><br/>如果以上链接无法点击，请将上面的地址复制到你的浏览器(如IE)的地址栏进入网站。<br/><br/>--'.C('defaultinfo.name').'(这是一封自动产生的email，请勿回复。)';
-					if (SendMail($user['email'], '从'.C('defaultinfo.name').'添加用户邀请', $content,C('defaultinfo.name').'管理员')){
+					if (SendMail($user['email'], '从'.C('defaultinfo.name').'添加用户邀请', $content,'【ShowJoy】尚妆人力资源管理系统')){
 						alert('success', '添加成功，等待被邀请用户激活!', U('user/index'));
 					} else {
 						M('user')->where(array('user_id'=>$user['user_id']))->delete();
@@ -267,6 +266,7 @@ class UserAction extends Action {
 						break;
 				}
 			}
+            $user['hr_supervisor'] = $this->_post('hr_supervisor_id', 'tirm', '');
 			$user['sex'] = $this->_post('sex','intval',1);
 			$user['telephone'] = $this->_post('telephone','trim','');
 			$user['address'] = $this->_post('address','trim','');
@@ -286,6 +286,7 @@ class UserAction extends Action {
 			$user['department_id'] = $position['department_id'];
 			$position_list = D('Structure')->getDepartmentPosition($position['department_id']);
 			$department_list = D('Structure')->getDepartmentList(0,'--');
+            $user['hr_supervisor_list'] = $d_user->getUserListById($user['hr_supervisor']);
 			$this->assign('department_list', $department_list);
 			$this->assign('position_list', $position_list);
 			$this->assign('user',$user);

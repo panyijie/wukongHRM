@@ -86,6 +86,13 @@
 						</select>
 					</div>
 				</div>
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">直属人事管理员</label>
+                    <div class="col-sm-3">
+                        <input type="hidden" name="hr_supervisor_id" id="to_user_id" value=""/>
+                        <input class="form-control" type="text" name="hr_supervisor" id="to_name" value=""/>
+                    </div>
+                </div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label"></label>
 					<div class="col-sm-3">
@@ -136,6 +143,30 @@
 			});	
 		}
 	}
+
+    /**
+     * 选择评分人和考核对象
+     *
+     **/
+    $("#to_name").click(function(){
+        $('#alert').modal({
+            show:true,
+            remote:'<?php echo U("core/user/getuserindex");?>'
+        });
+    });
+    $("#str_user_name").click(function(){
+        $('#alert').modal({
+            show:true,
+            remote:'<?php echo U("hrm/appraisalmanager/getUserListDialog");?>'
+        });
+    });
+
+    /**
+     * 全选
+     **/
+    $("#check_all").click(function(){
+        $("input[class='check_list']").prop('checked',$(this).prop('checked'));
+    });
 </script>
 <div class="modal fade" id="alert" tabindex="-1" data-backdrop="static">
 	<div class="modal-dialog">

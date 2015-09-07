@@ -64,6 +64,18 @@
 			return $userlist;
 		}
 
+        public function getUserListById($user_id_list){
+            $user = D('UserView');
+            $userList = explode(',',$user_id_list);
+            $userNameList = '';
+
+            for($i=0; $i<sizeof($userList)-1; $i++){
+                $userName = $user->where(array('user_id'=>$userList[$i]))->select();
+                $userNameList = $userNameList.$userName[0]['name'].',';
+            }
+            return $userNameList;
+        }
+
         public function getUserListByPosition($position_id){
             $user = D('UserView');
             $userlist = $user->where(array('position_id'=>$position_id))->select();
@@ -199,18 +211,12 @@
          * 检查是否下级员工
          */
         public function checkIsSubUser($target_user_id, $current_user_id){
-            $dUser = D('User');
-            $user_information = $dUser->getUserInfo(array('user_id'=>$current_user_id));
-            $positionId = $user_information['position_id'];
-
-            $sub_users = $dUser->getSubUser($positionId);
-
             $is_sub_user = false;
-
-            foreach($sub_users as $v){
-                if($v['user_id'] == $target_user_id){
-                    $is_sub_user = true;
-                }
+            $dUser = D('User');
+            $user_information = $dUser->getUserInfo(array('user_id'=>$target_user_id));
+            $auditingUserList = explode(',', $user_information['hr_supervisor']);
+            if(in_array($current_user_id, $auditingUserList)){
+                $is_sub_user = true;
             }
             return $is_sub_user;
         }

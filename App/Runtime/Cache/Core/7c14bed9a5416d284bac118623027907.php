@@ -21,6 +21,11 @@
 	</head>
 	<body>
 <?php echo W('Navigation');?>
+    <style type="text/css">
+        .col-sm-3{
+            margin-top: 7px;
+        }
+    </style>
 <div class="body-right">
 	<div class="row-table">
 		<div class="row-table-title">个人资料</div>
@@ -63,6 +68,13 @@
 						</select>
 					</div>
 				</div>
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">直属人事管理</label>
+                    <div class="col-sm-3">
+                        <input type="hidden" name="hr_supervisor_id" id="to_user_id" value=""/>
+                        <input class="form-control" type="text" name="hr_supervisor" id="to_name" value="<?php echo ($user['hr_supervisor_list']); ?>"/>
+                    </div>
+                </div>
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">员工状态</label>
 					<div class="col-sm-3">
@@ -75,15 +87,15 @@
 					<label for="name" class="col-sm-2 control-label">员工类型</label>
 					<div class="col-sm-3">
 						<select  name="type" class="form-control" >
-							<?php if(is_array($type)): $i = 0; $__LIST__ = $type;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($key); ?>" <?php if($user['type'] == $key): ?>selected = "selected"<?php endif; ?>><?php echo ($vo); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+							<?php if(is_array($type)): $i = 0; $__LIST__ = $type;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($key); ?>" <?php if($user['type'] == $key): ?>selected = "selected"<?php endif; ?> ><?php echo ($vo); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">性别</label>
-					<div class="col-sm-3">
-						<label class="checkbox-inline"><input type="radio"  name="sex" value="1" <?php if($user['sex'] == 1): ?>checked="checked"<?php endif; ?>/>男</label>
-						<label class="checkbox-inline"><input type="radio"  name="sex" value="2" <?php if($user['sex'] == 2): ?>checked="checked"<?php endif; ?>/>女</label>
+					<div class="col-sm-3" style="margin-top: -1px">
+						<label class="checkbox-inline"><input type="radio"  name="sex" value="1" <?php if($user['sex'] == 1): ?>checked="checked"<?php endif; ?>/>&nbsp;&nbsp;男</label>
+						<label class="checkbox-inline"><input type="radio"  name="sex" value="2" <?php if($user['sex'] == 2): ?>checked="checked"<?php endif; ?>/>&nbsp;&nbsp;女</label>
 					</div>
 				</div>
 				<div class="form-group">
@@ -91,17 +103,19 @@
 					<div class="col-sm-3">
 						<input class="form-control" name="email" type="text" value="<?php echo ($user["email"]); ?>">
 					</div>
-				</div><div class="form-group">
+				</div>
+                <div class="form-group">
 					<label class="col-sm-2 control-label">手机</label>
 					<div class="col-sm-3">
 						<input class="form-control" name="telephone" type="text" value="<?php echo ($user["telephone"]); ?>">
 					</div>
-				</div><div class="form-group">
-					<label class="col-sm-2 control-label">联系地址</label>
-					<div class="col-sm-3">
-						<textarea name="address" class="form-control" ><?php echo ($user["address"]); ?></textarea>
-					</div>
 				</div>
+                <!--<div class="form-group">-->
+					<!--<label class="col-sm-2 control-label">联系地址</label>-->
+					<!--<div class="col-sm-3">-->
+						<!--<textarea name="address" class="form-control" ><?php echo ($user["address"]); ?></textarea>-->
+					<!--</div>-->
+				<!--</div>-->
 				<div class="form-group">
 					<label class="col-sm-2 control-label"></label>
 					<div class="col-sm-3">
@@ -151,6 +165,30 @@
 			});		
 		}
 	}
+
+    /**
+     * 选择评分人和考核对象
+     *
+     **/
+    $("#to_name").click(function(){
+        $('#alert').modal({
+            show:true,
+            remote:'<?php echo U("core/user/getuserindex");?>'
+        });
+    });
+    $("#str_user_name").click(function(){
+        $('#alert').modal({
+            show:true,
+            remote:'<?php echo U("hrm/appraisalmanager/getUserListDialog");?>'
+        });
+    });
+
+    /**
+     * 全选
+     **/
+    $("#check_all").click(function(){
+        $("input[class='check_list']").prop('checked',$(this).prop('checked'));
+    });
 </script>
 <div class="modal fade" id="alert" tabindex="-1" data-backdrop="static">
 	<div class="modal-dialog">

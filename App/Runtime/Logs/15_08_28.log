@@ -1,0 +1,1296 @@
+[ 2015-08-28T10:36:02+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000247s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001680s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000723s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000111s ]
+INFO: App Behavior ::run [ RunTime:0.006626s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006922s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000143s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000883s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000127s ]
+
+[ 2015-08-28T10:36:07+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000246s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001691s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000905s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000149s ]
+INFO: App Behavior ::run [ RunTime:0.006863s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007157s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000146s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000890s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000189s ]
+
+[ 2015-08-28T10:36:12+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000233s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001520s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000625s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000115s ]
+INFO: App Behavior ::run [ RunTime:0.006484s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006764s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000123s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000820s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000130s ]
+
+[ 2015-08-28T10:36:17+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000229s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001330s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000994s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000147s ]
+INFO: App Behavior ::run [ RunTime:0.007896s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008185s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000254s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001077s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000172s ]
+
+[ 2015-08-28T10:36:22+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000234s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001506s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000908s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000147s ]
+INFO: App Behavior ::run [ RunTime:0.006722s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007007s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000174s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000857s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000155s ]
+
+[ 2015-08-28T10:36:27+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000250s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001375s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000696s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000114s ]
+INFO: App Behavior ::run [ RunTime:0.006269s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006574s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000178s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001048s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000175s ]
+
+[ 2015-08-28T10:36:32+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000258s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001796s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000752s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000121s ]
+INFO: App Behavior ::run [ RunTime:0.007104s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007415s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000140s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000892s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000145s ]
+
+[ 2015-08-28T10:36:38+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000238s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001742s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000801s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000114s ]
+INFO: App Behavior ::run [ RunTime:0.006584s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006868s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000132s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000864s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000181s ]
+
+[ 2015-08-28T10:36:43+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000235s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001605s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000758s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000167s ]
+INFO: App Behavior ::run [ RunTime:0.006814s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007097s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000128s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000781s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000152s ]
+
+[ 2015-08-28T10:36:48+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000257s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002188s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001277s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000217s ]
+INFO: App Behavior ::run [ RunTime:0.009021s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009342s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000253s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001111s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000173s ]
+
+[ 2015-08-28T10:36:53+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000228s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002006s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001305s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000210s ]
+INFO: App Behavior ::run [ RunTime:0.009122s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009402s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000179s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001350s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000179s ]
+
+[ 2015-08-28T10:36:58+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000228s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001750s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000881s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000136s ]
+INFO: App Behavior ::run [ RunTime:0.007023s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007302s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000165s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000740s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000144s ]
+
+[ 2015-08-28T10:37:03+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000207s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000989s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000842s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000123s ]
+INFO: App Behavior ::run [ RunTime:0.005952s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006218s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000255s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000908s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000179s ]
+
+[ 2015-08-28T10:37:08+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000235s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001707s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000753s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000111s ]
+INFO: App Behavior ::run [ RunTime:0.006679s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006961s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000138s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000789s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000173s ]
+
+[ 2015-08-28T10:37:13+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000235s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002019s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000961s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000165s ]
+INFO: App Behavior ::run [ RunTime:0.007549s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007840s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000245s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001169s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000168s ]
+
+[ 2015-08-28T10:37:18+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000237s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001540s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000803s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000165s ]
+INFO: App Behavior ::run [ RunTime:0.007038s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007321s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000187s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000977s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000137s ]
+
+[ 2015-08-28T10:37:23+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000229s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001662s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000678s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000111s ]
+INFO: App Behavior ::run [ RunTime:0.006548s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006838s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000152s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000767s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000164s ]
+
+[ 2015-08-28T10:37:28+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000229s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002148s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000854s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000148s ]
+INFO: App Behavior ::run [ RunTime:0.009049s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009332s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000176s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001042s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000165s ]
+
+[ 2015-08-28T10:37:33+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000277s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001974s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000924s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000185s ]
+INFO: App Behavior ::run [ RunTime:0.007859s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008213s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000253s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000998s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000178s ]
+
+[ 2015-08-28T10:37:38+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000264s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001421s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000830s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000125s ]
+INFO: App Behavior ::run [ RunTime:0.006992s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007313s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000177s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001013s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000160s ]
+
+[ 2015-08-28T10:37:43+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000237s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001718s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000855s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000147s ]
+INFO: App Behavior ::run [ RunTime:0.006952s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007243s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000174s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000914s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000153s ]
+
+[ 2015-08-28T10:37:48+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000247s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002171s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001109s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000149s ]
+INFO: App Behavior ::run [ RunTime:0.007975s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008288s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000269s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001060s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000194s ]
+
+[ 2015-08-28T10:37:53+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000213s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002097s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000977s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000150s ]
+INFO: App Behavior ::run [ RunTime:0.008260s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008582s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000172s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000952s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000193s ]
+
+[ 2015-08-28T10:37:58+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000230s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001678s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000607s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000113s ]
+INFO: App Behavior ::run [ RunTime:0.006380s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006657s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000133s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000814s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000162s ]
+
+[ 2015-08-28T10:38:03+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000515s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001807s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001676s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000279s ]
+INFO: App Behavior ::run [ RunTime:0.009765s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010347s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000209s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001110s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000169s ]
+
+[ 2015-08-28T10:38:08+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000241s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001651s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000779s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000160s ]
+INFO: App Behavior ::run [ RunTime:0.006928s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007221s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000140s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000901s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000183s ]
+
+[ 2015-08-28T10:38:13+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000233s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002123s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000865s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000147s ]
+INFO: App Behavior ::run [ RunTime:0.007529s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007817s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000177s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000967s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000181s ]
+
+[ 2015-08-28T10:38:18+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000237s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002184s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000899s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000174s ]
+INFO: App Behavior ::run [ RunTime:0.007948s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008250s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000268s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001373s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000196s ]
+
+[ 2015-08-28T10:38:23+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000238s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002210s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000968s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000119s ]
+INFO: App Behavior ::run [ RunTime:0.007717s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008005s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000144s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000807s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000185s ]
+
+[ 2015-08-28T10:38:28+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000237s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001605s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000757s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000112s ]
+INFO: App Behavior ::run [ RunTime:0.006594s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006881s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000137s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000804s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000181s ]
+
+[ 2015-08-28T10:38:33+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000224s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002182s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000976s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000125s ]
+INFO: App Behavior ::run [ RunTime:0.007865s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008151s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000192s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000965s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000180s ]
+
+[ 2015-08-28T10:38:38+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000219s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002091s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000806s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000125s ]
+INFO: App Behavior ::run [ RunTime:0.007379s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007647s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000160s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000792s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000143s ]
+
+[ 2015-08-28T10:38:43+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000295s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001037s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000737s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000112s ]
+INFO: App Behavior ::run [ RunTime:0.006720s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007198s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000156s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000811s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000136s ]
+
+[ 2015-08-28T10:38:48+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000223s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001537s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001322s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000218s ]
+INFO: App Behavior ::run [ RunTime:0.007608s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007886s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000189s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000954s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000195s ]
+
+[ 2015-08-28T10:38:53+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000251s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001729s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000963s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000154s ]
+INFO: App Behavior ::run [ RunTime:0.007758s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008064s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000180s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001211s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000207s ]
+
+[ 2015-08-28T10:38:58+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000257s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000896s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000714s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000130s ]
+INFO: App Behavior ::run [ RunTime:0.006384s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006723s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000162s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000864s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000140s ]
+
+[ 2015-08-28T10:39:03+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000235s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000976s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000651s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000125s ]
+INFO: App Behavior ::run [ RunTime:0.006454s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006778s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000179s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000782s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000179s ]
+
+[ 2015-08-28T10:39:08+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000267s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001967s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001016s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000127s ]
+INFO: App Behavior ::run [ RunTime:0.007964s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008321s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000180s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000871s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000142s ]
+
+[ 2015-08-28T10:39:13+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000232s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001927s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000728s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000113s ]
+INFO: App Behavior ::run [ RunTime:0.006900s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007183s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000135s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000787s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000178s ]
+
+[ 2015-08-28T10:39:18+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000343s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002278s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000975s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000170s ]
+INFO: App Behavior ::run [ RunTime:0.010605s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.011060s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000235s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001328s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000187s ]
+
+[ 2015-08-28T10:39:23+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000389s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001957s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000871s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000170s ]
+INFO: App Behavior ::run [ RunTime:0.009870s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010333s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000192s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001006s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000167s ]
+
+[ 2015-08-28T10:39:28+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000261s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001336s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000882s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000131s ]
+INFO: App Behavior ::run [ RunTime:0.007802s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008120s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000167s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000807s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000162s ]
+
+[ 2015-08-28T10:39:33+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000393s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002041s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000843s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000194s ]
+INFO: App Behavior ::run [ RunTime:0.009179s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009646s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000217s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001331s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000194s ]
+
+[ 2015-08-28T10:39:38+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000212s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002035s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000929s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000129s ]
+INFO: App Behavior ::run [ RunTime:0.007069s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007332s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000157s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000892s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000141s ]
+
+[ 2015-08-28T10:39:43+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000233s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000951s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000712s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000115s ]
+INFO: App Behavior ::run [ RunTime:0.006087s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006367s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000132s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000806s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000175s ]
+
+[ 2015-08-28T10:39:48+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000213s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001723s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000804s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000124s ]
+INFO: App Behavior ::run [ RunTime:0.006721s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006981s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000156s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000816s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000143s ]
+
+[ 2015-08-28T10:39:53+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000232s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001663s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000933s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000113s ]
+INFO: App Behavior ::run [ RunTime:0.006772s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007069s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000264s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001099s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000185s ]
+
+[ 2015-08-28T10:39:58+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000228s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002194s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000876s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000214s ]
+INFO: App Behavior ::run [ RunTime:0.007849s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008127s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000141s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001112s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000182s ]
+
+[ 2015-08-28T10:40:03+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000215s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002240s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000922s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000124s ]
+INFO: App Behavior ::run [ RunTime:0.007258s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007525s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000182s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001059s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000180s ]
+
+[ 2015-08-28T10:40:08+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000208s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001474s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000594s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000115s ]
+INFO: App Behavior ::run [ RunTime:0.006564s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006825s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000204s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000952s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000153s ]
+
+[ 2015-08-28T10:40:13+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000197s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001489s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000770s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000113s ]
+INFO: App Behavior ::run [ RunTime:0.006173s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006417s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000149s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000868s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000139s ]
+
+[ 2015-08-28T10:40:18+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000227s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001997s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001062s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000354s ]
+INFO: App Behavior ::run [ RunTime:0.008140s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008433s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000273s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001185s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000146s ]
+
+[ 2015-08-28T10:40:23+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000212s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001777s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000926s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000123s ]
+INFO: App Behavior ::run [ RunTime:0.006957s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007229s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000177s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001000s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000173s ]
+
+[ 2015-08-28T10:40:28+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000214s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001809s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001029s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000128s ]
+INFO: App Behavior ::run [ RunTime:0.007082s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007342s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000147s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000759s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000140s ]
+
+[ 2015-08-28T10:40:33+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000219s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002325s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000637s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000114s ]
+INFO: App Behavior ::run [ RunTime:0.007255s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007524s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000128s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000813s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000147s ]
+
+[ 2015-08-28T10:40:38+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000233s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001498s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000742s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000115s ]
+INFO: App Behavior ::run [ RunTime:0.006527s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006810s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000125s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000719s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000141s ]
+
+[ 2015-08-28T10:40:43+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000238s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001812s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000710s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000128s ]
+INFO: App Behavior ::run [ RunTime:0.006982s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007273s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000138s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000798s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000135s ]
+
+[ 2015-08-28T10:40:48+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000261s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001695s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000731s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000123s ]
+INFO: App Behavior ::run [ RunTime:0.006823s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007140s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000166s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000772s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000134s ]
+
+[ 2015-08-28T10:40:53+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000241s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001848s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000773s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000123s ]
+INFO: App Behavior ::run [ RunTime:0.006890s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007195s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000146s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000909s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000139s ]
+
+[ 2015-08-28T10:40:58+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000184s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001475s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000711s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000129s ]
+INFO: App Behavior ::run [ RunTime:0.005973s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006201s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000145s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000852s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000182s ]
+
+[ 2015-08-28T10:41:03+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000221s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002456s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000836s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000133s ]
+INFO: App Behavior ::run [ RunTime:0.007708s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007978s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000187s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000849s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000188s ]
+
+[ 2015-08-28T10:41:08+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000308s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001669s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000672s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000113s ]
+INFO: App Behavior ::run [ RunTime:0.006854s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007230s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000152s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000842s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000274s ]
+
+[ 2015-08-28T10:41:13+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000187s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001604s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000852s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000151s ]
+INFO: App Behavior ::run [ RunTime:0.006652s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006886s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000169s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001029s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000250s ]
+
+[ 2015-08-28T10:41:18+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000216s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001509s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000715s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000126s ]
+INFO: App Behavior ::run [ RunTime:0.006588s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006852s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000153s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000781s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000142s ]
+
+[ 2015-08-28T10:41:23+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000212s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001310s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001080s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000147s ]
+INFO: App Behavior ::run [ RunTime:0.008216s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008492s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000188s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000928s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000246s ]
+
+[ 2015-08-28T10:41:29+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000218s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001661s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000683s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000131s ]
+INFO: App Behavior ::run [ RunTime:0.006353s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006616s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000128s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001072s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000173s ]
+
+[ 2015-08-28T10:41:34+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000202s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002210s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000718s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000153s ]
+INFO: App Behavior ::run [ RunTime:0.007477s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007722s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000151s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001020s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000152s ]
+
+[ 2015-08-28T10:41:39+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000211s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001838s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000754s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000216s ]
+INFO: App Behavior ::run [ RunTime:0.006981s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007253s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000256s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001158s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000180s ]
+
+[ 2015-08-28T10:41:44+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000261s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001863s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001283s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000154s ]
+INFO: App Behavior ::run [ RunTime:0.008175s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008493s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000182s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000834s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000197s ]
+
+[ 2015-08-28T10:41:49+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000220s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001518s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000742s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000107s ]
+INFO: App Behavior ::run [ RunTime:0.006377s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006644s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000149s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000995s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000163s ]
+
+[ 2015-08-28T10:41:54+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000227s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001328s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000858s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000115s ]
+INFO: App Behavior ::run [ RunTime:0.006545s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006834s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000257s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001387s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000175s ]
+
+[ 2015-08-28T10:41:59+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000205s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001799s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000906s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000173s ]
+INFO: App Behavior ::run [ RunTime:0.007164s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007429s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000268s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001179s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000192s ]
+
+[ 2015-08-28T10:42:04+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000218s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002057s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000960s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000126s ]
+INFO: App Behavior ::run [ RunTime:0.007459s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007728s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000152s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001368s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000348s ]
+
+[ 2015-08-28T10:42:09+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000215s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001815s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000808s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000123s ]
+INFO: App Behavior ::run [ RunTime:0.006915s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007183s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000188s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001026s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000159s ]
+
+[ 2015-08-28T10:42:14+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000208s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001787s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000960s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000144s ]
+INFO: App Behavior ::run [ RunTime:0.006981s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007237s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000157s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001121s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000195s ]
+
+[ 2015-08-28T10:42:19+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000219s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001826s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001337s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000225s ]
+INFO: App Behavior ::run [ RunTime:0.008069s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008340s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000181s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001089s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000191s ]
+
+[ 2015-08-28T10:42:24+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000258s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001679s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000712s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000121s ]
+INFO: App Behavior ::run [ RunTime:0.006917s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007228s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000143s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000779s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000205s ]
+
+[ 2015-08-28T10:42:29+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000213s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001487s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000967s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000123s ]
+INFO: App Behavior ::run [ RunTime:0.006769s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007029s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000144s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000800s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000136s ]
+
+[ 2015-08-28T10:42:34+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000214s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.002279s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000684s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000114s ]
+INFO: App Behavior ::run [ RunTime:0.007225s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007483s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000158s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.000814s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000199s ]
+
+[ 2015-08-28T10:42:39+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000209s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001526s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.000707s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000383s ]
+INFO: App Behavior ::run [ RunTime:0.007318s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007580s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000170s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001185s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000155s ]
+
+[ 2015-08-28T10:42:44+08:00 ] 0.0.0.0 /wukongHRM/index.php?g=core&m=message&a=tips
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Common/common.php 第 217 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000213s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001956s ]
+SQL: SHOW COLUMNS FROM `hr_config` [ RunTime:0.001096s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT `value` FROM `hr_config` WHERE ( `name` = 'smtp' ) LIMIT 1   [ RunTime:0.000160s ]
+INFO: App Behavior ::run [ RunTime:0.009103s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009362s ]
+INFO: Authenticate Behavior ::run [ RunTime:0.000145s ]
+SQL: SHOW COLUMNS FROM `hr_message` [ RunTime:0.001271s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /Applications/XAMPP/xamppfiles/htdocs/wukongHRM/Base/Lib/Core/Db.class.php 第 604 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `hr_message` WHERE ( `to_user_id` = 12 ) AND ( `read_time` = 0 ) AND ( `is_deleted` <> 1 ) LIMIT 1   [ RunTime:0.000169s ]
+
